@@ -26,7 +26,7 @@ function Navbar() {
         <>
             <nav className="navbar">
                 <div className="navbar-container">
-                    <Link to="/" className="navbar-logo">
+                    <Link to="/home" className="navbar-logo">
                         CMUCal <i class="fa-regular fa-calendar"></i>
                     </Link>
                     <div className="menu-icon" onClick={handleClick}>
@@ -34,23 +34,23 @@ function Navbar() {
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <Link to='/services' className='nav-links' onClick = {closeMobileMenu}>
-                                Home
+                            <Link to='/academics' className='nav-links' onClick = {closeMobileMenu}>
+                                Academics
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/' className='nav-links' onClick = {closeMobileMenu}>
-                                Services
+                            <Link to='/instructions' className='nav-links' onClick = {closeMobileMenu}>
+                                Instructions
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/products' className='nav-links' onClick = {closeMobileMenu}>
-                                Products
+                            <Link to='/profile' className='nav-links' onClick = {closeMobileMenu}>
+                                Profile
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/sign-up' className='nav-links-mobile' onClick = {closeMobileMenu}>
-                                Sign Up
+                            <Link to='/upload' className='nav-links-mobile' onClick = {closeMobileMenu}>
+                                Upload
                             </Link>
                         </li>
                     </ul>
