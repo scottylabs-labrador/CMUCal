@@ -2,12 +2,9 @@ import React from 'react'
 import { Button } from '../Button'
 
 function Home() {
-    // const handleClick = () => {
-        
-    // }
   return (
     <div>
-      <p>Home</p>
+      <h1>Home</h1>
     </div>
   )
 }

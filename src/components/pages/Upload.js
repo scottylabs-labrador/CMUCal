@@ -3,7 +3,7 @@ import React from 'react'
 function Upload() {
   return (
     <div>
-      <p>Upload</p>
+      <h1>Upload</h1>
     </div>
   )
 }

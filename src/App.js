@@ -10,6 +10,7 @@ import Upload from "./components/pages/Upload";
 import Clubs from "./components/pages/Clubs";
 import Careers from "./components/pages/Careers";
 import SecondNav from "./components/SecondNav";
+import Instructions from "./components/pages/Instructions";
 
 // Parts of the code were taken from https://www.youtube.com/watch?v=I2UBjN5ER4s
 // React Router documentation: https://reactrouter.com/en/main/start/tutorial
@@ -20,11 +21,12 @@ function App() {
 		<>
     <Navbar />
     <SecondNav />
-    <div className="container">
+    <div className="appContainer">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/academics" element={<Academics />} />
         <Route path="/upload" element={<Upload />} />
+        <Route path="/instructions" element={<Instructions />} />
         <Route path="/search/academics" element={<Academics />} />
         <Route path="/search/clubs" element={<Clubs />} />
         <Route path="/search/career" element={<Careers />} />
