@@ -4,7 +4,7 @@ import { Button } from '../Button'
 function Academics() {
   return (
     <div>
-      <p>Academics</p>
+      <h1>Academics</h1>
     </div>
   )
 }

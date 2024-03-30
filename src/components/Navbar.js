@@ -26,16 +26,21 @@ function Navbar() {
         <>
             <nav className="navbar">
                 <div className="navbar-container">
-                    <Link to="/home" className="navbar-logo">
+                    <Link to="/" className="navbar-logo">
                         CMUCal <i class="fa-regular fa-calendar"></i>
                     </Link>
                     <div className="menu-icon" onClick={handleClick}>
                         <i className={click ? 'fa-solid fa-x' : 'fa-solid fa-bars'} />
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                        {/* <li className='nav-item'>
+                            <Link to='/instructions' className='nav-links' onClick = {closeMobileMenu}>
+                                GCal
+                            </Link>
+                        </li> */}
                         <li className='nav-item'>
-                            <Link to='/academics' className='nav-links' onClick = {closeMobileMenu}>
-                                Academics
+                            <Link to='/profile' className='nav-links' onClick = {closeMobileMenu}>
+                                Profile
                             </Link>
                         </li>
                         <li className='nav-item'>
@@ -44,17 +49,17 @@ function Navbar() {
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/profile' className='nav-links' onClick = {closeMobileMenu}>
-                                Profile
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/upload' className='nav-links-mobile' onClick = {closeMobileMenu}>
+                            <Link to='/upload' className='nav-links' onClick = {closeMobileMenu}>
                                 Upload
                             </Link>
                         </li>
+                        <li className='nav-item'>
+                            <Link to='/' className='nav-links' onClick = {closeMobileMenu}>
+                                Home
+                            </Link>
+                        </li>
                     </ul>
-                    {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+                    {/* {button && <Button buttonStyle='btn--outline'>Profile</Button>} */}
                 </div>
             </nav>
         </>

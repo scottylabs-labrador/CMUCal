@@ -7,7 +7,7 @@ function Home() {
     // }
   return (
     <div>
-      <Button>Add Event</Button>
+      <p>Home</p>
     </div>
   )
 }

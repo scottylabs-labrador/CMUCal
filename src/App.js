@@ -1,10 +1,15 @@
 // import logo from './logo.svg';
 import { useState } from "react";
 import Navbar from "./components/Navbar";
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+// import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./components/pages/Home";
 import Academics from "./components/pages/Academics";
+import Upload from "./components/pages/Upload";
+import Clubs from "./components/pages/Clubs";
+import Careers from "./components/pages/Careers";
+import SecondNav from "./components/SecondNav";
 
 // Parts of the code were taken from https://www.youtube.com/watch?v=I2UBjN5ER4s
 // React Router documentation: https://reactrouter.com/en/main/start/tutorial
@@ -13,14 +18,26 @@ function App() {
 	const [search, setSearch] = useState("");
 	return (
 		<>
-		<Router>
-      <Navbar />
-      <Academics />
+    <Navbar />
+    <SecondNav />
+    <div className="container">
       <Routes>
-        <Route path='/home' exact exponent={Home}/>
-        <Route path='/academics' exact exponent={Academics}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/academics" element={<Academics />} />
+        <Route path="/upload" element={<Upload />} />
+        <Route path="/search/academics" element={<Academics />} />
+        <Route path="/search/clubs" element={<Clubs />} />
+        <Route path="/search/career" element={<Careers />} />
       </Routes>
-    </Router> 
+    </div>
+		{/* <Router>
+      <Navbar />
+      <Routes>
+        <Route path='/' exact exponent={Home}/>
+        <Route path='/academics' exact exponent={Academics}/>
+        <Route path='/upload' exact exponent={Upload}/>
+      </Routes>
+    </Router>  */}
 		</>
 
 		// <div className="App">

@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Clubs() {
+function Instructions() {
   return (
     <div>
-        <h1>Clubs</h1>
+      
     </div>
   )
 }
 
-export default Clubs
+export default Instructions
