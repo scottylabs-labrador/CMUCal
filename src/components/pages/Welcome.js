@@ -18,7 +18,7 @@ const GuestSigninButton = ({ onClick }) => {
 function GoogleSigninButton() {
   return (
     <>
-      <GoogleOAuthProvider clientId="<1066229695792-t2vimjbc2fvchulss1jh1ui7joaiqni2.apps.googleusercontent.com>">
+      <GoogleOAuthProvider clientId="<1066229695792-3nui1uf9nrlc1ukjrjqup716trqovq1m.apps.googleusercontent.com>">
         <GoogleLogin
           buttonText='Sign in'
           onSuccess={credentialResponse => {
