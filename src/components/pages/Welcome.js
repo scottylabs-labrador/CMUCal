@@ -4,7 +4,6 @@ import './Welcome.css';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
 
-// Edit style later
 const GuestSigninButton = ({ onClick }) => {
   return (
     <button
@@ -37,6 +36,28 @@ function GoogleSigninButton() {
   )
 }
 
+const About = () => {
+  return (
+    <>
+      <div id="About">
+        <p>About</p>
+        <p>CMUCal offers convenient search for academic resources and events on campus, with the option of adding events to your personal Google Calendar.</p>
+      </div>
+    </>
+  );
+};
+
+// Insert Video later
+const Video = () => {
+  return (
+    <>
+      <div id="Video">
+        <p>Video</p>
+      </div>
+    </>
+  )
+}
+
 function Welcome() {
   // Code to do after logging in
   const handleClick = () => {
@@ -53,14 +74,10 @@ function Welcome() {
           <GuestSigninButton onClick={handleClick} text="Continue as a Guest" />
         </div>
       </div>
-      
+
       <div className = 'welcome-lower'>
-        <div id = "About">
-          <p>About</p>
-          <p>CMUCal offers convenient search for academic resources and events on campus, with the option of adding events to your personal Google Calendar.</p>
-        </div>
-        <div id = "Video">
-        </div>
+        <About/>
+        <Video />
       </div>
     </>
 
