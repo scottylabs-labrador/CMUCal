@@ -12,6 +12,7 @@ function Academics() {
     <div>
       <h1>Academics</h1>
       <SearchCard eventName={eventName1} orgName={orgName1} date={date1} time={time1} location={location1} />
+      <SearchCard eventName={eventName1} orgName={orgName1} date={date1} time={time1} location={location1} />
     </div>
   )
 }
