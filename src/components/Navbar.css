@@ -8,10 +8,10 @@
 	position: sticky;
 	top: 0;
 	z-index: 999;
-	display: flex;
-	justify-content: space-between;
-	align-items: stretch;
-	gap: 2rem;
+	/* display: flex; */
+	/* justify-content: space-between; */
+	/* align-items: stretch; */
+	/* gap: 2rem; */
 	padding: 0 1rem;
 }
 
@@ -22,7 +22,8 @@
 .navbar-container {
 	color: white;
 	display: flex;
-	/* justify-content: center; */
+	justify-content: space-between;
+    padding-right: 1rem;
 	align-items:center;
 	height: 80px;
 	width: 100%;
@@ -33,29 +34,26 @@
 	margin: 0;
 	list-style: none;
 	display: flex;
-    /* background-color: blue; */
-    width: 100%;
-    flex-direction: row-reverse;
 	gap: 1rem;
-    margin-right: 1rem;
 }
 
 .navbar-logo {
-	/* background-color: red; */
 	color: white;
-    position: absolute;
+    display: flex;
     align-items: flex-start;
+    gap: 0.5rem;
     text-decoration: none;
     font-size: 2rem;
     margin-left: 1rem;
 }
+
+
 
 .nav-links {
 	color: white;
 	text-decoration: none;
 	height: 100%;
 	display: flex;
-	align-items: center;
 	padding: 0.25rem;
 }
 
