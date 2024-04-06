@@ -91,8 +91,7 @@ h2 {
     line-height: normal;
     border-radius: 5px;
     border: 1px solid #1F4C4C;
-
-
+    
 }
 
 @media (max-width: 991px) {
@@ -101,4 +100,51 @@ h2 {
         height: 67px;
         flex-shrink: 0;
     }
+}
+
+.welcome-upper {
+    background-color: var(--Grey, #f5f5f5);
+    width: 100%;
+    align-items: center;
+    font-weight: 400;
+    justify-content: center;
+    padding: 67px 60px;
+}
+
+@media (max-width: 991px) {
+    .welcome-upper {
+      max-width: 100%;
+      padding: 0 20px;
+    }
+  }
+
+.welcome-lower {
+    margin: 1rem;
+    padding: 2rem 2rem;
+  }
+
+#About {
+    display: inline-block;
+    background-color: var(--beige);
+    width: 40%;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+
+    color: #000;
+
+font-family: "Open Sans";
+font-size: 22px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+}
+
+#Video {
+    display: inline-block;
+    background-color: var(--beige);
+    width: 40%;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+
 }
