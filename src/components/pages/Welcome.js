@@ -18,7 +18,6 @@ const GuestSigninButton = ({ onClick }) => {
 function GoogleSigninButton() {
   return (
     <>
-      <GoogleOAuthProvider clientId="<1066229695792-3nui1uf9nrlc1ukjrjqup716trqovq1m.apps.googleusercontent.com>">
         <GoogleLogin
           buttonText='Sign in'
           onSuccess={credentialResponse => {
@@ -30,8 +29,8 @@ function GoogleSigninButton() {
           cookiePolicy={'single_host_origin'}
           responseType='code'
           successType='offline'
-          scope='openid email profile https://www.googleapis.com/auth/calendar' />;
-      </GoogleOAuthProvider>;
+          scope='openid email profile https://apis.google.com/js/platform.js'
+        />
     </>
   )
 }

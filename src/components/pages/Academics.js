@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from '../Button'
 import SearchCard from '../SearchCard';
 
+
 function Academics() {
   let eventName1 = "Committee Work Session";
   let orgName1 = "Scotty Labs";
