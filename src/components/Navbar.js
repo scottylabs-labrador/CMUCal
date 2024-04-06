@@ -58,6 +58,11 @@ function Navbar() {
                                 Home
                             </Link>
                         </li>
+                        <li className='nav-item'>
+                            <Link to='/welcome' className='nav-links' onClick = {closeMobileMenu}>
+                                Welcome
+                            </Link>
+                        </li>
                     </ul>
                     {/* {button && <Button buttonStyle='btn--outline'>Profile</Button>} */}
                 </div>
