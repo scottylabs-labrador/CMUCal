@@ -1,0 +1,104 @@
+body {background-color: #F5F5F5;}
+
+.welcome {
+    display: flex;
+    margin-top: 40px;
+    width: 853px;
+    max-width: 100%;
+    flex-direction: column;
+}
+
+h1 {
+    color: #000;
+
+    font-family: "Source Serif Pro";
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media (max-width: 761px) {
+    h1 {
+        max-width: 100%;
+        margin-right: 10px;
+        font-size: 40px;
+    }
+}
+
+h2 {
+    color: #000;
+
+    font-family: "Open Sans";
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media (max-width: 991px) {
+    h2 {
+        max-width: 100%;
+    }
+}
+
+.loginButtons {
+    display: flex;
+    margin-top: 64px;
+    gap: 20px;
+    font-size: 20px;
+    justify-content: space-between;
+}
+
+@media (max-width: 991px) {
+    .loginButtons {
+        max-width: 100%;
+        flex-wrap: wrap;
+        margin-top: 40px;
+    }
+}
+
+.GoogleSigninButton {
+    color: #FFF;
+
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    border-radius: 5px;
+    border: 1px solid #1F4C4C;
+
+    background: var(--Teal, #1F4C4C);
+}
+
+@media (max-width: 991px) {
+    .GoogleSigninButton {
+        width: 300px;
+        height: 67px;
+        flex-shrink: 0;
+    }
+}
+
+.GuestSigninButton {
+    color: #1F4C4C;
+
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 5px;
+    border: 1px solid #1F4C4C;
+
+
+}
+
+@media (max-width: 991px) {
+    .GuestSigninButton {
+        width: 300px;
+        height: 67px;
+        flex-shrink: 0;
+    }
+}
