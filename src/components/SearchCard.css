@@ -1,4 +1,6 @@
 .searchCardContainer {
     background-color: var(--beige);
-    width: 30%;
+    width: 80%;
+    margin-bottom: 2vh;
+    padding: 2vmin;
 }

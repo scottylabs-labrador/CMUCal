@@ -14,11 +14,12 @@
   --red: #941120;
 }
 
-.appContainer {
+/* could add it back for padding of each page */
+/* .appContainer {
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 1rem;
-}
+} */
 
 .services {
   /* background-image: url('/images/img-2.jpg');
