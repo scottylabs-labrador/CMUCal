@@ -87,3 +87,7 @@
     transform: rotate(360deg);
   }
 } */
+.Calendar {
+  width: 50%;
+  height: 60%;
+}
