@@ -1,17 +1,17 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'PT Sans', sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "PT Sans", sans-serif;
 }
 
-:root{
-  --tan: #BCB49E;
-  --beige: #E4DAC4;
-  --teal: #1F4C4C;
-  --green: #719F94;
-  --blue: #182C4B;
-  --red: #941120;
+:root {
+	--tan: #bcb49e;
+	--beige: #e4dac4;
+	--teal: #1f4c4c;
+	--green: #719f94;
+	--blue: #182c4b;
+	--red: #941120;
 }
 
 /* could add it back for padding of each page */
@@ -22,32 +22,31 @@
 } */
 
 .services {
-  /* background-image: url('/images/img-2.jpg');
+	/* background-image: url('/images/img-2.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat; */
-  color: #fff;
-  font-size: 100px;
+	color: #fff;
+	font-size: 100px;
 }
 
 .products {
-  /* background-image: url('/images/img-1.jpg');
+	/* background-image: url('/images/img-1.jpg');
   background-position: center;
   background-size: fill;
   background-repeat: no-repeat; */
-  color: #fff;
-  font-size: 100px;
+	color: #fff;
+	font-size: 100px;
 }
 
 .sign-up {
-  /* background-image: url('/images/img-8.jpg');
+	/* background-image: url('/images/img-8.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat; */
-  color: #fff;
-  font-size: 100px;
+	color: #fff;
+	font-size: 100px;
 }
-
 
 /* .App {
   text-align: center;
@@ -88,3 +87,30 @@
     transform: rotate(360deg);
   }
 } */
+
+.searchPageContainer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.searchCol {
+	width: 40%;
+}
+.Calendar {
+	width: 55%;
+	margin-right: 3%;
+	/* height: 90vh; */
+	/* overflow-y: hidden; */
+}
+
+.Calendar .calendar-body {
+	/* height: 80%; */
+	grid-template-columns: repeat(7, minmax(40px, 1fr));
+	grid-template-rows: 40px;
+	grid-auto-rows: minmax(100px, auto);
+}
+
+.Calendar .day {
+	/* height: 50%; */
+	margin-top: 0;
+}

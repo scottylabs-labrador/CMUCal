@@ -2,7 +2,8 @@
 	background-color: rgb(226, 226, 226);
 	position: relative;
 	top: -0.5rem;
-	max-width: 35vw;
+    width: 100%;
+	/* max-width: 35vw; */
 	min-height: 100vh;
 	padding-left: 2rem;
 	padding-top: 1rem;
@@ -27,8 +28,17 @@
 	top: 20%;
 }
 
+.dropDownBtn {
+    background-color: white;
+    width: 80%;
+    border: 1px solid black;
+    padding: 4px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
 /* dropdown */
-.dropdown {
+/*.dropdown {
 	position: relative;
 }
 
@@ -66,3 +76,4 @@
 	font: inherit;
 	cursor: pointer;
 }
+*/

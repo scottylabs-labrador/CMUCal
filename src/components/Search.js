@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Search.css";
 import SearchCard from "./SearchCard";
-import Dropdown from "./Dropdown";
+// import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -9,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function Search() {
 	const [searchInput, setSearchInput] = useState("");
-	const [selectedDate, setSelectedDate] = useState("");
+	const [selectedvalue, setSelectedValue] = useState("");
 	const [startDate, setStartDate] = useState(new Date());
 	const handleChange = (e) => {
 		e.preventDefault();
@@ -17,10 +18,19 @@ function Search() {
 	};
 
 	// for dropdown
-	const handleMenuOne = (value) => {
-		setSelectedDate(value);
+	const selectValue = (value) => {
+		setSelectedValue(value);
 		console.log(value);
 	};
+
+	// const options = ["one", "two", "three"];
+	// const [defaultOption, setDefaultOption] = useState("");
+	// setDefaultOption(options[0]);
+	// const {_onSelect} = this.props;
+
+	// Dropdown._onSelect = () => {
+	// 	setDefaultOption(this);
+	// }
 
 	// function handleInput(props) {
 	// 	const buttonValue= this.props.value;
@@ -48,8 +58,20 @@ function Search() {
 				/>
 				<i id="searchIcon" class="fa-solid fa-magnifying-glass"></i>
 			</div>
-			<DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-			<Dropdown
+			<DatePicker
+				className="dropDownBtn"
+				selected={startDate}
+				onChange={(date) => setStartDate(date)}
+			/>
+			{/* <Dropdown
+				options={options}
+				// onChange={this._onSelect}
+				// onChange={e => setDefaultOption(e.target.value)}
+				value={defaultOption}
+				placeholder="Select an option"
+			/> */}
+			
+			{/* <Dropdown
 				trigger={<button className="dropdownBtn">Dropdown</button>}
 				// menu = {[
 				// 	{ id: 1, text: "Select Month" },
@@ -64,10 +86,7 @@ function Search() {
 					<button value={"4/27/24"} onClick={()=>{setSelectedDate("4/27/24")}} >Select Date</button>,
 					// <button value={"Menu 2"} onClick={()=>{handleMenuOne(this.target.value)}}>Menu 2</button>,
 				]}
-			/>
-			<p>{selectedDate}</p>
-			
-
+			/> */}
 			<SearchCard
 				eventName={eventName1}
 				orgName={orgName1}

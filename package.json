@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@ericz1803/react-google-calendar": "^4.3.2",
     "@react-oauth/google": "^0.12.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -10,6 +12,8 @@
     "react": "^18.2.0",
     "react-datepicker": "^6.9.0",
     "react-dom": "^18.2.0",
+    "react-dropdown": "^1.11.0",
+    "react-google-calendar-api": "^2.3.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
