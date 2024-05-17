@@ -30,7 +30,25 @@
 
 .dropDownBtn {
     background-color: white;
-    width: 80%;
+    width: 30%; /* was 80% */
+    border: 1px solid black;
+    padding: 4px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+div.react-datepicker-wrapper {
+	width: 25%;
+}
+
+#to {
+	position: relative;
+	left: -4%;
+}
+
+.datePickerBtn {
+	background-color: white;
+    width: 70%; 
     border: 1px solid black;
     padding: 4px 10px;
     border-radius: 5px;
