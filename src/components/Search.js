@@ -24,33 +24,40 @@ function Search() {
 	const startDateFn = (date) => {
 		setStartDate(date);
 		console.log(`start: ${date}`);
-	}
+	};
 
 	const endDateFn = (date) => {
 		setEndDate(date);
 		console.log(`end: ${date}`);
-	}
+	};
 
 	// for date range: start to end
 	let dateContent;
 	if (showDatePicker) {
 		dateContent = (
 			<>
-				<DatePicker
-					className="datePickerBtn"
-					selected={startDate}
-					onChange={(date) => {
-						startDateFn(date);
-					}}
-				/>
+				<div className="inlineBlock">
+					<DatePicker
+						className="datePickerBtn"
+						selected={startDate}
+						onChange={(date) => {
+							startDateFn(date);
+						}}
+						popperClassName="calendarPopup"
+						popperPlacement="top-start"
+					/>
+				</div>
 				<span id="to">to</span>
-				<DatePicker
-					className="datePickerBtn"
-					selected={endDate}
-					onChange={(date) => {
-						endDateFn(date);
-					}}
-				/>
+				<div className="inlineBlock">
+					<DatePicker
+						className="datePickerBtn"
+						selected={endDate}
+						onChange={(date) => {
+							endDateFn(date);
+						}}
+						popperPlacement="top-start"
+					/>
+				</div>
 			</>
 		);
 	}
@@ -74,9 +81,8 @@ function Search() {
 				<i id="searchIcon" class="fa-solid fa-magnifying-glass"></i>
 			</div>
 
+			<div>{dateContent}</div>
 
-			<div>{dateContent}</div> 
-			
 			<SearchCard
 				eventName={eventName1}
 				orgName={orgName1}

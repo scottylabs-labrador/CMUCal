@@ -72,6 +72,8 @@
 
 .secondNav .nav-links{
     color: black;
+    font-size: 2rem;
+    font-family: Source Serif Pro, serif;
 }
 
 .secondNav .active {
