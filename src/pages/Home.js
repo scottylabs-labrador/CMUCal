@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from '../Button'
-import MyCalendar from '../MyCalendar';
+import { Button } from '../components/Button'
+import MyCalendar from '../components/MyCalendar';
 
 function Home() {
   return (
