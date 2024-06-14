@@ -1,8 +1,8 @@
 import React from "react";
-import { Button } from "../Button";
-import SearchCard from "../SearchCard";
-import MyCalendar from "../MyCalendar";
-import Search from "../Search";
+import { Button } from "../components/Button";
+import SearchCard from "../components/SearchCard";
+import MyCalendar from "../components/MyCalendar";
+import Search from "../components/Search";
 
 function Academics() {
 	let eventName1 = "Committee Work Session";

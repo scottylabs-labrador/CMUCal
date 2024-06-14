@@ -22,7 +22,7 @@ function Navbar() {
 	// calls the showButton function whenevern window resizes
 
 	return (
-		<>
+		
 			<nav className="navbar">
 				<div className="navbar-container">
 					<Link to="/" className="navbar-logo">
@@ -83,7 +83,7 @@ function Navbar() {
 					{/* {button && <Button buttonStyle='btn--outline'>Profile</Button>} */}
 				</div>
 			</nav>
-		</>
+		
 	);
 }
 

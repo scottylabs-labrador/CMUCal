@@ -14,6 +14,14 @@
 	--red: #941120;
 }
 
+/* html {
+  background-color: var(--green);
+} */
+
+/* .rootContainer {
+  background-color: var(--green);
+} */
+
 /* could add it back for padding of each page */
 /* .appContainer {
   padding-left: 2rem;
