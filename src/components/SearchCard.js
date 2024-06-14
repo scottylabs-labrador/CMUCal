@@ -3,7 +3,7 @@ import "./SearchCard.css";
 
 function SearchCard({eventName, orgName, date, time, location}) {
   return (
-    <div className="searchCardContainer">
+    <div className="searchCardContainer"> 
       <p className="eventName">{eventName}</p>
       <p className="orgName">By {orgName}</p>
       <div>

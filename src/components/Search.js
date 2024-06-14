@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
 
 function Search() {
+	// Chang name to search bar
 	const [searchInput, setSearchInput] = useState("");
 	const [dropdownValue, setDropdownValue] = useState("");
 	const [showDatePicker, setShowDatePicker] = useState(true);
@@ -63,6 +64,7 @@ function Search() {
 	}
 
 	// bogus values
+	// hi
 	let eventName1 = "Committee Work Session";
 	let orgName1 = "Scotty Labs";
 	let date1 = "Sat, Apr 6";
