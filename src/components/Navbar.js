@@ -10,7 +10,7 @@ import iconWelcome from "./icons/welcome.svg";
 // Not able to change stroke color of svg image when hover
 function NavbarItem({ locationTo, onClick, title, image }) {
 	const isProfileLink = locationTo === '/profile';
-  
+
 	return (
 	  <Link
 		to={locationTo}
@@ -24,7 +24,7 @@ function NavbarItem({ locationTo, onClick, title, image }) {
 		  viewBox="0 0 25 24"
 		  fill="none"
 		/>
-		{!isProfileLink && <p className="text-white font-sans text-sm font-normal group-hover:text-teal">{title}</p>}
+		{!isProfileLink && <p className="text-white font-open-sans text-sm font-normal group-hover:text-teal">{title}</p>}
 	  </Link>
 	);
   }

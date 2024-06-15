@@ -72,21 +72,21 @@ function Search() {
   let time1 = "3PM - 5PM";
   let location1 = "POS 146";
   return (
-    <div class="bg-gray-200 relative -top-2 w-full min-h-screen pl-8 pt-7">
-      <div class="flex flex-col w-11/12">
-        <div class="bg-gray-200 relative h-12 w-full rounded-md border border-black border-[1.5] flex items-center justify-center">
+    <div className="bg-gray-200 relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans">
+      <div className="flex flex-col w-11/12">
+        <div className="bg-gray-200 relative h-12 w-full rounded-md border border-black border-[1.5] flex items-center justify-center">
           <input
             type="text"
             placeholder="Search here"
             onChange={handleChange}
             value={searchInput}
-            class="bg-gray-200 flex-grow px-4 focus:outline-none"
+            className="bg-gray-200 flex-grow px-4 focus:outline-none"
           />
           {/* Search icon. Add onClick function in the future */}
-          <img src={iconSearch} class="h-6 w-6 text-gray-500 mr-2"/>
+          <img src={iconSearch} className="h-6 w-6 text-gray-500 mr-2"/>
         </div>
 
-        <div class="mt-3">{dateContent}</div>
+        <div className="mt-3">{dateContent}</div>
 
         <SearchCard
           eventName={eventName1}

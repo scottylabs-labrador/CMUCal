@@ -3,6 +3,7 @@ import iconClock from "./icons/clock.svg";
 import iconLocation from "./icons/location.svg";
 import iconAdd from "./icons/add.svg";
 
+// Incomplete font 
 function SearchCard({ eventName, orgName, date, time, location }) {
   return (
     <div class="bg-white w-full my-3.5  px-6 py-4 rounded-lg flex items-center align-stretch">
