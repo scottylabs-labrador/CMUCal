@@ -1,34 +1,38 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./Button";
-import iconHome from "./icons/home.svg";
-import iconUpload from "./icons/upload.svg";
-import iconInstruction from "./icons/instruction.svg";
-import iconSettings from "./icons/settings.svg";
-import iconWelcome from "./icons/welcome.svg";
 
-// Not able to change stroke color of svg image when hover
+import { IoHomeOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
+import { IoGlobeOutline } from "react-icons/io5";
+import { IoCloudUploadOutline } from "react-icons/io5";
+
+import { CiCircleQuestion } from "react-icons/ci";
+import { FaRegUserCircle } from "react-icons/fa";
+
 function NavbarItem({ locationTo, onClick, title, image }) {
-	const isProfileLink = locationTo === '/profile';
+  const isProfileLink = locationTo === "/profile";
 
-	return (
-	  <Link
-		to={locationTo}
-		onClick={onClick}
-		className="text-white no-underline h-full flex items-center p-1 flex flex-col justify-center items-center gap-1 group"
-	  >
-		<img
-		  src={image}
-		  alt={title} // Ensure alt text for accessibility
-		  className={`group-hover:stroke-teal ${isProfileLink ? 'w-8 h-8' : 'w-6 h-6'}`}
-		  viewBox="0 0 25 24"
-		  fill="none"
-		/>
-		{!isProfileLink && <p className="text-white font-open-sans text-sm font-normal group-hover:text-teal">{title}</p>}
-	  </Link>
-	);
-  }
-  
+  return (
+    <Link
+      to={locationTo}
+      onClick={onClick}
+      className="text-white no-underline h-full flex items-center p-1 flex flex-col justify-center items-center gap-1 group"
+    >
+      <div className="group-hover:text-teal">
+        {React.cloneElement(image, {
+          className: "transition-colors",
+        })}
+      </div>
+      {!isProfileLink && (
+        <p className="text-white font-open-sans text-base	 font-normal group-hover:text-teal">
+          {title}
+        </p>
+      )}
+    </Link>
+  );
+}
+
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -61,7 +65,7 @@ function Navbar() {
                   locationTo="/welcome"
                   onClick={closeMobileMenu}
                   title="Welcome"
-                  image={iconWelcome}
+                  image={<IoGlobeOutline />}
                 />
               </li>
               <li>
@@ -69,7 +73,7 @@ function Navbar() {
                   locationTo="/"
                   onClick={closeMobileMenu}
                   title="Home"
-                  image={iconHome}
+                  image={<IoHomeOutline />}
                 />
               </li>
               <li>
@@ -77,7 +81,7 @@ function Navbar() {
                   locationTo="/upload"
                   onClick={closeMobileMenu}
                   title="Upload"
-                  image={iconUpload}
+                  image={<IoCloudUploadOutline />}
                 />
               </li>
               <li>
@@ -85,7 +89,7 @@ function Navbar() {
                   locationTo="/instructions"
                   onClick={closeMobileMenu}
                   title="Instructions"
-                  image={iconInstruction}
+                  image={<CiCircleQuestion />}
                 />
               </li>
             </div>
@@ -94,7 +98,7 @@ function Navbar() {
                 locationTo="/profile"
                 onClick={closeMobileMenu}
                 title=""
-                image={iconSettings}
+                image={<FaRegUserCircle />}
               />
             </li>
           </ul>

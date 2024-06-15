@@ -15,19 +15,9 @@ function App() {
   const location = useLocation();
   const [search, setSearch] = useState("");
 
-  // Define the paths where SecondNav should be shown
-  const showSecondNav = [
-    '/', // Home
-    '/academics',
-    '/search/academics', // Search Academics
-    '/search/clubs',     // Search Clubs
-    '/search/career'     // Search Career
-  ].includes(location.pathname);
-
   return (
     <>
       <Navbar />
-      {showSecondNav && <SecondNav />}
       <div className="appContainer">
         <Routes>
           <Route path="/" element={<Home />} />

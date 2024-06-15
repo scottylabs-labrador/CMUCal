@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "../Button";
 import MyCalendar from "../MyCalendar";
 import Search from "../Search";
 import SecondNav from "../SecondNav";
@@ -8,7 +7,8 @@ function Academics() {
   return (
     <div>
       <div className="relative">
-        <div className="flex justify-between z-10">
+      <SecondNav className="justify-between z-0"/>
+        <div className="flex justify-between z-10 mt-2">
           <div className="w-2/5">
             <Search />
           </div>

@@ -1,9 +1,12 @@
 import React from 'react'
 import MyCalendar from '../MyCalendar';
+import SecondNav from "../SecondNav";
 
 function Clubs() {
   return (
     <>
+          <SecondNav />
+
       <div>
         <h1>Clubs</h1>
       </div>

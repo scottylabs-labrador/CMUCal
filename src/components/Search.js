@@ -68,9 +68,12 @@ function Search() {
   // bogus values
   let eventName1 = "Office Hours";
   let orgName1 = "15-122 Course Staff";
-  let date1 = "Sat, Apr 6";
-  let time1 = "3PM - 5PM";
+  let startDate1 = "06/17"
+  let startTime1 = "3PM"
+  let endDate1 = "06/17"
+  let endTime1 = "5PM"
   let location1 = "POS 146";
+  let eventType1 = "academic";
   return (
     <div className="bg-gray-200 relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans">
       <div className="flex flex-col w-11/12">
@@ -83,7 +86,7 @@ function Search() {
             className="bg-gray-200 flex-grow px-4 focus:outline-none"
           />
           {/* Search icon. Add onClick function in the future */}
-          <img src={iconSearch} className="h-6 w-6 text-gray-500 mr-2"/>
+          <img src={iconSearch} className="h-6 w-6 text-gray-500 mr-2" />
         </div>
 
         <div className="mt-3">{dateContent}</div>
@@ -91,16 +94,22 @@ function Search() {
         <SearchCard
           eventName={eventName1}
           orgName={orgName1}
-          date={date1}
-          time={time1}
+          startDate={startDate1}
+          startTime={startTime1}
+          endDate={endDate1}
+          endTime={endTime1}
           location={location1}
+          eventType={eventType1}
         />
         <SearchCard
           eventName={eventName1}
           orgName={orgName1}
-          date={date1}
-          time={time1}
+          startDate={startDate1}
+          startTime={startTime1}
+          endDate={endDate1}
+          endTime={endTime1}
           location={location1}
+          eventType={eventType1}
         />
       </div>
     </div>

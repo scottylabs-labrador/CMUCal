@@ -5,8 +5,8 @@ function SecondNavItem({ locationTo, title }) {
   return (
     <NavLink
       to={locationTo}
-      className="text-gray-600 text-2xl font-serif font-source-serif-pro"
-      activeClassName="text-teal border-b-2 border-teal"
+      className="text-gray-600 text-2xl font-serif font-source-serif-pro active:text-red"
+      // activeClassName="text-teal border-b-2 border-teal"
     >
       {title}
     </NavLink>
