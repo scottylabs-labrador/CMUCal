@@ -2,38 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.navbar {
-	background-color: var(--red);
-	height: 80px;
-	font-size: 1.2rem;
-	position: sticky;
-	top: 0;
-	z-index: 999;
-	padding: 0 1rem;
-}
-
-.menu-icon {
-	display: none;
-}
-
-.navbar-container {
-	color: white;
-	display: flex;
-	justify-content: space-between;
-    padding-right: 1rem;
-	align-items:center;
-	height: 80px;
-	width: 100%;
-}
-
-.navbar ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-	display: flex;
-	gap: 1rem;
-}
-
 .navbar-logo {
 	color: white;
     display: flex;
@@ -42,16 +10,6 @@
     text-decoration: none;
     font-size: 2rem;
     margin-left: 1rem;
-}
-
-
-
-.nav-links {
-	color: white;
-	text-decoration: none;
-	height: 100%;
-	display: flex;
-	padding: 0.25rem;
 }
 
 .secondNav ul {
