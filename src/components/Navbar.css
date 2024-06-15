@@ -12,31 +12,3 @@
     margin-left: 1rem;
 }
 
-.secondNav ul {
-    padding: 0;
-	margin: 0 auto;
-	list-style: none;
-	display: flex;
-    /* background-color: pink; */
-    padding: 0.5rem;
-    width: 60%;
-    justify-content: space-around;
-	/* gap: 1rem; */
-    /* margin-right: 1rem; */
-}
-
-.secondNav .nav-links{
-    color: black;
-    font-size: 2rem;
-    font-family: Source Serif Pro, serif;
-}
-
-.secondNav .active {
-    border-bottom: 2px solid var(--green);
-}
-
-.secondNav hr {
-    position: relative;
-    top: -8px;
-}
-
