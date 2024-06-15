@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .navbar {
 	background-color: var(--red);
 	height: 80px;

@@ -12,10 +12,6 @@ function Academics() {
 	let location1 = "POS 146";
 	return (
 		<div>
-			{/* <h1>Academics</h1> */}
-			{/* <div>
-      <SearchCard eventName={eventName1} orgName={orgName1} date={date1} time={time1} location={location1} />
-      </div> */}
 			<div className="searchPageContainer">
 				<div className="searchCol">
 					<Search />
