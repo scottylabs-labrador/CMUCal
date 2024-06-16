@@ -1,19 +1,16 @@
-import { useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar.tsx";
-import Home from "./components/pages/Home";
-import Academics from "./components/pages/Academics";
-import Upload from "./components/pages/Upload";
-import Clubs from "./components/pages/Clubs";
-import Careers from "./components/pages/Careers";
-import Instructions from "./components/pages/Instructions";
-import Welcome from "./components/pages/Welcome";
+import Home from "./components/pages/Home.tsx";
+import Academics from "./components/pages/Academics.tsx";
+import Upload from "./components/pages/Upload.tsx";
+import Clubs from "./components/pages/Clubs.tsx";
+import Careers from "./components/pages/Careers.tsx";
+import Instructions from "./components/pages/Instructions.tsx";
+import Welcome from "./components/pages/Welcome.tsx";
 import "./App.css";
 
 function App() {
-  const location = useLocation();
-  const [search, setSearch] = useState("");
-
   return (
     <>
       <Navbar />

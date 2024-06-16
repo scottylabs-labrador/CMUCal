@@ -1,13 +1,15 @@
-import React from 'react'
-import MyCalendar from '../MyCalendar';
+import React from "react";
+import MyCalendar from "../MyCalendar.js";
+import Search from "../Search.js";
 import SecondNav from "../SecondNav.tsx";
-import Search from "../Search";
 
-function Home() {
+const Academics: React.FC = () => {
   return (
     <div>
       <div className="relative">
-      <SecondNav className="justify-between z-0"/>
+        <div className="justify-between z-0">
+          <SecondNav />
+        </div>
         <div className="flex justify-between z-10 mt-2">
           <div className="w-2/5">
             <Search />
@@ -17,10 +19,9 @@ function Home() {
             <MyCalendar />
           </div>
         </div>
-
       </div>
     </div>
   );
-}
+};
 
-export default Home
+export default Academics;

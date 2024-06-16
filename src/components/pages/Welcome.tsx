@@ -1,28 +1,26 @@
 import React from "react";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 
 function GoogleSigninButton() {
   return (
     <>
-        <GoogleLogin
-          buttonText="Sign in"
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-          cookiePolicy={"single_host_origin"}
-          responseType="code"
-          successType="offline"
-          scope="openid email profile https://apis.google.com/js/platform.js"
-        />
+      <GoogleLogin
+        onSuccess={(credentialResponse) => {
+          console.log(credentialResponse);
+        }}
+        onError={() => {
+          console.log("Login Failed");
+        }}
+      />
     </>
   );
 }
 
-const GuestSigninButton = ({ onClick }) => {
+interface GuestSigninButtonProps {
+  onClick: () => void;
+}
+
+const GuestSigninButton: React.FC<GuestSigninButtonProps> = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
@@ -33,7 +31,7 @@ const GuestSigninButton = ({ onClick }) => {
   );
 };
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <div className="bg-[#E7E2CF] p-6 rounded-lg shadow-md w-1/2">
       <h3 className="text-xl font-medium mb-4 font-serif font-source-serif-pro">
@@ -48,8 +46,7 @@ const About = () => {
   );
 };
 
-// Placeholder for the video section
-const Video = () => {
+const Video: React.FC = () => {
   return (
     <div className="border p-6 rounded-lg shadow-md w-1/2">
       <p className="text-xl font-medium mb-4 font-serif font-source-serif-pro">

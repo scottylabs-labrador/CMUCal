@@ -1,6 +1,6 @@
 import React from "react";
 
-const AcademicButton = () => {
+const AcademicButton: React.FC = () => {
   return (
     <button
       // onClick={onClick}
@@ -12,7 +12,7 @@ const AcademicButton = () => {
 
 }
 
-const ClubButton = () => {
+const ClubButton: React.FC = () => {
   return (
     <button
       // onClick={onClick}
@@ -23,7 +23,7 @@ const ClubButton = () => {
   );
 };
 
-function Upload() {
+const Upload: React.FC = () => {
   return (
     <div>
       <div className="text-black text-center font-bold font-sans text-4xl pt-48">

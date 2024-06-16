@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Instructions() {
+const Instructions: React.FC = () => {
   return (
     <div>
       <h1>Instructions</h1>
