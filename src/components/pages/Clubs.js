@@ -1,18 +1,26 @@
 import React from 'react'
 import MyCalendar from '../MyCalendar';
+import Search from "../Search";
 import SecondNav from "../SecondNav.tsx";
 
 function Clubs() {
   return (
-    <>
-          <SecondNav />
+    <div>
+      <div className="relative">
+      <SecondNav className="justify-between z-0"/>
+        <div className="flex justify-between z-10 mt-2">
+          <div className="w-2/5">
+            <Search />
+          </div>
 
-      <div>
-        <h1>Clubs</h1>
+          <div className="Calendar">
+            <MyCalendar />
+          </div>
+        </div>
+
       </div>
-      <MyCalendar />
-    </>
-  )
+    </div>
+  );
 }
 
 export default Clubs

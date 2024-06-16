@@ -28,19 +28,10 @@ const SearchCard: React.FC<SearchCardProps> = ({
   eventSubcategory,
 }) => {
   const [buttonClicked, setButtonClicked] = useState(false);
-  const [numClicked, setNumClicked] = useState(0);
 
   const handleAddToCalendar = () => {
-    // Toggle the buttonClicked state
-    setButtonClicked(true);
-    setNumClicked(1);
-
-    if (numClicked == 1) {
-      setNumClicked(0);
-      setButtonClicked(false);
-    }
-
-    // Logic for calling GCal API
+    setButtonClicked((prevClicked) => !prevClicked);
+    // Logic for calling GCal
   };
 
   return (
@@ -75,10 +66,10 @@ const SearchCard: React.FC<SearchCardProps> = ({
       </div>
       <div className="flex-shrink-0">
         <button
-          className={`rounded-full border border-teal bg-transparent px-4 py-2 flex items-center gap-1 ${
+          className={`rounded-full border border-teal px-4 py-2 flex items-center gap-1 ${
             buttonClicked ? "bg-teal text-white" : ""
           }`}
-          style={{ minWidth: "7rem" }} 
+          style={{ minWidth: "7rem" }}
           onClick={handleAddToCalendar}
         >
           {buttonClicked ? (

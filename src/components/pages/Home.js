@@ -1,12 +1,10 @@
 import React from 'react'
-import { Button } from '../Button'
 import MyCalendar from '../MyCalendar';
 import SecondNav from "../SecondNav.tsx";
 import Search from "../Search";
 
 function Home() {
   return (
-    <>
     <div>
       <div className="relative">
       <SecondNav className="justify-between z-0"/>
@@ -22,8 +20,7 @@ function Home() {
 
       </div>
     </div>
-    </>
-  )
+  );
 }
 
 export default Home
