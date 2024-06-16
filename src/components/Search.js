@@ -1,6 +1,6 @@
 import React, { useState, useId } from "react";
 import "./Search.css";
-import SearchCard from "./SearchCard";
+import SearchCard from "./SearchCard.tsx";
 import iconSearch from "./icons/search.svg";
 
 // import Dropdown from "react-dropdown";
@@ -73,7 +73,8 @@ function Search() {
   let endDate1 = "06/17"
   let endTime1 = "5PM"
   let location1 = "POS 146";
-  let eventType1 = "academic";
+  let eventCategory1 = "academic";
+  let eventSubcategory1 = "OfficeHour";
   return (
     <div className="bg-gray-200 relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans">
       <div className="flex flex-col w-11/12">
@@ -99,7 +100,8 @@ function Search() {
           endDate={endDate1}
           endTime={endTime1}
           location={location1}
-          eventType={eventType1}
+          eventCategory={eventCategory1}
+          eventSubcategory={eventSubcategory1}
         />
         <SearchCard
           eventName={eventName1}
@@ -109,7 +111,8 @@ function Search() {
           endDate={endDate1}
           endTime={endTime1}
           location={location1}
-          eventType={eventType1}
+          eventCategory={eventCategory1}
+          eventSubcategory={eventSubcategory1}
         />
       </div>
     </div>

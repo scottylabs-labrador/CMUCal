@@ -1,7 +1,7 @@
 import React from "react";
 import MyCalendar from "../MyCalendar";
 import Search from "../Search";
-import SecondNav from "../SecondNav";
+import SecondNav from "../SecondNav.tsx";
 
 function Academics() {
   return (

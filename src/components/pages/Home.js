@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '../Button'
 import MyCalendar from '../MyCalendar';
-import SecondNav from "../SecondNav";
+import SecondNav from "../SecondNav.tsx";
 import Search from "../Search";
 
 function Home() {

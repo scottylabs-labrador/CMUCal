@@ -6,7 +6,7 @@ import Academics from "./components/pages/Academics";
 import Upload from "./components/pages/Upload";
 import Clubs from "./components/pages/Clubs";
 import Careers from "./components/pages/Careers";
-import SecondNav from "./components/SecondNav";
+import SecondNav from "./components/SecondNav.tsx";
 import Instructions from "./components/pages/Instructions";
 import Welcome from "./components/pages/Welcome";
 import "./App.css";

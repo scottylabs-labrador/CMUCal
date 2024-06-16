@@ -1,22 +1,27 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function SecondNavItem({ locationTo, title }) {
+interface SecondNavItemProps {
+  locationTo: string;
+  title: string;
+}
+
+const SecondNavItem: React.FC<SecondNavItemProps> = ({ locationTo, title }) => {
   return (
     <NavLink
       to={locationTo}
       className={({ isActive }) =>
         isActive
           ? "text-teal border-b-[3px] border-teal text-2xl font-serif font-source-serif-pro pb-1"
-          : "text-grey text-2xl font-serif font-source-serif-pro"
+          : "text-gray-600 text-2xl font-serif font-source-serif-pro"
       }
     >
       {title}
     </NavLink>
   );
-}
+};
 
-function SecondNav() {
+const SecondNav: React.FC = () => {
   return (
     <nav>
       <div className="shadow-md py-0">
@@ -34,6 +39,6 @@ function SecondNav() {
       </div>
     </nav>
   );
-}
+};
 
 export default SecondNav;
