@@ -5,23 +5,24 @@
 
 .inlineBlock {
 	display: inline-block;
-	width: 25%;
+	width: 30%;
+	/* margin-right: 5%; */
 }
 
-#to {
-	position: relative;
-	left: -4%;
+/* the container for the date picker */
+.css-z3c6am-MuiFormControl-root-MuiTextField-root {
+	height: 40px;
+	
 }
 
-
-.datePickerBtn {
+/* the inner part of the date picker */
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+	height: 40px;
 	background-color: white;
-    width: 70%; 
-    border: 1px solid black;
-    padding: 4px 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
 }
+
+
+
 
 .calendarPopup {
 	/* position: absolute; */

@@ -4,9 +4,12 @@ import { IoSearch } from "react-icons/io5";
 import { SearchCard } from "./SearchCard";
 
 // import Dropdown from "react-dropdown";
+import dayjs, { Dayjs } from 'dayjs';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import "react-dropdown/style.css";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
 
@@ -15,21 +18,21 @@ function Search() {
   const [searchInput, setSearchInput] = useState("");
   const [dropdownValue, setDropdownValue] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(true);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const handleChange = (e) => {
+  const [startDate, setStartDate] = useState<Dayjs | null>(dayjs())
+  const [endDate, setEndDate] = useState<Dayjs | null>(dayjs())
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearchInput(e.target.value);
   };
 
   // const dateId = useId();
 
-  const startDateFn = (date) => {
+  const startDateFn = (date: Dayjs | null) => {
     setStartDate(date);
     console.log(`start: ${date}`);
   };
 
-  const endDateFn = (date) => {
+  const endDateFn = (date: Dayjs | null) => {
     setEndDate(date);
     console.log(`end: ${date}`);
   };
@@ -38,29 +41,26 @@ function Search() {
   let dateContent;
   if (showDatePicker) {
     dateContent = (
-      <>
-        <div className="inlineBlock">
+      <>      
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <div className="w-36">
           <DatePicker
-            className="datePickerBtn"
-            selected={startDate}
+            value={startDate}
             onChange={(date) => {
               startDateFn(date);
             }}
-            popperClassName="calendarPopup"
-            popperPlacement="top-start"
           />
         </div>
-        <span id="to">to</span>
-        <div className="inlineBlock">
-          <DatePicker
-            className="datePickerBtn"
-            selected={endDate}
+        <span className="w-4">to</span>
+        <div className="w-36">
+          <DatePicker 
+            value={endDate}
             onChange={(date) => {
               endDateFn(date);
             }}
-            popperPlacement="top-start"
           />
         </div>
+        </LocalizationProvider>
       </>
     );
   }
@@ -90,7 +90,7 @@ function Search() {
           <IoSearch className="h-6 w-6 text-gray-500 mr-2" />
         </div>
 
-        <div className="mt-3">{dateContent}</div>
+        <div className="mt-3 w-3/5 items-center flex flex-row justify-between space-x-2">{dateContent}</div>
 
         <SearchCard
           eventName={eventName1}
