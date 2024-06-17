@@ -3,4 +3,7 @@ export * from "./Careers";
 export * from "./Clubs";
 export * from "./Instructions";
 export * from "./Upload";
+export * from "./UploadFile";
+export * from "./UploadLink";
+export * from "./UploadInput";
 export * from "./Welcome";
