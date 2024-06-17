@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components";
-import { Home, Academics, Upload, Clubs, Careers, Instructions, Welcome } from "./pages";
+import { Academics, Upload, Clubs, Careers, Instructions, Welcome } from "./pages";
 // import Navbar from "./components/Navbar";
 // import Home from "./pages/Home";
 // import Academics from "./pages/Academics";
@@ -18,13 +18,12 @@ function App() {
       <Navbar />
       <div className="appContainer">
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/academics" element={<Academics />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/instructions" element={<Instructions />} />
-          <Route path="/search/academics" element={<Academics />} />
-          <Route path="/search/clubs" element={<Clubs />} />
-          <Route path="/search/career" element={<Careers />} />
+          <Route path="/home/academics" element={<Academics />} />
+          <Route path="/home/clubs" element={<Clubs />} />
+          <Route path="/home/career" element={<Careers />} />
           <Route path="/welcome" element={<Welcome />} />
         </Routes>
       </div>

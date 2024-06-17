@@ -10,13 +10,13 @@
 
 #to {
 	position: relative;
-	left: -4%;
+	left: -2%;
 }
 
 
 .datePickerBtn {
 	background-color: white;
-    width: 70%; 
+    width: 90%; 
     border: 1px solid black;
     padding: 4px 10px;
     border-radius: 5px;

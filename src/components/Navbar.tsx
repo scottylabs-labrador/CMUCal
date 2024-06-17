@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
             </li>
             <li>
               <NavbarItem
-                locationTo="/"
+                locationTo="/home/academics"
                 onClick={closeMobileMenu}
                 title="Home"
                 image={<IoHomeOutline />}
