@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { IoSearch } from "react-icons/io5";
 import { SearchCard } from "./SearchCard";
@@ -9,7 +9,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 // for categories dropdown
 import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
@@ -93,7 +92,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
     },
   };
 
-  let categoryContent = (
+  const categoryContent = (
     <FormControl className="w-full h-10">
       {/* <InputLabel id="demo-multiple-checkbox-label">Categories</InputLabel> */}
       <Select
