@@ -47,10 +47,12 @@ const Navbar: React.FC = () => {
   const closeMobileMenu = () => setClick(false);
 
   const showButton = () => {
+    handleClick();
     if (window.innerWidth <= 960) {
       setButton(false);
     } else {
       setButton(true);
+      console.log(button);
     }
   };
 
