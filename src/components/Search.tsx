@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { IoSearch } from "react-icons/io5";
+import { RxCross1 } from "react-icons/rx";
 import { SearchCard } from "./SearchCard";
 // for date picker
 import dayjs, { Dayjs } from 'dayjs';
@@ -14,6 +15,12 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+// for action menu
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import { IoMdMore } from "react-icons/io";
 
 
 import "react-dropdown/style.css";
@@ -50,6 +57,21 @@ const categoryListCareer = [
   "General"
 ]
 
+const actionOptions = [
+  'Actions',
+  'Save Search',
+  // 'Reset',
+  'Reset CMUCal Events',
+  'Manage Saved Search',
+];
+
+const actionOptionsShort = [
+  'Actions',
+  'Save',
+  'Reset',
+  'Manage',
+];
+
 interface SearchComponentProps {
   page: string;
 }
@@ -58,15 +80,104 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   // Chang name to search bar
   const [searchInput, setSearchInput] = useState("");
   const [categoryName, setCategoryName] = useState<string[]>([]);
-  // const [showDatePicker, setShowDatePicker] = useState(true);
+  // date picker
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
   const [endDate, setEndDate] = useState<Dayjs | null>(dayjs());
+  const showDatePicker = true;
+  // actionsMenu
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [selectedIndex, setSelectedIndex] = useState(1);
+
+  // search
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearchInput(e.target.value);
   };
 
-  const showDatePicker = true;
+  // actionsMenu
+  const open = Boolean(anchorEl);
+  const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuItemClick = (
+    event: React.MouseEvent<HTMLElement>,
+    index: number,
+  ) => {
+    setSelectedIndex(index);
+    setAnchorEl(null);
+  };
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
+
+  const actionsMenuComp = (
+    <div className="h-10 w-3/12 float-right">
+      <List
+        component="nav"
+        aria-label="Search Actions"
+        className="h-10 flex flex-row justify-around"
+        sx={{ bgcolor: 'background.paper'}}
+      >
+        <ListItemText
+          className="text-center"
+          id="actionsBtn"
+          primary={actionOptionsShort[selectedIndex]}
+            // secondary="placeholder"
+        />
+        {/* <ListItemButton
+          id="lock-button"
+          aria-haspopup="listbox"
+          aria-controls="lock-menu"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClickListItem}
+        > */}
+        <IconButton
+          // className="inline-block"
+          aria-label="more"
+          id="long-button"
+          // id="lock-button"
+          // aria-haspopup="listbox"
+          // aria-controls="lock-menu"
+          aria-controls={open ? 'long-menu' : undefined}
+          aria-expanded={open ? 'true' : undefined}
+          aria-haspopup="true"
+          onClick={handleClickListItem}
+        >
+          <IoMdMore />
+        </IconButton>
+          
+        {/* </ListItemButton> */}
+      </List>
+
+      <Menu
+        id="lock-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleCloseMenu}
+        MenuListProps={{
+          'aria-labelledby': 'lock-button',
+          role: 'listbox',
+        }}
+      >
+        {actionOptions.map((option, index) => (
+          <MenuItem
+            key={option}
+            disabled={index === 0}
+            selected={index === selectedIndex}
+            onClick={(event) => handleMenuItemClick(event, index)}
+          >
+            {index===0 && (<em>{option}</em>)}
+            {index != 0 && option}
+          </MenuItem>
+        ))}
+      </Menu>
+      
+    </div>
+  )
+
+  
 
   const handleChangeCategory = (event: SelectChangeEvent<typeof categoryName>) => {
     const {
@@ -79,6 +190,16 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
+
+  const getNumCategories = () => {
+    if (page==="academics") {
+      return categoryListAcademics.length;
+    } else if (page==="clubs") {
+      return categoryListClubs.length;
+    } else if (page==="career") {
+      return categoryListCareer.length;
+    }
+  }
 
   // style for dropdown filter
   const ITEM_HEIGHT = 48;
@@ -111,9 +232,13 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
           inputProps={{ 'aria-label': 'Without label' }}
           className="bg-white h-10"
         >
-          <MenuItem disabled value="">
-            <em>Categories</em>
-          </MenuItem>
+        
+        <MenuItem disabled value="">
+          <em>Categories ({getNumCategories()})</em>
+        </MenuItem>
+       
+          
+          {/* different categories dropdown depending on the page */}
         {page==="academics" && categoryListAcademics.map((category) => (
           <MenuItem key={category} value={category}>
             <Checkbox checked={categoryName.indexOf(category) > -1} />
@@ -136,8 +261,6 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
     </FormControl>
   );
   
-
-  // const dateId = useId();
 
   const startDateFn = (date: Dayjs | null) => {
     setStartDate(date);
@@ -201,7 +324,11 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
             className="bg-gray-200 flex-grow px-4 focus:outline-none"
           />
           {/* Search icon. Add onClick function in the future */}
-          <IoSearch className="h-6 w-6 text-gray-500 mr-2" />
+          {searchInput? 
+            <RxCross1 onClick = {()=> setSearchInput("")} className="h-6 w-6 text-gray-500 mr-2" /> : 
+            <IoSearch className="h-6 w-6 text-gray-500 mr-2" />
+          }
+          
         </div>
 
         <div className="mt-3 flex w-full items-baseline justify-between">
@@ -213,6 +340,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
             <></>
           )}
         </div>
+        <div className="w-full mt-2">{actionsMenuComp}</div>
         
 
 

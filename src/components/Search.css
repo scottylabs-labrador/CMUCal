@@ -21,21 +21,37 @@
 }
 
 /* select drop down */
+
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
 	/* the container for select box */
 	/* color: red; */
 	position: relative;
 }
-
 .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
 	/* the label on top */
 	position: relative;
 	top: -0.5rem !important;
 }
-
 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
 	/* the text inside the label box */
 	position: relative;
+}
+
+/* actions menu */
+.css-822hb5-MuiList-root {
+	/* the container for the menu box */
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	border-radius: 10px !important;
+}
+
+#actionsBtn.css-tlelie-MuiListItemText-root {
+	/* text inside the box, e.g. Reset */
+	padding-top: 0.2rem !important;
+	color: rgb(19 78 74) !important;
+}
+.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root {
+	height: 40px !important;
 }
 
 
