@@ -3,11 +3,18 @@ import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 
 function GoogleSigninButton() {
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/search/academics`; 
+    navigate(path);
+  }
+
   return (
     <>
       <GoogleLogin
         onSuccess={(credentialResponse) => {
           console.log(credentialResponse);
+          routeChange();
         }}
         onError={() => {
           console.log("Login Failed");
@@ -16,27 +23,6 @@ function GoogleSigninButton() {
     </>
   );
 }
-
-interface GuestSigninButtonProps {
-  onClick: () => void;
-}
-
-const GuestSigninButton: React.FC<GuestSigninButtonProps> = ({ onClick }) => {
-  let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path = `/home/academics`; 
-    navigate(path);
-  }
-
-  return (
-    <button
-      onClick={routeChange}
-      className="rounded-[5px] border border-[#1F4C4C] px-14 py-2 text-[#1F4C4C]"
-    >
-      Continue as Guest
-    </button>
-  );
-};
 
 const About: React.FC = () => {
   return (
@@ -78,7 +64,6 @@ function Welcome() {
         </h2>
         <div className="flex justify-center gap-8 pb-14">
           <GoogleSigninButton />
-          <GuestSigninButton onClick={handleClick} />
         </div>
       </div>
 
