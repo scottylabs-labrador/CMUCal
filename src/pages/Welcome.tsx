@@ -1,5 +1,6 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 
 function GoogleSigninButton() {
   return (
@@ -21,9 +22,15 @@ interface GuestSigninButtonProps {
 }
 
 const GuestSigninButton: React.FC<GuestSigninButtonProps> = ({ onClick }) => {
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/home/academics`; 
+    navigate(path);
+  }
+
   return (
     <button
-      onClick={onClick}
+      onClick={routeChange}
       className="rounded-[5px] border border-[#1F4C4C] px-14 py-2 text-[#1F4C4C]"
     >
       Continue as Guest

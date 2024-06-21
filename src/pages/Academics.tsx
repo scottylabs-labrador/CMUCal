@@ -1,6 +1,21 @@
 import React from "react";
 import { SecondNav, MyCalendar, Search } from "../components";
 
+// Take userID --> Put into link 
+// const EmbeddedCalendar: React.FC = () => {
+//   return (
+//     <>
+//       <iframe
+//         src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FHo_Chi_Minh&bgcolor=%23ffffff&src=YW5obGVAYW5kcmV3LmNtdS5lZHU&src=MGI3ZGZjODNiZTNhYzRlYjlhNjUzZDQyNzAzNjhiMDM5NjAxZDJiMDUxZDE4Nzc2ZmJiZTBiZWEzZDJhMjNlOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y211LnNjb3R0eWxhYnNAZ21haWwuY29t&color=%23039BE5&color=%237986CB&color=%237CB342"
+//         style={{"border":'solid 1px #777',
+//         "width":"1200",
+//         "height":"800",
+//         "scrolling":"no"}}
+//       ></iframe>
+//     </>
+//   );
+// };
+
 const Academics: React.FC = () => {
   return (
     <div>
@@ -22,4 +37,4 @@ const Academics: React.FC = () => {
   );
 };
 
-export {Academics};
+export { Academics };
