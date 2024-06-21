@@ -47,10 +47,12 @@ const Navbar: React.FC = () => {
   const closeMobileMenu = () => setClick(false);
 
   const showButton = () => {
+    handleClick();
     if (window.innerWidth <= 960) {
       setButton(false);
     } else {
       setButton(true);
+      console.log(button);
     }
   };
 
@@ -83,7 +85,7 @@ const Navbar: React.FC = () => {
             </li>
             <li>
               <NavbarItem
-                locationTo="/home/academics"
+                locationTo="/search/academics"
                 onClick={closeMobileMenu}
                 title="Home"
                 image={<IoHomeOutline />}

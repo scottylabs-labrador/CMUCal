@@ -5,23 +5,56 @@
 
 .inlineBlock {
 	display: inline-block;
-	width: 25%;
+	width: 30%;
+	/* margin-right: 5%; */
 }
 
-#to {
-	position: relative;
-	left: -2%;
+/* the container for the date picker */
+.css-z3c6am-MuiFormControl-root-MuiTextField-root {
+	height: 40px;
+	/* 40px = h-10 in tailwind */
 }
-
-
-.datePickerBtn {
+/* the inner part of the date picker */
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+	height: 40px;
 	background-color: white;
-    width: 90%; 
-    border: 1px solid black;
-    padding: 4px 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
 }
+
+/* select drop down */
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+	/* the container for select box */
+	/* color: red; */
+	position: relative;
+}
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+	/* the label on top */
+	position: relative;
+	top: -0.5rem !important;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+	/* the text inside the label box */
+	position: relative;
+}
+
+/* actions menu */
+.css-822hb5-MuiList-root {
+	/* the container for the menu box */
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	border-radius: 10px !important;
+}
+
+#actionsBtn.css-tlelie-MuiListItemText-root {
+	/* text inside the box, e.g. Reset */
+	padding-top: 0.2rem !important;
+	color: rgb(19 78 74) !important;
+}
+.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root {
+	height: 40px !important;
+}
+
+
 
 .calendarPopup {
 	/* position: absolute; */

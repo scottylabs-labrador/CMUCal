@@ -3,7 +3,7 @@ import Calendar from "@ericz1803/react-google-calendar";
 import { css } from "@emotion/react";
 
 const API_KEY = "YOUR_API_KEY";
-let calendars = [
+const calendars = [
   {
     calendarId: "09opmkrjova8h5k5k46fedmo88@group.calendar.google.com",
     color: "#B241D1",
@@ -15,7 +15,7 @@ let calendars = [
   }, //accepts hex and rgb strings (doesn't work with color names)
 ];
 
-let styles = {
+const styles = {
   //you can use object styles (no import required)
   calendar: {
     borderWidth: "3px", //make outer edge of calendar thicker

@@ -10,7 +10,7 @@ const Careers: React.FC = () => {
         </div>
         <div className="flex justify-between z-10 mt-2">
           <div className="w-2/5">
-            <Search />
+            <Search page={"career"}/>
           </div>
 
           <div className="Calendar">

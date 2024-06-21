@@ -18,10 +18,10 @@ function App() {
       <Navbar />
       <div className="appContainer">
         <Routes>
-          <Route path="/academics" element={<Academics />} />
-          <Route path="/home/academics" element={<Academics />} />
-          <Route path="/home/clubs" element={<Clubs />} />
-          <Route path="/home/career" element={<Careers />} />
+          <Route path="/" element={<Academics />} />
+          <Route path="/search/academics" element={<Academics />} />
+          <Route path="/search/clubs" element={<Clubs />} />
+          <Route path="/search/career" element={<Careers />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/upload/file" element={<UploadFile />} />
           <Route path="/upload/link" element={<UploadLink />} />
