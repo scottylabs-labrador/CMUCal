@@ -6,3 +6,4 @@ The repository is written using `React` + `React-Router` + `Tailwind-CSS`
 npm install
 npm run dev
 ```
+# shin-chan
