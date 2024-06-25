@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   IoHomeOutline,
   IoGlobeOutline,
@@ -13,6 +13,12 @@ interface NavbarItemProps {
   onClick: (event: React.MouseEvent<HTMLAnchorElement>) => void;
   title: string;
   image: React.ReactNode;
+}
+
+type LocationState = {
+  from: {
+    path: string;
+  }
 }
 
 const NavbarItem: React.FC<NavbarItemProps> = ({
@@ -64,15 +70,24 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+  const location = useLocation();
+  // const { from } = location.state as LocationState;
+  const pathName = location.pathname;
+  console.log(pathName);
+
   return (
     <nav className="bg-red h-20 text-white text-lg sticky top-0 z-50 px-4">
       <div className="text-white flex justify-between items-center pr-4 h-20 w-full">
         <Link
+          // to={pathName==="/" || pathName === "/welcome"? "" : "/home/academics"}
           to="/home/academics"
           className="text-white flex items-start gap-2.5 text-xl no-underline ml-4"
         >
           CMUCal <i className="fa-regular fa-calendar"></i>
         </Link>
+
+        {/* the rest of the nav bar won't show up on the welcome page */}
+        {pathName==="/" || pathName === "/welcome"? "" : (
         <ul className="p-0 m-0 list-none flex">
           <div className="flex justify-center align-center gap-8 mr-10">
             <li>
@@ -117,6 +132,7 @@ const Navbar: React.FC = () => {
             />
           </li>
         </ul>
+        )}
       </div>
     </nav>
   );

@@ -18,7 +18,7 @@ function App() {
       <Navbar />
       <div className="appContainer">
         <Routes>
-          <Route path="/" element={<Academics />} />
+          <Route path="/" element={<Welcome />} />
           <Route path="/home/academics" element={<Academics />} />
           <Route path="/home/clubs" element={<Clubs />} />
           <Route path="/home/career" element={<Careers />} />
