@@ -68,7 +68,7 @@ const Navbar: React.FC = () => {
     <nav className="bg-red h-20 text-white text-lg sticky top-0 z-50 px-4">
       <div className="text-white flex justify-between items-center pr-4 h-20 w-full">
         <Link
-          to="/"
+          to="/home/academics"
           className="text-white flex items-start gap-2.5 text-xl no-underline ml-4"
         >
           CMUCal <i className="fa-regular fa-calendar"></i>
@@ -85,7 +85,7 @@ const Navbar: React.FC = () => {
             </li>
             <li>
               <NavbarItem
-                locationTo="/search/academics"
+                locationTo="/home/academics"
                 onClick={closeMobileMenu}
                 title="Home"
                 image={<IoHomeOutline />}
