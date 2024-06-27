@@ -15,16 +15,13 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-// for action menu
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import { IoMdMore } from "react-icons/io";
-
+// selectable dropdown
+// import { Dropdown } from "./Dropdown";
+import { Button } from "./Button";
 
 import "react-dropdown/style.css";
 import "./Search.css";
+import { SavedSearchBtn } from "./SavedSearches";
 
 
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
@@ -57,21 +54,6 @@ const categoryListCareer = [
   "General"
 ]
 
-const actionOptions = [
-  'Actions',
-  'Save Search',
-  // 'Reset',
-  'Reset CMUCal Events',
-  'Manage Saved Search',
-];
-
-const actionOptionsShort = [
-  'Actions',
-  'Save',
-  'Reset',
-  'Manage',
-];
-
 interface SearchComponentProps {
   page: string;
 }
@@ -84,100 +66,12 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
   const [endDate, setEndDate] = useState<Dayjs | null>(dayjs());
   const showDatePicker = true;
-  // actionsMenu
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedIndex, setSelectedIndex] = useState(1);
-
+  
   // search
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearchInput(e.target.value);
   };
-
-  // actionsMenu
-  const open = Boolean(anchorEl);
-  const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLElement>,
-    index: number,
-  ) => {
-    setSelectedIndex(index);
-    setAnchorEl(null);
-  };
-
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-  };
-
-  const actionsMenuComp = (
-    <div className="h-10 w-3/12 float-right">
-      <List
-        component="nav"
-        aria-label="Search Actions"
-        className="h-10 flex flex-row justify-around"
-        sx={{ bgcolor: 'background.paper'}}
-      >
-        <ListItemText
-          className="text-center"
-          id="actionsBtn"
-          primary={actionOptionsShort[selectedIndex]}
-            // secondary="placeholder"
-        />
-        {/* <ListItemButton
-          id="lock-button"
-          aria-haspopup="listbox"
-          aria-controls="lock-menu"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClickListItem}
-        > */}
-        <IconButton
-          // className="inline-block"
-          aria-label="more"
-          id="long-button"
-          // id="lock-button"
-          // aria-haspopup="listbox"
-          // aria-controls="lock-menu"
-          aria-controls={open ? 'long-menu' : undefined}
-          aria-expanded={open ? 'true' : undefined}
-          aria-haspopup="true"
-          onClick={handleClickListItem}
-        >
-          <IoMdMore />
-        </IconButton>
-          
-        {/* </ListItemButton> */}
-      </List>
-
-      <Menu
-        id="lock-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleCloseMenu}
-        MenuListProps={{
-          'aria-labelledby': 'lock-button',
-          role: 'listbox',
-        }}
-      >
-        {actionOptions.map((option, index) => (
-          <MenuItem
-            key={option}
-            disabled={index === 0}
-            selected={index === selectedIndex}
-            onClick={(event) => handleMenuItemClick(event, index)}
-          >
-            {index===0 && (<em>{option}</em>)}
-            {index != 0 && option}
-          </MenuItem>
-        ))}
-      </Menu>
-      
-    </div>
-  )
-
-  
 
   const handleChangeCategory = (event: SelectChangeEvent<typeof categoryName>) => {
     const {
@@ -202,16 +96,16 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   }
 
   // style for dropdown filter
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 450,
-      },
-    },
-  };
+	const ITEM_HEIGHT = 48;
+	const ITEM_PADDING_TOP = 8;
+	const MenuProps = {
+	  PaperProps: {
+		style: {
+		  maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+		  width: 450,
+		},
+	  },
+	};
 
   const categoryContent = (
     <FormControl className="w-full h-10">
@@ -314,7 +208,15 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   // const eventSubcategory1 = "OfficeHour";
   return (
     <div className="bg-gray-200 relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans">
-      <div className="flex flex-col w-11/12">
+      <div className="flex flex-col w-11/12 gap-y-2.5">
+        <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll">
+          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
+          <SavedSearchBtn content="programming" clickStay={true} textSize="text-xs"/>
+          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
+          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
+          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
+          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
+        </div>
         <div className="bg-gray-200 relative h-12 w-full rounded-md border border-black border-[1.5] flex items-center justify-center">
           <input
             type="text"
@@ -340,7 +242,12 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
             <></>
           )}
         </div>
-        <div className="w-full mt-2">{actionsMenuComp}</div>
+        {/* <div className="w-full mt-2">{actionsMenuComp}</div> */}
+        <div className="w-full mt-2 flex justify-between">
+          {/* <Dropdown/> */}
+          <Button content="Add All" clickStay={false} textSize="text-sm"/>
+          <Button content="Reset CMUCal Events" clickStay={false} textSize="text-sm"/>
+        </div>
         
 
 

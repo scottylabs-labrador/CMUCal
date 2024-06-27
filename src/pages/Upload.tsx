@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const AcademicButton: React.FC = () => {
   let navigate = useNavigate();
   const routeChange = () => {
-    let path = `/upload/file`;
+    let path = `/upload/academics`;
     navigate(path);
   };
 
@@ -21,7 +21,7 @@ const AcademicButton: React.FC = () => {
 const ClubButton: React.FC = () => {
   let navigate = useNavigate();
   const routeChange = () => {
-    let path = `/upload/file`;
+    let path = `/upload/academics`;
     navigate(path);
   };
 
