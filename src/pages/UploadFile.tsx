@@ -1,11 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function UploadFile() {
     return(
-        <div>
-            <h1>File</h1>
-        </div>
+        <>
+        <h1>File</h1>
+        </>
     )
 }
 
-export {UploadFile}
+export {UploadFile};

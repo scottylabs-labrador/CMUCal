@@ -2,12 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const AcademicButton: React.FC = () => {
-  let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path = `/upload/file`; 
-    navigate(path);
-  }
-
   return (
     <button
       onClick={routeChange}
@@ -16,18 +10,12 @@ const AcademicButton: React.FC = () => {
       Academic
     </button>
   );
-
-}
+};
 
 const ClubButton: React.FC = () => {
-  let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path = `/upload/file`; 
-    navigate(path);
-  }
   return (
     <button
-      onClick={routeChange}
+      // onClick={onClick}
       className="rounded-[5px] border border-[#1F4C4C] px-14 py-2 text-[#1F4C4C]"
     >
       Club
@@ -49,6 +37,6 @@ const Upload: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
-export {Upload};
+export { Upload };

@@ -10,8 +10,8 @@ interface SearchCardProps {
   endDate: string;
   endTime: string;
   location: string;
-  eventCategory: string;
-  eventSubcategory: string;
+  // eventCategory: string;
+  // eventSubcategory: string;
 }
 
 const SearchCard: React.FC<SearchCardProps> = ({
@@ -22,8 +22,8 @@ const SearchCard: React.FC<SearchCardProps> = ({
   endDate,
   endTime,
   location,
-  eventCategory,
-  eventSubcategory,
+  // eventCategory,
+  // eventSubcategory,
 }) => {
   const [buttonClicked, setButtonClicked] = useState(false);
 

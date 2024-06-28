@@ -1,0 +1,482 @@
+[
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "5G University Program for CMU - Qualcomm Wireless Academy",
+		"event_host": "Qualcomm",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "03-28-2023",
+				"start_time": "03:00AM",
+				"end_time": "03:00AM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Hiring", "Guidance"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Virtual FBI STEM Speaker Series",
+		"event_host": "Federal Bureau of Investigation",
+		"events": [
+			{
+				"weekday": 4,
+				"date": "05-16-2024",
+				"start_time": "01:00PM",
+				"end_time": "02:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Hiring", "Employers"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "SMBC Meet and Greet (Leasing & Finance, Real Estate, Latin America Project Groups)",
+		"event_host": "SMBC",
+		"events": [
+			{
+				"weekday": 4,
+				"date": "05-30-2024",
+				"start_time": "01:00PM",
+				"end_time": "02:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Hiring", "Employers"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "AT&T Technology Academy",
+		"event_host": "AT&T",
+		"events": [
+			{
+				"weekday": 1,
+				"date": "06-10-2024",
+				"start_time": "08:00AM",
+				"end_time": "06:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers", "Guidance"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "*VIRTUAL: Summer Hires @ Heinz Career Fair",
+		"event_host": "Carnegie Mellon University - CMU",
+		"events": [
+			{
+				"weekday": 3,
+				"date": "06-26-2024",
+				"start_time": "12:00PM",
+				"end_time": "02:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Career fairs"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "*Learn to Earn: Negotiating an Offer* CMU-SV",
+		"event_host": "Carnegie Mellon University - CMU",
+		"events": [
+			{
+				"weekday": 5,
+				"date": "07-19-2024",
+				"start_time": "03:00PM",
+				"end_time": "04:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Guidance"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "*Starting Strong! Prepare for Your Full-Time Job Search* CMU-SV ",
+		"event_host": "Carnegie Mellon University - CMU",
+		"events": [
+			{
+				"weekday": 5,
+				"date": "08-09-2024",
+				"start_time": "03:00PM",
+				"end_time": "04:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Guidance"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Virtual Learning Event: Systems Engineering & Project Management",
+		"event_host": "AI Futures",
+		"events": [
+			{
+				"weekday": 4,
+				"date": "06-20-2024",
+				"start_time": "12:00PM",
+				"end_time": "01:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Networking"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Women in Wealth: College Leadership Academy",
+		"event_host": "Morgan Stanley",
+		"events": [
+			{
+				"weekday": 4,
+				"date": "06-20-2024",
+				"start_time": "12:00PM",
+				"end_time": "01:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Hiring", "Employers"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Pride Month",
+		"event_host": "Bank of America",
+		"events": [
+			{
+				"weekday": 4,
+				"date": "06-20-2024",
+				"start_time": "03:00PM",
+				"end_time": "04:30PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Networking"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Handshake 101: how to make the most of your summer using Handshake",
+		"event_host": "Handshake",
+		"events": [
+			{
+				"weekday": 4,
+				"date": "06-20-2024",
+				"start_time": "03:00PM",
+				"end_time": "04:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Guidance"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "AmeriCorps NCCC: Application and Selection Webinar",
+		"event_host": "AmeriCorps",
+		"events": [
+			{
+				"weekday": 4,
+				"date": "06-20-2024",
+				"start_time": "04:00PM",
+				"end_time": "05:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Hiring", "Guidance"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Students & Grads Virtual Event: Business Case Workshop",
+		"event_host": "Capital One",
+		"events": [
+			{
+				"weekday": 4,
+				"date": "06-20-2024",
+				"start_time": "04:00PM",
+				"end_time": "05:30PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers", "Networking"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Mayo Clinic Administrative Fellowship Webinar June Session 2024",
+		"event_host": "Mayo Clinic",
+		"events": [
+			{
+				"weekday": 4,
+				"date": "06-20-2024",
+				"start_time": "06:00PM",
+				"end_time": "07:15PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Hiring", "Employers"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Veterans - Get into Energy with NiSource",
+		"event_host": "NiSource, Inc.",
+		"events": [
+			{
+				"weekday": 4,
+				"date": "06-20-2024",
+				"start_time": "06:30PM",
+				"end_time": "07:30PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Learn About Capital One's 2025 Analyst Program & Recruiter Q & A ",
+		"event_host": "Capital One",
+		"events": [
+			{
+				"weekday": 5,
+				"date": "06-21-2024",
+				"start_time": "12:00PM",
+				"end_time": "01:30PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers", "Networking"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Learn About Capital One's 2025 Tech Program & Recruiter Q&A",
+		"event_host": "Capital One",
+		"events": [
+			{
+				"weekday": 1,
+				"date": "06-24-2024",
+				"start_time": "12:00PM",
+				"end_time": "01:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "BCG Launch ",
+		"event_host": "Boston Consulting Group (BCG)",
+		"events": [
+			{
+				"weekday": 1,
+				"date": "06-24-2024",
+				"start_time": "07:00PM",
+				"end_time": "07:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Hiring", "Employers"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "SMBC Reality Series: Being Black in Banking",
+		"event_host": "SMBC",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "12:00PM",
+				"end_time": "01:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers", "Guidance"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Students & Grads Virtual Event: What is a Business Analyst in Dallas?",
+		"event_host": "Capital One",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "01:00PM",
+				"end_time": "02:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers", "Guidance"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "SMBC Reality Series: Being LatinX in Banking",
+		"event_host": "SMBC",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "02:00PM",
+				"end_time": "03:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers", "Guidance"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Amazon Culture \u2014How Glamazon fosters community & promotes Diversity and Inclusion",
+		"event_host": "Amazon",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "02:00PM",
+				"end_time": "05:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Pride & Progress: Spectrum Employee Voices",
+		"event_host": "Tennessee Valley Authority (TVA)",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "03:00PM",
+				"end_time": "04:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Hiring", "Employers"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "FBI Special Agent Info/Q&A Session (Hosted by FBI San Francisco)",
+		"event_host": "Federal Bureau of Investigation",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "03:30PM",
+				"end_time": "04:30PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Joining AmeriCorps: Pathways to Employment",
+		"event_host": "AmeriCorps",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "04:00PM",
+				"end_time": "05:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Hiring", "Employers"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "SMBC Reality Series: Being Asian in Banking",
+		"event_host": "SMBC",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "04:00PM",
+				"end_time": "05:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers", "Guidance"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Successful Interviewing: Tips from Recruiters and Hiring Managers ",
+		"event_host": "PACCAR",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "04:00PM",
+				"end_time": "05:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Guidance"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": " Learn About Capital One's 2025 Analyst Program & Recruiter Q&A",
+		"event_host": "Capital One",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "05:00PM",
+				"end_time": "06:30PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers", "Networking"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Calling All Changemakers:  Career (& Life) Lessons You Can Use Now - Ep. 1",
+		"event_host": "Teach For America",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "06:00PM",
+				"end_time": "07:00PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Guidance", "Conference"]
+	},
+	{
+		"resource_type": "Career",
+		"resource_source": "Handshake",
+		"event_name": "Veterans - Get into Energy with NiSource",
+		"event_host": "NiSource, Inc.",
+		"events": [
+			{
+				"weekday": 2,
+				"date": "06-25-2024",
+				"start_time": "06:30PM",
+				"end_time": "07:30PM",
+				"location": "Virtual"
+			}
+		],
+		"categories": ["Employers"]
+	}
+]

@@ -1,11 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function UploadInput() {
     return(
-        <div>
-            <h1>Input</h1>
-        </div>
+        <>
+        <h1>Input</h1>
+        </>
     )
 }
 
-export {UploadInput}
+export {UploadInput};

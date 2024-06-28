@@ -1,0 +1,30 @@
+{
+  "operationName": "GetEventAbstractions",
+  "variables": {
+    "isToggleEnabled": true,
+    "params": {
+      "employers": [],
+      "categories": [],
+      "medium": "HYBRID",
+      "sort": "RELEVANCE",
+      "date": "ALL",
+      "dayOfWeek": [],
+      "meridiemIndicator": null,
+      "keyword": "",
+      "collection": "ALL",
+      "labels": [],
+      "postedBySchool": false,
+      "careerCenterIds": [],
+      "careerCenterEmployerEvents": false,
+      "eventsHostedByEmployers": false,
+      "eventGrouping": "",
+      "searchModels": [
+        "Event",
+        "CareerFair",
+        "MeetingSchedule"
+      ]
+    },
+    "first": 30
+  },
+  "query": "query GetEventAbstractions($params: EventAbstractionSearchInput, $first: Int, $after: String, $isToggleEnabled: Boolean = false) {\n  eventAbstractions(params: $params, first: $first, after: $after) {\n    pageInfo {\n      endCursor\n      hasNextPage\n      __typename\n    }\n    edges {\n      cursor\n      node {\n        ...EventAbstractionParts @skip(if: $isToggleEnabled)\n        ...UpdatedEventAbstractionParts @include(if: $isToggleEnabled)\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n\nfragment EventAbstractionParts on EventAbstraction {\n  id\n  compositeId\n  name\n  employers {\n    ...EmployerParts\n    __typename\n  }\n  type\n  favorited\n  startDate\n  endDate\n  registered\n  medium\n  categories {\n    id\n    name\n    behaviorIdentifier\n    eventSearchCardTagColor\n    __typename\n  }\n  ... on Event {\n    host {\n      logoUrl\n      name\n      __typename\n    }\n    sameSchoolHost\n    sameSchoolEvent\n    studentRegistrationEnd\n    studentRegistrationStart\n    __typename\n  }\n  ... on CareerFair {\n    host {\n      logoUrl\n      name\n      __typename\n    }\n    sameSchoolHost\n    studentRegistrationEnd\n    studentRegistrationStart\n    __typename\n  }\n  ... on CareerFairSession {\n    careerFair {\n      id\n      name\n      studentRegistrationEnd\n      registeredMeetings {\n        id\n        name\n        startDateTime\n        endDateTime\n        employer {\n          ...EmployerParts\n          __typename\n        }\n        meetingType\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n  ... on MeetingSchedule {\n    careerFair {\n      id\n      __typename\n    }\n    __typename\n  }\n  __typename\n}\n\nfragment EmployerParts on Employer {\n  id\n  name\n  logo {\n    url(size: \"small\")\n    __typename\n  }\n  __typename\n}\n\nfragment UpdatedEventAbstractionParts on EventAbstraction {\n  id\n  compositeId\n  name\n  employers {\n    ...EmployerParts\n    __typename\n  }\n  type\n  favorited\n  startDate\n  endDate\n  registered\n  medium\n  categories {\n    id\n    name\n    behaviorIdentifier\n    eventSearchCardTagColor\n    __typename\n  }\n  ... on Event {\n    host {\n      logoUrl\n      name\n      __typename\n    }\n    sameSchoolHost\n    sameSchoolEvent\n    studentRegistrationEnd\n    studentRegistrationStart\n    registeredAttendeesCount\n    registeredAttendeesProfilePictures\n    __typename\n  }\n  ... on CareerFair {\n    host {\n      logoUrl\n      name\n      __typename\n    }\n    sameSchoolHost\n    studentRegistrationEnd\n    studentRegistrationStart\n    registeredAttendeesCount\n    registeredAttendeesProfilePictures\n    __typename\n  }\n  ... on CareerFairSession {\n    careerFair {\n      id\n      name\n      studentRegistrationEnd\n      registeredMeetings {\n        id\n        name\n        startDateTime\n        endDateTime\n        employer {\n          ...EmployerParts\n          __typename\n        }\n        meetingType\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n  ... on MeetingSchedule {\n    careerFair {\n      id\n      __typename\n    }\n    __typename\n  }\n  __typename\n}\n"
+}
