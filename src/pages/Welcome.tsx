@@ -1,12 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 
 function GoogleSigninButton() {
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
-    let path = `/search/academics`; 
+    let path = `/home/academics`; 
     navigate(path);
   }
 
@@ -24,21 +23,6 @@ function GoogleSigninButton() {
     </>
   );
 }
-
-interface GuestSigninButtonProps {
-  onClick: () => void;
-}
-
-const GuestSigninButton: React.FC<GuestSigninButtonProps> = ({ onClick }) => {
-  return (
-    <button
-      onClick={onClick}
-      className="rounded-[5px] border border-[#1F4C4C] px-14 py-2 text-[#1F4C4C]"
-    >
-      Continue as Guest
-    </button>
-  );
-};
 
 const About: React.FC = () => {
   return (
