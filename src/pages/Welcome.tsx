@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function GoogleSigninButton() {
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
-    let path = `/search/academics`; 
+    let path = `/home/academics`; 
     navigate(path);
   }
 

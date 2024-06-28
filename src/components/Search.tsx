@@ -245,8 +245,8 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
         {/* <div className="w-full mt-2">{actionsMenuComp}</div> */}
         <div className="w-full mt-2 flex justify-between">
           {/* <Dropdown/> */}
-          <Button content="Add All" clickStay={false} textSize="text-sm"/>
-          <Button content="Reset CMUCal Events" clickStay={false} textSize="text-sm"/>
+          <Button content="Add All" clickStay={false} textSize="text-base"/>
+          <Button content="Reset CMUCal Events" clickStay={false} textSize="text-base"/>
         </div>
         
 
