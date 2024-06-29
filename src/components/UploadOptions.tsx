@@ -6,7 +6,7 @@ interface UploadOptionsProps {
 }
 
 const UploadFile: React.FC<UploadOptionsProps> = ({ from }) => {
-    console.log(from);
+    // console.log(from);
     let navigate = useNavigate();
     const routeChange = () => {
         let path = `/upload/edit`;

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+// search input
 import { IoSearch } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 import { SearchCard } from "./SearchCard";
+import Fuse from 'fuse.js'
+import DropInData from "../../backend/scraper/drop_in.json";
 // for date picker
 import dayjs, { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -15,6 +17,7 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import { categoryListAcademics, categoryListClubs, categoryListCareer } from "../types";
 // selectable dropdown
 // import { Dropdown } from "./Dropdown";
 import { Button } from "./Button";
@@ -22,37 +25,12 @@ import { Button } from "./Button";
 import "react-dropdown/style.css";
 import "./Search.css";
 import { SavedSearchBtn } from "./SavedSearches";
+// import useSearch from "../../utils/hooks/useSearch";
+import SIData from "../../backend/scraper/si.json";
 
 
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
 
-const categoryListAcademics = [
-  "Office Hours",
-  "Supplemental Instructions",
-  "Drop-in Tutoring",
-  "Peer Tutoring"
-];
-
-const categoryListClubs = [
-  "Student Government Recognized Organizations",
-  "Fraternity & Sorority Chapters",
-  "Tepper Graduate Organizations",
-  "Department Sponsored Organizations",
-  "Student Governance",
-  "Tepper Offices",
-  "Offices"
-]
-
-const categoryListCareer = [
-  "Career Fair",
-  "Networking",
-  "Hiring",
-  "Employer Info",
-  "Guidance",
-  "Academic",
-  "Conference",
-  "General"
-]
 
 interface SearchComponentProps {
   page: string;
@@ -62,10 +40,24 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   // Chang name to search bar
   const [searchInput, setSearchInput] = useState("");
   const [categoryName, setCategoryName] = useState<string[]>([]);
+  // search results
+  // const [data, setData] = useState(null)
   // date picker
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
   const [endDate, setEndDate] = useState<Dayjs | null>(dayjs());
   const showDatePicker = true;
+
+  
+  // useEffect(()=> {
+  //   const [data, setData] = useState([]);
+
+  //   const fuse = new Fuse(SIData, {
+  //     keys: ["course_id", "course_name"],
+  //   });
+
+  //   setData([fuse.search(searchInput)]);
+  // },[searchInput])
+  
   
   // search
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -249,30 +241,25 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
           <Button content="Reset CMUCal Events" clickStay={false} textSize="text-sm"/>
         </div>
         
-
-
-        <SearchCard
-          eventName={eventName1}
-          orgName={orgName1}
-          startDate={startDate1}
-          startTime={startTime1}
-          endDate={endDate1}
-          endTime={endTime1}
-          location={location1}
+        <div className="overflow-scroll" style={{height: '70vh'}}>
+        {searchInput && SIData.map( (event) => {
+          return (
+            <SearchCard
+          eventName={`${event.resource_type} for ${event.course_name}`}
+          orgName={`${event.course_id} Staff`}
+          startDate={"xx-xx-xxxx"}
+          startTime={"xx:xxPM"}
+          endDate={"xx-xx-xxxx"}
+          endTime={"xx:xxPM"}
+          location={"placeholder"}
           // eventCategory={eventCategory1}
           // eventSubcategory={eventSubcategory1}
         />
-        <SearchCard
-          eventName={eventName1}
-          orgName={orgName1}
-          startDate={startDate1}
-          startTime={startTime1}
-          endDate={endDate1}
-          endTime={endTime1}
-          location={location1}
-          // eventCategory={eventCategory1}
-          // eventSubcategory={eventSubcategory1}
-        />
+          )})}
+        </div>
+
+
+        
       </div>
     </div>
   );

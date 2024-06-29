@@ -1,1 +1,402 @@
-[{"resource_type": "DIT", "course_id": "03-121", "course_name": "Modern Biology", "professor": null, "instructor": "Clara D.", "events": [{"weekday": 3, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 282"}]}, {"resource_type": "DIT", "course_id": "06-361", "course_name": "Unit Operations", "professor": null, "instructor": "Alex P. & Chetan C.", "events": [{"weekday": 2, "date": null, "start_time": "06:00PM", "end_time": "09:00PM", "location": "Posner 282"}]}, {"resource_type": "DIT", "course_id": "06-364", "course_name": "Chemical Reaction Engineering", "professor": null, "instructor": "Alex P. & Chetan C.", "events": [{"weekday": 2, "date": null, "start_time": "06:00PM", "end_time": "09:00PM", "location": "Posner 282"}]}, {"resource_type": "DIT", "course_id": "09-105", "course_name": "Modern Chemistry I", "professor": null, "instructor": "Mars H. & Jisoo Y.", "events": [{"weekday": 1, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 282"}]}, {"resource_type": "DIT", "course_id": "09-106", "course_name": "Modern Chemistry II", "professor": null, "instructor": "Mars H. & Jisoo Y.", "events": [{"weekday": 1, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 282"}]}, {"resource_type": "DIT", "course_id": "09-218", "course_name": "Organic Chemistry II", "professor": null, "instructor": "Mackenzie R.", "events": [{"weekday": 2, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner A62"}]}, {"resource_type": "DIT", "course_id": "09-220", "course_name": "Modern Organic Chemistry II", "professor": null, "instructor": "Mackenzie R.", "events": [{"weekday": 2, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner A62"}]}, {"resource_type": "DIT", "course_id": "09-348", "course_name": "Inorganic Chemistry", "professor": null, "instructor": "Rafael G.", "events": [{"weekday": 2, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner A63"}]}, {"resource_type": "DIT", "course_id": "15-110", "course_name": "Principles of Computing", "professor": null, "instructor": "Sachi A.", "events": [{"weekday": 7, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Fifth & Clyde Neighborhood Space"}]}, {"resource_type": "DIT", "course_id": "15-112", "course_name": "Fundamentals of Programming", "professor": null, "instructor": "Wesley T.", "events": [{"weekday": 1, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner A63"}]}, {"resource_type": "DIT", "course_id": "15-122", "course_name": "Principles of Imperative Computing", "professor": null, "instructor": "Rozay C.", "events": [{"weekday": 4, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 282"}]}, {"resource_type": "DIT", "course_id": "15-251", "course_name": "Great Ideas in Theoretical Computer Science", "professor": null, "instructor": "Rozay C.", "events": [{"weekday": 4, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 282"}]}, {"resource_type": "DIT", "course_id": "15-150", "course_name": "Principles of Functional Programming", "professor": null, "instructor": "Helena Y.", "events": [{"weekday": 7, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 282"}]}, {"resource_type": "DIT", "course_id": "18-220", "course_name": "Electronic Devices and Analog Circuits", "professor": null, "instructor": "Sid S.", "events": [{"weekday": 1, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 280"}]}, {"resource_type": "DIT", "course_id": "18-213", "course_name": "Intro to Computer Systems", "professor": null, "instructor": "Sid S.", "events": [{"weekday": 1, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 280"}]}, {"resource_type": "DIT", "course_id": "21-122", "course_name": "Integration & Approximation", "professor": null, "instructor": "Lucas Y.", "events": [{"weekday": 1, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner A62"}]}, {"resource_type": "DIT", "course_id": "21-127", "course_name": "Concepts", "professor": null, "instructor": "Michael P.", "events": [{"weekday": 7, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner A63"}]}, {"resource_type": "DIT", "course_id": "21-256", "course_name": "Multivariate Analysis", "professor": null, "instructor": "Annie Y.", "events": [{"weekday": 7, "date": null, "start_time": "04:00PM", "end_time": "06:00PM", "location": "Posner A62"}]}, {"resource_type": "DIT", "course_id": "21-259", "course_name": "Calculus in 3D", "professor": null, "instructor": "Aidan C.", "events": [{"weekday": 7, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 280"}]}, {"resource_type": "DIT", "course_id": "21-254", "course_name": "Linear Algebra", "professor": null, "instructor": "Claire S.", "events": [{"weekday": 4, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Fifth & Clyde Neighborhood Space"}]}, {"resource_type": "DIT", "course_id": "24-231", "course_name": "Fluid Mechanics", "professor": null, "instructor": "Marianne B.", "events": [{"weekday": 3, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner A62"}]}, {"resource_type": "DIT", "course_id": "24-262", "course_name": "Mechanics II", "professor": null, "instructor": "Marianne B.", "events": [{"weekday": 3, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner A62"}]}, {"resource_type": "DIT", "course_id": "33-122", "course_name": "Physics II for Science Students", "professor": null, "instructor": "Yi Lin Q.", "events": [{"weekday": 2, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 280"}]}, {"resource_type": "DIT", "course_id": "36-200", "course_name": "Reasoning with Data", "professor": null, "instructor": "Pranav S.", "events": [{"weekday": 4, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 280"}]}, {"resource_type": "DIT", "course_id": "36-202", "course_name": "Methods for Statistics & Data Science", "professor": null, "instructor": "Pranav S.", "events": [{"weekday": 4, "date": null, "start_time": "08:00PM", "end_time": "10:00PM", "location": "Posner 280"}]}]
+[
+	{
+		"resource_type": "DIT",
+		"course_id": "03-121",
+		"course_name": "Modern Biology",
+		"professor": null,
+		"instructor": "Clara D.",
+		"events": [
+			{
+				"weekday": 3,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 282"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "06-361",
+		"course_name": "Unit Operations",
+		"professor": null,
+		"instructor": "Alex P. & Chetan C.",
+		"events": [
+			{
+				"weekday": 2,
+				"date": null,
+				"start_time": "06:00PM",
+				"end_time": "09:00PM",
+				"location": "Posner 282"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "06-364",
+		"course_name": "Chemical Reaction Engineering",
+		"professor": null,
+		"instructor": "Alex P. & Chetan C.",
+		"events": [
+			{
+				"weekday": 2,
+				"date": null,
+				"start_time": "06:00PM",
+				"end_time": "09:00PM",
+				"location": "Posner 282"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "09-105",
+		"course_name": "Modern Chemistry I",
+		"professor": null,
+		"instructor": "Mars H. & Jisoo Y.",
+		"events": [
+			{
+				"weekday": 1,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 282"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "09-106",
+		"course_name": "Modern Chemistry II",
+		"professor": null,
+		"instructor": "Mars H. & Jisoo Y.",
+		"events": [
+			{
+				"weekday": 1,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 282"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "09-218",
+		"course_name": "Organic Chemistry II",
+		"professor": null,
+		"instructor": "Mackenzie R.",
+		"events": [
+			{
+				"weekday": 2,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner A62"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "09-220",
+		"course_name": "Modern Organic Chemistry II",
+		"professor": null,
+		"instructor": "Mackenzie R.",
+		"events": [
+			{
+				"weekday": 2,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner A62"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "09-348",
+		"course_name": "Inorganic Chemistry",
+		"professor": null,
+		"instructor": "Rafael G.",
+		"events": [
+			{
+				"weekday": 2,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner A63"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "15-110",
+		"course_name": "Principles of Computing",
+		"professor": null,
+		"instructor": "Sachi A.",
+		"events": [
+			{
+				"weekday": 7,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Fifth & Clyde Neighborhood Space"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "15-112",
+		"course_name": "Fundamentals of Programming",
+		"professor": null,
+		"instructor": "Wesley T.",
+		"events": [
+			{
+				"weekday": 1,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner A63"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "15-122",
+		"course_name": "Principles of Imperative Computing",
+		"professor": null,
+		"instructor": "Rozay C.",
+		"events": [
+			{
+				"weekday": 4,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 282"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "15-251",
+		"course_name": "Great Ideas in Theoretical Computer Science",
+		"professor": null,
+		"instructor": "Rozay C.",
+		"events": [
+			{
+				"weekday": 4,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 282"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "15-150",
+		"course_name": "Principles of Functional Programming",
+		"professor": null,
+		"instructor": "Helena Y.",
+		"events": [
+			{
+				"weekday": 7,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 282"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "18-220",
+		"course_name": "Electronic Devices and Analog Circuits",
+		"professor": null,
+		"instructor": "Sid S.",
+		"events": [
+			{
+				"weekday": 1,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 280"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "18-213",
+		"course_name": "Intro to Computer Systems",
+		"professor": null,
+		"instructor": "Sid S.",
+		"events": [
+			{
+				"weekday": 1,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 280"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "21-122",
+		"course_name": "Integration & Approximation",
+		"professor": null,
+		"instructor": "Lucas Y.",
+		"events": [
+			{
+				"weekday": 1,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner A62"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "21-127",
+		"course_name": "Concepts",
+		"professor": null,
+		"instructor": "Michael P.",
+		"events": [
+			{
+				"weekday": 7,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner A63"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "21-256",
+		"course_name": "Multivariate Analysis",
+		"professor": null,
+		"instructor": "Annie Y.",
+		"events": [
+			{
+				"weekday": 7,
+				"date": null,
+				"start_time": "04:00PM",
+				"end_time": "06:00PM",
+				"location": "Posner A62"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "21-259",
+		"course_name": "Calculus in 3D",
+		"professor": null,
+		"instructor": "Aidan C.",
+		"events": [
+			{
+				"weekday": 7,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 280"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "21-254",
+		"course_name": "Linear Algebra",
+		"professor": null,
+		"instructor": "Claire S.",
+		"events": [
+			{
+				"weekday": 4,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Fifth & Clyde Neighborhood Space"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "24-231",
+		"course_name": "Fluid Mechanics",
+		"professor": null,
+		"instructor": "Marianne B.",
+		"events": [
+			{
+				"weekday": 3,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner A62"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "24-262",
+		"course_name": "Mechanics II",
+		"professor": null,
+		"instructor": "Marianne B.",
+		"events": [
+			{
+				"weekday": 3,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner A62"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "33-122",
+		"course_name": "Physics II for Science Students",
+		"professor": null,
+		"instructor": "Yi Lin Q.",
+		"events": [
+			{
+				"weekday": 2,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 280"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "36-200",
+		"course_name": "Reasoning with Data",
+		"professor": null,
+		"instructor": "Pranav S.",
+		"events": [
+			{
+				"weekday": 4,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 280"
+			}
+		]
+	},
+	{
+		"resource_type": "DIT",
+		"course_id": "36-202",
+		"course_name": "Methods for Statistics & Data Science",
+		"professor": null,
+		"instructor": "Pranav S.",
+		"events": [
+			{
+				"weekday": 4,
+				"date": null,
+				"start_time": "08:00PM",
+				"end_time": "10:00PM",
+				"location": "Posner 280"
+			}
+		]
+	}
+]

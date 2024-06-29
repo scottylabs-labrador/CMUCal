@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
       setButton(false);
     } else {
       setButton(true);
-      console.log(button);
+      // console.log(button);
     }
   };
 
@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
   const location = useLocation();
   // const { from } = location.state as LocationState;
   const pathName = location.pathname;
-  console.log(pathName);
+  // console.log(pathName);
 
   return (
     <nav className="bg-red h-20 text-white text-lg sticky top-0 z-50 px-4">
