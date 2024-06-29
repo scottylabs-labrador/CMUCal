@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../components";
 
 const AcademicButton: React.FC = () => {
   let navigate = useNavigate();
@@ -38,15 +39,18 @@ const ClubButton: React.FC = () => {
 const Upload: React.FC = () => {
   return (
     <div>
-      <div className="text-black text-center font-bold font-sans text-4xl pt-48">
-        <h1>Can't find an upcoming event?</h1>
-        <h1>Add it to our database and help others find it!</h1>
-        <h1>What would you like to upload today?</h1>
+      <div className="h-lvh">
+        <div className="text-black text-center font-bold font-sans text-4xl pt-48">
+          <h1>Can't find an upcoming event?</h1>
+          <h1>Add it to our database and help others find it!</h1>
+          <h1>What would you like to upload today?</h1>
+        </div>
+        <div className="flex justify-center gap-40 py-20">
+          <AcademicButton />
+          <ClubButton />
+        </div>
       </div>
-      <div className="flex justify-center gap-40 py-20">
-        <AcademicButton />
-        <ClubButton />
-      </div>
+      <Footer />
     </div>
   );
 };

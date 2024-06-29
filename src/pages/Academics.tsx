@@ -1,5 +1,5 @@
 import React from "react";
-import { SecondNav, MyCalendar, Search } from "../components";
+import { SecondNav, MyCalendar, Search, Footer } from "../components";
 
 // Take userID --> Put into link 
 // const EmbeddedCalendar: React.FC = () => {
@@ -33,6 +33,7 @@ const Academics: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

@@ -4,3 +4,4 @@ export * from "./Navbar";
 export * from "./Search";
 export * from "./SearchCard";
 export * from "./SecondNav";
+export * from "./Footer";
