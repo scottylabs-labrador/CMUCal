@@ -10,7 +10,7 @@ const UploadNavBar: React.FC = () => {
     };
 
     return (
-        <div className="bg-green w-full h-4/6 mt-24 text-white flex gap-44 justify-center items-center text-xl py-4">
+        <div className="bg-green w-full h-4/6 mt-20 text-white flex gap-44 justify-center items-center text-xl py-4">
             <div className={`cursor-pointer ${location.pathname === '/upload/file' ? 'text-teal font-medium' : 'text-white'}`} onClick={() => redirectTo('/upload/file')}>
                 Upload File
             </div>

@@ -8,8 +8,8 @@ const UploadLink: React.FC = () => {
             <div className="bg-[#F1F1F1] w-full h-[250px] relative flex justify-center items-center gap-24">
                 <form className="text-xl flex items-center">
                     <label className="">Enter link here: </label>
-                    <input type="text" className="outline-none ml-4 w-[530px] h-[40px]"></input>
-                    <div className="mt-4"><UploadButton/></div>
+                    <input type="text" className="ml-4 w-[530px] h-[40px] border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 px-4"></input>
+                    <div className="ml-8"><UploadButton /></div>
                 </form>
             </div>
         </div>
