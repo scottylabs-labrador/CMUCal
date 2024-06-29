@@ -26,18 +26,23 @@ const SearchCard: React.FC<SearchCardProps> = ({
   // eventSubcategory,
 }) => {
   const [buttonClicked, setButtonClicked] = useState(false);
+  const [cardClicked, setCardClicked] = useState(false);
 
   const handleAddToCalendar = () => {
     setButtonClicked((prevClicked) => !prevClicked);
     // Logic for calling GCal
   };
 
+  const handleCardClicked = () => {
+    setCardClicked(!cardClicked);
+  }
+  // {eventName}
   return (
-    <div className="bg-white w-full my-3.5 px-6 py-4 rounded-lg flex items-center align-stretch">
-      <div className="flex-1">
-        <p className="text-xl">{eventName}</p>
-        <p className="text-base">By {orgName}</p>
-        <div className="flex items-center gap-2">
+    <div className="bg-white w-full my-3.5 px-6 py-4 rounded-lg flex items-center align-stretch relative">
+      <div className="flex-1" onClick={handleCardClicked}>
+        <p className={`text-xl w-3/5 my-0.5 ${cardClicked? "": "ease-in-out truncate"}`}>{eventName}</p>
+        <p className="text-base my-0.5">By {orgName}</p>
+        <div className="flex items-center gap-2 my-0.5">
           <FaRegClock className="h-4 w-4 text-gray-600 mr-2" />
           {endDate !== startDate ? (
             <p>
@@ -49,12 +54,12 @@ const SearchCard: React.FC<SearchCardProps> = ({
             </p>
           )}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 my-0.5">
           <IoLocationSharp className="h-4 w-4 text-gray-600 mr-2" />
           <p>{location}</p>
         </div>
       </div>
-      <div className="flex-shrink-0">
+      <div className="flex-shrink-0 absolute right-3">
         <button
           className={`rounded-full border border-teal px-4 py-2 flex items-center gap-1 ${
             buttonClicked ? "bg-teal text-white" : ""
