@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../components";
 
 const AcademicButton: React.FC = () => {
   let navigate = useNavigate();

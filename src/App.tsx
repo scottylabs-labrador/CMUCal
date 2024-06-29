@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Navbar } from "./components";
+import { Navbar, Footer } from "./components";
 import { Academics, Clubs, Careers, Upload, UploadFile, UploadLink, UploadManual, UploadRevise, Support, Welcome } from "./pages";
 import "./App.css";
 
