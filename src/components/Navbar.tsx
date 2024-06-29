@@ -109,9 +109,9 @@ const Navbar: React.FC = () => {
             </li>
             <li>
               <NavbarItem
-                locationTo="/instructions"
+                locationTo="/support"
                 onClick={closeMobileMenu}
-                title="Instructions"
+                title="Support"
                 image={<CiCircleQuestion />}
               />
             </li>

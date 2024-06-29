@@ -2,6 +2,9 @@ import React from 'react';
 import { UploadNavBar, UploadButton } from "./index";
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { Footer } from "../components";
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 const UploadManual: React.FC = () => {
     return (
@@ -36,21 +39,15 @@ const UploadManual: React.FC = () => {
                                 <div className="flex gap-4">
                                     <div className="w-1/2">
                                         <label className="block text-gray-700">From<span className="text-red">*</span></label>
-                                        {/* <DateTimePicker/> */}
-                                        <input
-                                            type="time"
-                                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                            required
-                                        />
+                                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                            <DateTimePicker className="w-full"/>
+                                        </LocalizationProvider>
                                     </div>
                                     <div className="w-1/2">
                                         <label className="block text-gray-700">To<span className="text-red">*</span></label>
-                                        {/* <DateTimePicker/> */}
-                                        <input
-                                            type="time"
-                                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                            required
-                                        />
+                                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                            <DateTimePicker className="w-full"/>
+                                        </LocalizationProvider>
                                     </div>
                                 </div>
                             </div>

@@ -18,87 +18,12 @@
 	--red: #C41230;
 }
 
-/* html {
-  background-color: var(--green);
-} */
 
-/* .rootContainer {
-  background-color: var(--green);
-} */
-
-/* could add it back for padding of each page */
-/* .appContainer {
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 1rem;
-} */
-
-.services {
-	/* background-image: url('/images/img-2.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat; */
-	color: #fff;
-	font-size: 100px;
-}
-
-.products {
-	/* background-image: url('/images/img-1.jpg');
-  background-position: center;
-  background-size: fill;
-  background-repeat: no-repeat; */
-	color: #fff;
-	font-size: 100px;
-}
 
 .sign-up {
-	/* background-image: url('/images/img-8.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat; */
 	color: #fff;
 	font-size: 100px;
 }
-
-/* .App {
-  text-align: center;
-  background-color: white;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 
 .searchCol {
 	width: 40%;
@@ -106,18 +31,14 @@
 .Calendar {
 	width: 55%;
 	margin-right: 3%;
-	/* height: 90vh; */
-	/* overflow-y: hidden; */
 }
 
 .Calendar .calendar-body {
-	/* height: 80%; */
 	grid-template-columns: repeat(7, minmax(40px, 1fr));
 	grid-template-rows: 40px;
 	grid-auto-rows: minmax(100px, auto);
 }
 
 .Calendar .day {
-	/* height: 50%; */
 	margin-top: 0;
 }

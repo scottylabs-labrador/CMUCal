@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar, Footer } from "./components";
-import { Academics, Clubs, Careers, Upload, UploadFile, UploadLink, UploadManual, UploadRevise, Instructions, Welcome } from "./pages";
+import { Academics, Clubs, Careers, Upload, UploadFile, UploadLink, UploadManual, UploadRevise, Support, Welcome } from "./pages";
 import "./App.css";
 
 
@@ -20,7 +20,7 @@ function App() {
           <Route path="/upload/link" element={<UploadLink />} />
           <Route path="/upload/manual" element={<UploadManual />} />
           <Route path="/upload/revise" element={<UploadRevise />} />
-          <Route path="/instructions" element={<Instructions />} />
+          <Route path="/support" element={<Support />} />
           <Route path="/welcome" element={<Welcome />} />
         </Routes>
       </div>
