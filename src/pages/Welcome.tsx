@@ -3,9 +3,9 @@ import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 
 function GoogleSigninButton() {
-  let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path = `/home/academics`; 
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/home/academics`;
     navigate(path);
   }
 
@@ -51,7 +51,7 @@ const Video: React.FC = () => {
 
 function Welcome() {
   // Code to do after logging in
-  const handleClick = () => {};
+  const handleClick = () => { };
 
   return (
     <>
@@ -75,4 +75,4 @@ function Welcome() {
   );
 }
 
-export {Welcome};
+export { Welcome };

@@ -5,5 +5,7 @@ export * from "./Instructions";
 export * from "./Upload";
 export * from "./UploadFile";
 export * from "./UploadLink";
-export * from "./UploadInput";
+export * from "./UploadNavBar";
+export * from "./UploadManual";
+export * from "./UploadRevise";
 export * from "./Welcome";
