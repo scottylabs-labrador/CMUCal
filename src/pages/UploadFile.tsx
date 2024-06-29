@@ -14,7 +14,6 @@ const UploadFile: React.FC = () => {
                 <div className="absolute bottom-10 right-10">
                     <UploadButton />
                 </div>
-                {/* <div className="w-[94px] h-[34px] rounded-md bg-teal text-white text-base text-center absolute bottom-10 right-10 flex items-center justify-center">Upload</div> */}
             </div>
         </div>
     )
