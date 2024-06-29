@@ -40,5 +40,4 @@ const UploadButton: React.FC = () => {
     );
   };
   
-
 export { UploadNavBar, UploadButton };
