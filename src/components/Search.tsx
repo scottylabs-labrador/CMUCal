@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // search input
 import { IoSearch } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
-import { SearchCard } from "./SearchCard";
+import { SearchCard, SavedSearchBtn, SearchBar } from "./index";
 import Fuse from 'fuse.js'
 import DropInData from "../../backend/scraper/drop_in.json";
 // for date picker
@@ -24,14 +24,12 @@ import { Button } from "./Button";
 
 import "react-dropdown/style.css";
 import "./Search.css";
-import { SavedSearchBtn } from "./SavedSearches";
 // import useSearch from "../../utils/hooks/useSearch";
 import DITData from "../../backend/scraper/drop_in.json";
 import PTData from "../../backend/scraper/peer_tutoring.json";
 import SIData from "../../backend/scraper/si.json";
 import ClubsData from "../../backend/scraper/tartanconnect.json";
 import CareerData from "../../backend/scraper/handshake.json";
-
 
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
 
@@ -40,38 +38,39 @@ interface SearchComponentProps {
   page: string;
 }
 
-interface SearchBarProps {
-  searchInput: string;
-  setSearchInput: (value: string) => void;
-}
-
-const SearchBar: React.FC<SearchBarProps> = ({ searchInput, setSearchInput }) => {
-  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setSearchInput(e.target.value);
-  };
-
-  return (
-    <div className="bg-gray-200 relative h-12 w-full rounded-md border border-black border-[1.5] flex items-center justify-center">
-      <input
-        type="text"
-        placeholder="Search here"
-        onChange={handleChangeSearch}
-        value={searchInput}
-        className="bg-gray-200 flex-grow px-4 focus:outline-none"
-      />
-      {/* Search icon. Add onClick function in the future */}
-      {searchInput ?
-        <RxCross1 onClick={() => setSearchInput("")} className="h-6 w-6 text-gray-500 mr-2" /> :
-        <IoSearch className="h-6 w-6 text-gray-500 mr-2" />
-      }
-    </div>
-  )
-}
-
 const Search: React.FC<SearchComponentProps> = ({ page }) => {
   // Chang name to search bar
   const [searchInput, setSearchInput] = useState("");
+  const [savedSearches, setSavedSearches] = useState<string[]>([
+    '15122',
+    'programming',
+    'computer',
+    '21127',
+    '21241',
+    '21259',
+  ]);
+
+  // Function to handle when search bar is enterred 
+  const handleSaveSearch = () => {
+    if (searchInput) {
+      // If searchInput is already in savedSearches, delete the elem in the array 
+      if (savedSearches.includes(searchInput)) {
+        const index = savedSearches.indexOf(searchInput);
+        if (index > -1) { 
+          savedSearches.splice(index, 1); 
+        }
+      }
+      // Then, add the element at the beginning of the array
+      setSavedSearches([searchInput, ...savedSearches]);
+      setSearchInput('');
+    }
+  };
+
+  // Function to delete the savedSearchBtn when pressed X
+  const handleRemoveSearch = (search: string) => {
+    setSavedSearches(savedSearches.filter((item) => item !== search));
+  };
+
   const [categoryName, setCategoryName] = useState<string[]>([]);
   // search results
   // const [data, setData] = useState(null)
@@ -279,21 +278,26 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   }
 
   return (
-    <div className="bg-[#F5F5F5] relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans">
+    <div className="bg-[#F5F5F5] relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans resize-x">
       <div className="flex flex-col w-11/12 gap-y-2">
+
         {/* Scroll bar of saved searches */}
         <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll">
-          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs" />
-          <SavedSearchBtn content="programming" clickStay={true} textSize="text-xs" />
-          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs" />
-          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs" />
-          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs" />
-          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs" />
+          {/* Map from savedSearches array state into each SavedSearchBtn component */}
+          {savedSearches.map((search, index) => (
+            <SavedSearchBtn
+              key={index}
+              content={search}
+              clickStay={true}
+              textSize="text-xs"
+              onRemove={() => handleRemoveSearch(search)}
+            />
+          ))}
         </div>
-        
+
         {/* Search Bar */}
         <div>
-          <SearchBar searchInput={searchInput} setSearchInput={setSearchInput}/>
+          <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} handleSaveSearch={handleSaveSearch} />
         </div>
 
         {/* Time and category row */}

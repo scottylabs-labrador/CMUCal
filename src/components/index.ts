@@ -5,3 +5,5 @@ export * from "./Search";
 export * from "./SearchCard";
 export * from "./SecondNav";
 export * from "./Footer";
+export * from "./SearchBar";
+export * from "./SavedSearches";
