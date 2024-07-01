@@ -199,7 +199,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   // const eventCategory1 = "academic";
   // const eventSubcategory1 = "OfficeHour";
   return (
-    <div className="bg-gray-200 relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans">
+    <div className="bg-[#F5F5F5] relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans">
       <div className="flex flex-col w-11/12 gap-y-2.5">
         <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll">
           <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>

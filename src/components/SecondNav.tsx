@@ -13,7 +13,7 @@ const SecondNavItem: React.FC<SecondNavItemProps> = ({ locationTo, title }) => {
       className={({ isActive }) =>
         isActive
           ? "text-teal border-b-[3px] border-teal text-2xl font-serif font-source-serif-pro pb-1"
-          : "text-gray-600 text-2xl font-serif font-source-serif-pro"
+          : "text-[#757575] text-2xl font-serif font-source-serif-pro"
       }
     >
       {title}

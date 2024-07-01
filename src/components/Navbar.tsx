@@ -7,7 +7,7 @@ import {
 } from "react-icons/io5";
 import { CiCircleQuestion } from "react-icons/ci";
 import { FaRegUserCircle } from "react-icons/fa";
-import CMUCalLogo from "./icons/CMUCalLogo.png";
+import Logo from "./icons/Logo.png";
 
 interface NavbarItemProps {
   locationTo: string;
@@ -70,13 +70,13 @@ const Navbar: React.FC = () => {
   // console.log(pathName);
 
   return (
-    <nav className="bg-red h-20 text-white text-lg sticky top-0 z-50 px-4 relative">
+    <nav className="bg-red h-[70px] text-white text-base sticky top-0 z-50 px-4 relative">
       <div className="text-white flex justify-between items-center pr-4 h-20 w-full">
         <Link
           to="/home/academics"
           className="text-white flex items-start h-80"
         >
-          <img src = {CMUCalLogo} className="object-contain h-full w-full"/>
+          <img src = {Logo} className="absolute left-10 top-4 object-contain h-3/5"/>
         </Link>
 
         {/* the rest of the nav bar won't show up on the welcome page */}
