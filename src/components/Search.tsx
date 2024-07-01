@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 // search input
-import { IoSearch } from "react-icons/io5";
-import { RxCross1 } from "react-icons/rx";
 import { SearchCard, SavedSearchBtn, SearchBar } from "./index";
 import Fuse from 'fuse.js'
-import DropInData from "../../backend/scraper/drop_in.json";
 // for date picker
 import dayjs, { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -19,11 +16,9 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import { categoryListAcademics, categoryListClubs, categoryListCareer } from "../types";
 // selectable dropdown
-// import { Dropdown } from "./Dropdown";
-import { Button } from "./Button";
-
 import "react-dropdown/style.css";
 import "./Search.css";
+
 // import useSearch from "../../utils/hooks/useSearch";
 import DITData from "../../backend/scraper/drop_in.json";
 import PTData from "../../backend/scraper/peer_tutoring.json";
