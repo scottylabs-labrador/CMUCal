@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoLocationSharp, IoAdd } from "react-icons/io5";
 import { FaRegClock, FaCheck } from "react-icons/fa";
+import { saveArrayToLocalStorage, getArrayFromLocalStorage } from "../utils/localStorageUtil";
+
+type ButtonClickHandler = () => void;
 
 interface SearchCardProps {
   eventName: string;
@@ -10,6 +13,7 @@ interface SearchCardProps {
   endDate: string;
   endTime: string;
   location: string;
+  addToSavedItems: ButtonClickHandler;
   // eventCategory: string;
   // eventSubcategory: string;
 }
@@ -22,15 +26,20 @@ const SearchCard: React.FC<SearchCardProps> = ({
   endDate,
   endTime,
   location,
+  addToSavedItems,
   // eventCategory,
   // eventSubcategory,
 }) => {
   const [buttonClicked, setButtonClicked] = useState(false);
   const [cardClicked, setCardClicked] = useState(false);
 
+  // const [savedItems, setSavedItems] = useState<string[]>([]);
+
+
   const handleAddToCalendar = () => {
     setButtonClicked((prevClicked) => !prevClicked);
     // Logic for calling GCal
+    addToSavedItems();
   };
 
   const handleCardClicked = () => {

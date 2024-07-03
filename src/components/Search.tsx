@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 // search input
 import { IoSearch } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
-import { SearchCard } from "./SearchCard";
-import Fuse from 'fuse.js'
-import DropInData from "../../backend/scraper/drop_in.json";
+// saved searches
+import { saveArrayToLocalStorage, getArrayFromLocalStorage } from "../utils/localStorageUtil";
 // for date picker
 import dayjs, { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -19,19 +18,12 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import { categoryListAcademics, categoryListClubs, categoryListCareer } from "../types";
 // selectable dropdown
-// import { Dropdown } from "./Dropdown";
 import { Button } from "./Button";
 
 import "react-dropdown/style.css";
 import "./Search.css";
 import { SavedSearchBtn } from "./SavedSearches";
-// import useSearch from "../../utils/hooks/useSearch";
-import DITData from "../../backend/scraper/drop_in.json";
-import PTData from "../../backend/scraper/peer_tutoring.json";
-import SIData from "../../backend/scraper/si.json";
-import ClubsData from "../../backend/scraper/tartanconnect.json";
-import CareerData from "../../backend/scraper/handshake.json";
-
+import SearchContent from "./SearchContent";
 
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
 
@@ -44,6 +36,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   // Chang name to search bar
   const [searchInput, setSearchInput] = useState("");
   const [categoryName, setCategoryName] = useState<string[]>([]);
+  const [savedItems, setSavedItems] = useState<string[]>([]);
   // search results
   // const [data, setData] = useState(null)
   // date picker
@@ -52,16 +45,36 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   const showDatePicker = true;
 
   
-  useEffect(()=> {
-    // const [data, setData] = useState([]);
+  useEffect(() => {
+    // Load the array from local storage when the component mounts
+    const storedItems = getArrayFromLocalStorage<string>('savedSearches');
+    setSavedItems(storedItems);
+    // clearSavedItems();
+    console.log(savedItems);
+  }, [searchInput]);
 
-    // const fuse = new Fuse(SIData, {
-    //   keys: ["course_id", "course_name"],
-    // });
+  const clearSavedItems = () => {
+    setSavedItems([]);
+    localStorage.removeItem('savedSearches');
+  };
 
-    // setData([fuse.search(searchInput)]);
-    getCategoryData(page);
-  },[categoryName])
+  const clearSingleSavedItems = (value:string) => {
+    const index:number = savedItems.indexOf(value);
+    const newArray = savedItems.slice(0,index).concat(savedItems.slice(index+1,-1));
+    setSavedItems(newArray);
+    saveArrayToLocalStorage('savedSearches', newArray);
+    // localStorage.removeItem('savedSearches');
+  };
+  
+  const addSavedItem = () => {
+    if (!savedItems.includes(searchInput)) {
+      const newItems = [...savedItems, searchInput];
+      setSavedItems(newItems);
+      saveArrayToLocalStorage('savedSearches', newItems);
+    } 
+    console.log(savedItems);
+  };
+
   
   
   // search
@@ -81,68 +94,6 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
-
-  const inDateRange = (date: string) => {
-    const startDateObj = startDate.toDate(); 
-    const endDateObj = endDate.toDate();
-    const eventDate = new Date(date);
-    return eventDate >= startDateObj && eventDate <= endDateObj;
-  }
-
-  const getCategoryData = (currPage:string) => {
-    // console.log("running category data");
-    switch(currPage) {
-      case "academics":
-        const optionsAcademics = { keys: ['resource_type', 'course_id', 'course_name'] }
-        let combinedData = [...DITData, ...SIData, ...PTData];
-        const fuseAcademics = new Fuse(combinedData, optionsAcademics);
-        // const fuse = new Fuse(SIData, options);
-        if (categoryName.length == 0 || categoryName.length==4) {
-          return fuseAcademics.search(searchInput);
-        } else {
-          if (!categoryName.includes("Supplemental Instructions")) {
-            fuseAcademics.remove((doc) => {
-              return doc.resource_type === 'SI';
-            })
-          }
-          if (!categoryName.includes("Drop-in Tutoring")) {
-            fuseAcademics.remove((doc) => {
-              return doc.resource_type === 'DIT';
-            })
-          }
-          if (!categoryName.includes("Peer Tutoring")) {
-            fuseAcademics.remove((doc) => {
-              return doc.resource_type === 'PT'
-            })
-          }
-          return fuseAcademics.search(searchInput);
-        }
-        break;
-      case "clubs":
-        const optionsClubs = { keys: ['resource_type', 'event_name', 'event_host', 'categories'] }
-        const fuseClubs = new Fuse(ClubsData, optionsClubs);
-        return fuseClubs.search(searchInput);
-        break;
-      case "career":
-        const optionsCareer = { keys: ['resource_type', 'event_name', 'event_host', 'categories'] }
-        const fuseCareer = new Fuse(CareerData, optionsCareer);
-        return fuseCareer.search(searchInput);
-        break;
-    }
-  }
-
-  const getWeekday = (weekday: number) => {
-    const today = new Date();
-    const dayOfWeekToday = today.getDay(); // 0 (Sunday) to 6 (Saturday)
-    const offSet = dayOfWeekToday - weekday;
-    if (offSet === 0 || offSet === 7) {
-      return today.toDateString();
-    } else {
-      const targetDay = new Date(today);
-      targetDay.setDate(today.getDate() - offSet);
-      return targetDay.toDateString();
-    }    
-  }
 
   const getNumCategories = () => {
     if (page==="academics") {
@@ -254,26 +205,17 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
     );
   }
 
-  // bogus values
-  const eventName1 = "Office Hours";
-  const orgName1 = "15-122 Course Staff";
-  const startDate1 = "06/17"
-  const startTime1 = "3PM"
-  const endDate1 = "06/17"
-  const endTime1 = "5PM"
-  const location1 = "POS 146";
-  // const eventCategory1 = "academic";
-  // const eventSubcategory1 = "OfficeHour";
   return (
     <div className="bg-[#F5F5F5] relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans">
       <div className="flex flex-col w-11/12 gap-y-2.5">
         <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll">
-          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
-          <SavedSearchBtn content="programming" clickStay={true} textSize="text-xs"/>
-          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
-          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
-          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
-          <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
+          {savedItems && savedItems.map((item, index) => {
+            return (
+              <SavedSearchBtn key={index} content={item} clickStay={true} clearSingleSavedItems={clearSingleSavedItems} textSize="text-xs"/>
+            )
+          })}
+          {/* <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
+          <SavedSearchBtn content="programming" clickStay={true} textSize="text-xs"/> */}
         </div>
         <div className="bg-gray-200 relative h-12 w-full rounded-md border border-black border-[1.5] flex items-center justify-center">
           <input
@@ -283,7 +225,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
             value={searchInput}
             className="bg-gray-200 flex-grow px-4 focus:outline-none"
           />
-          {/* Search icon. Add onClick function in the future */}
+          {/* Search icon */}
           {searchInput? 
             <RxCross1 onClick = {()=> setSearchInput("")} className="h-6 w-6 text-gray-500 mr-2" /> : 
             <IoSearch className="h-6 w-6 text-gray-500 mr-2" />
@@ -291,15 +233,16 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
           
         </div>
 
+        {/* drop down filter */}
         <div className="mt-3 flex w-full items-baseline justify-between">
           <div className="w-3/5 items-center flex flex-row justify-between space-x-2">{dateContent}</div>
-          {/* drop down filter */}
           {(page === "academics" || page === "clubs" || page==="career") ? (
             <div className="w-2/6">{categoryContent}</div>
           ) : (
             <></>
           )}
         </div>
+
         {/* <div className="w-full mt-2">{actionsMenuComp}</div> */}
         <div className="w-full mt-2 flex justify-between">
           {/* <Dropdown/> */}
@@ -308,45 +251,8 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
         </div>
         
         <div className="overflow-scroll" style={{height: '70vh'}}>
-        {searchInput && page==="academics" && getCategoryData(page)?.map( (result) => {
-          for (let i = 0; i<result.item.events.length; i++) {
-            if (inDateRange(getWeekday(result.item.events[i].weekday))) {
-              return ( 
-                  <SearchCard
-                    key={result.refIndex}
-                    eventName={`${result.item.resource_type} for ${result.item.course_name}`}
-                    orgName={`${result.item.course_id} Staff`}
-                    startDate={getWeekday(result.item.events[i].weekday) || `null`}
-                    startTime={result.item.events[i].start_time}
-                    endDate={getWeekday(result.item.events[i].weekday) || `null`}
-                    endTime={result.item.events[i].end_time}
-                    location={result.item.events[i].location}
-                  />
-              )
-            }  
-          }
-        })}
-        {searchInput && (page==="clubs" || page==="career") && getCategoryData(page)?.map( (result) => {
-          for (let i = 0; i<result.item.events.length; i++) {
-            if (inDateRange(getWeekday(result.item.events[i].weekday))) {
-              return ( 
-                  <SearchCard
-                    key={result.refIndex}
-                    eventName={`${result.item.event_name}`}
-                    orgName={`${result.item.event_host}`}
-                    startDate={getWeekday(result.item.events[i].weekday) || `null`}
-                    startTime={result.item.events[i].start_time}
-                    endDate={getWeekday(result.item.events[i].weekday) || `null`}
-                    endTime={result.item.events[i].end_time}
-                    location={result.item.events[i].location}
-                  />
-              )
-            }  
-          }
-        })}
+          { searchInput && <SearchContent searchInput={searchInput} page={page} categoryName={categoryName} startDate={startDate} endDate={endDate} addToSavedItems={addSavedItem}/>}
         </div>
-
-
         
       </div>
     </div>
