@@ -66,6 +66,14 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
     saveArrayToLocalStorage('savedSearches', newArray);
     // localStorage.removeItem('savedSearches');
   };
+
+  const enterSearchInput = (value:string) => {
+    setSearchInput(value);
+  }
+
+  const clearSearchInput = () => {
+    setSearchInput("");
+  }
   
   const addSavedItem = () => {
     if (!savedItems.includes(searchInput)) {
@@ -84,6 +92,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
     setSearchInput(e.target.value);
   };
 
+  // passed into CategoryDropdown component
   const handleChangeCategory = (event: SelectChangeEvent<typeof categoryName>) => {
     const {
       target: { value },
@@ -144,7 +153,8 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
         <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll">
           {savedItems && savedItems.map((item, index) => {
             return (
-              <SavedSearchBtn key={index} content={item} clickStay={true} clearSingleSavedItems={clearSingleSavedItems} textSize="text-xs"/>
+              <SavedSearchBtn key={index} content={item} clickStay={true} clearSingleSavedItems={clearSingleSavedItems} 
+              textSize="text-xs" enterSearchInput={enterSearchInput} clearSearchInput={clearSearchInput}/>
             )
           })}
         </div>
