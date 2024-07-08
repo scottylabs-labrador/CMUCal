@@ -17,8 +17,8 @@ interface SearchContentProps {
     searchInput: string;
     page: string;
     categoryName: string[] | string;
-    startDate: Dayjs;
-    endDate: Dayjs;
+    startDate: Dayjs | null;
+    endDate: Dayjs | null;
     addToSavedItems: ButtonClickHandler;
 
 }
@@ -69,8 +69,8 @@ const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, catego
     }
 
     const inDateRange = (date: string) => {
-        const startDateObj = startDate.toDate(); 
-        const endDateObj = endDate.toDate();
+        const startDateObj = startDate!.toDate(); 
+        const endDateObj = endDate!.toDate();
         const eventDate = new Date(date);
         return eventDate >= startDateObj && eventDate <= endDateObj;
     }
@@ -125,6 +125,7 @@ const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, catego
                                 endDate={getWeekday(result.item.events[i].weekday) || `null`}
                                 endTime={result.item.events[i].end_time}
                                 location={result.item.events[i].location}
+                                addToSavedItems={addToSavedItems}
                             />
                         )
                     }  

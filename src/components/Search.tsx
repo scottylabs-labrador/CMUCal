@@ -10,13 +10,13 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 // for categories dropdown
-import OutlinedInput from '@mui/material/OutlinedInput';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import ListItemText from '@mui/material/ListItemText';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Checkbox from '@mui/material/Checkbox';
-import { categoryListAcademics, categoryListClubs, categoryListCareer } from "../types";
+// import OutlinedInput from '@mui/material/OutlinedInput';
+// import MenuItem from '@mui/material/MenuItem';
+// import FormControl from '@mui/material/FormControl';
+// import ListItemText from '@mui/material/ListItemText';
+import { SelectChangeEvent } from '@mui/material/Select';
+// import Checkbox from '@mui/material/Checkbox';
+// import { categoryListAcademics, categoryListClubs, categoryListCareer } from "../types";
 // selectable dropdown
 import { Button } from "./Button";
 
@@ -24,6 +24,7 @@ import "react-dropdown/style.css";
 import "./Search.css";
 import { SavedSearchBtn } from "./SavedSearches";
 import SearchContent from "./SearchContent";
+import CategoryDropdown from "./CategoryDropdown";
 
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
 
@@ -40,8 +41,8 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   // search results
   // const [data, setData] = useState(null)
   // date picker
-  const [startDate, setStartDate] = useState<Dayjs>(dayjs());
-  const [endDate, setEndDate] = useState<Dayjs>(dayjs().add(7, 'day'));
+  const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
+  const [endDate, setEndDate] = useState<Dayjs | null>(dayjs().add(7, 'day'));
   const showDatePicker = true;
 
   
@@ -95,82 +96,14 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
     );
   };
 
-  const getNumCategories = () => {
-    if (page==="academics") {
-      return categoryListAcademics.length;
-    } else if (page==="clubs") {
-      return categoryListClubs.length;
-    } else if (page==="career") {
-      return categoryListCareer.length;
-    }
-  }
 
-  // style for dropdown filter
-	const ITEM_HEIGHT = 48;
-	const ITEM_PADDING_TOP = 8;
-	const MenuProps = {
-	  PaperProps: {
-		style: {
-		  maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-		  width: 450,
-		},
-	  },
-	};
 
-  const categoryContent = (
-    <FormControl className="w-full h-10">
-      {/* <InputLabel id="demo-multiple-checkbox-label">Categories</InputLabel> */}
-      <Select
-          multiple
-          displayEmpty
-          value={categoryName}
-          onChange={handleChangeCategory}
-          input={<OutlinedInput />}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <span>Categories</span>;
-            }
-            return selected.join(', ');
-          }}
-          MenuProps={MenuProps}
-          inputProps={{ 'aria-label': 'Without label' }}
-          className="bg-white h-10"
-        >
-        
-        <MenuItem disabled value="">
-          <em>Categories ({getNumCategories()})</em>
-        </MenuItem>
-       
-          
-          {/* different categories dropdown depending on the page */}
-        {page==="academics" && categoryListAcademics.map((category) => (
-          <MenuItem key={category} value={category}>
-            <Checkbox checked={categoryName.indexOf(category) > -1} />
-            <ListItemText primary={category} />
-          </MenuItem>
-        ))}
-        {page==="clubs" && categoryListClubs.map((category) => (
-          <MenuItem key={category} value={category}>
-            <Checkbox checked={categoryName.indexOf(category) > -1} />
-            <ListItemText primary={category} />
-          </MenuItem>
-        ))}
-        {page==="career" && categoryListCareer.map((category) => (
-          <MenuItem key={category} value={category}>
-            <Checkbox checked={categoryName.indexOf(category) > -1} />
-            <ListItemText primary={category} />
-          </MenuItem>  
-        ))}
-      </Select>
-    </FormControl>
-  );
-
-  const startDateFn = (date: Dayjs) => {
+  const startDateFn = (date: Dayjs|null) => {
     setStartDate(date);
     console.log(`start: ${date}`);
   };
 
-  const endDateFn = (date: Dayjs) => {
+  const endDateFn = (date: Dayjs|null) => {
     setEndDate(date);
     console.log(`end: ${date}`);
   };
@@ -184,7 +117,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
         <div className="w-36">
           <DatePicker
             value={startDate}
-            onChange={(date) => {
+            onChange={(date: Dayjs | null) => {
               startDateFn(date);
             }}
             format="MM/DD"
@@ -214,10 +147,9 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
               <SavedSearchBtn key={index} content={item} clickStay={true} clearSingleSavedItems={clearSingleSavedItems} textSize="text-xs"/>
             )
           })}
-          {/* <SavedSearchBtn content="15122" clickStay={true} textSize="text-xs"/>
-          <SavedSearchBtn content="programming" clickStay={true} textSize="text-xs"/> */}
         </div>
         <div className="bg-gray-200 relative h-12 w-full rounded-md border border-black border-[1.5] flex items-center justify-center">
+          {/* search bar */}
           <input
             type="text"
             placeholder="Search here"
@@ -237,7 +169,10 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
         <div className="mt-3 flex w-full items-baseline justify-between">
           <div className="w-3/5 items-center flex flex-row justify-between space-x-2">{dateContent}</div>
           {(page === "academics" || page === "clubs" || page==="career") ? (
-            <div className="w-2/6">{categoryContent}</div>
+            // <div className="w-2/6">{categoryContent}</div>
+            <div className="w-2/6">
+              <CategoryDropdown page={page} categoryName={categoryName} handleChangeCategory={handleChangeCategory} />
+            </div>
           ) : (
             <></>
           )}
