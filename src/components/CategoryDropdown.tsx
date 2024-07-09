@@ -25,7 +25,8 @@ const CategoryDropdown:React.FC<CategoryDropdownProps> = ({page, categoryName, h
 	  PaperProps: {
 		style: {
 		  maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-		  width: 450,
+		  // width: 300,
+      // overflow: scroll,
 		},
 	  },
 	};
@@ -59,6 +60,7 @@ const CategoryDropdown:React.FC<CategoryDropdownProps> = ({page, categoryName, h
             MenuProps={MenuProps}
             inputProps={{ 'aria-label': 'Without label' }}
             className="bg-white h-10"
+            autoWidth
             >
             
             <MenuItem disabled value="">
