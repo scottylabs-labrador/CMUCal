@@ -1,5 +1,6 @@
 import React from "react";
 import { SecondNav, MyCalendar, Search, Footer } from "../components";
+import Calendar from "../components/calendar/Calendar";
 
 const Careers: React.FC = () => {
   return (
@@ -14,7 +15,8 @@ const Careers: React.FC = () => {
           </div>
 
           <div className="Calendar">
-            <MyCalendar />
+            {/* <MyCalendar /> */}
+            <Calendar />
           </div>
         </div>
       </div>
