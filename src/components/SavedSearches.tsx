@@ -26,7 +26,7 @@ const SavedSearchBtn: React.FC<ButtonComponentProps> = ({ content, clickStay, te
 
     const handleMainClick = () => {
         setDisplayx(true);
-        setGreenBg(!greenBg);
+        // setGreenBg(!greenBg);
         setButtonClicked(!buttonClicked);
         buttonClicked? enterSearchInput(content):clearSearchInput();
     }
