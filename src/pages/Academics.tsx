@@ -1,5 +1,6 @@
 import React from "react";
 import { SecondNav, MyCalendar, Search, Footer } from "../components";
+import Calendar from "../components/calendar/Calendar";
 
 // Take userID --> Put into link 
 // const EmbeddedCalendar: React.FC = () => {
@@ -30,8 +31,9 @@ const Academics: React.FC = () => {
             <Search page={"academics"}/>
           </div>
 
-          <div className="Calendar">
-            <MyCalendar />
+          <div className="Calendar pt-8">
+            {/* <MyCalendar /> */}
+            <Calendar />
           </div>
         </div>
       </div>

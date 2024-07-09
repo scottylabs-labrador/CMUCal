@@ -2,18 +2,22 @@ import React, { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 
 type ButtonClickHandler = (value:string) => void;
+type clearType = () => void;
 
 interface ButtonComponentProps {
     content: string;
     clickStay: boolean;
     textSize: string;
     clearSingleSavedItems: ButtonClickHandler;
-    buttonClicked?: boolean;
+    enterSearchInput: ButtonClickHandler;
+    clearSearchInput: clearType;
+    // buttonClicked?: boolean;
 }
 
-const SavedSearchBtn: React.FC<ButtonComponentProps> = ({ content, clickStay, textSize, clearSingleSavedItems, buttonClicked }) => {
+const SavedSearchBtn: React.FC<ButtonComponentProps> = ({ content, clickStay, textSize, clearSingleSavedItems, enterSearchInput, clearSearchInput }) => {
     const [displayx, setDisplayx] = useState(true);
     const [greenBg, setGreenBg] = useState(true);
+    const [buttonClicked, setButtonClicked] = useState(false);
 
     const handleXClick = () => {
         // setDisplayx(false);
@@ -24,6 +28,8 @@ const SavedSearchBtn: React.FC<ButtonComponentProps> = ({ content, clickStay, te
     const handleMainClick = () => {
         setDisplayx(true);
         setGreenBg(!greenBg);
+        setButtonClicked(!buttonClicked);
+        buttonClicked? enterSearchInput(content):clearSearchInput();
     }
 
     return (
