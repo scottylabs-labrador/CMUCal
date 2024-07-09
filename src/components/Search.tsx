@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from "react";
 // search input
+import { SearchCard, SavedSearchBtn, SearchBar } from "./index";
+import Fuse from 'fuse.js'
 import { IoSearch } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 // saved searches
 import { saveArrayToLocalStorage, getArrayFromLocalStorage } from "../utils/localStorageUtil";
+
 // for date picker
 import dayjs, { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// for categories dropdown
-// import OutlinedInput from '@mui/material/OutlinedInput';
-// import MenuItem from '@mui/material/MenuItem';
-// import FormControl from '@mui/material/FormControl';
-// import ListItemText from '@mui/material/ListItemText';
 import { SelectChangeEvent } from '@mui/material/Select';
-// import Checkbox from '@mui/material/Checkbox';
-// import { categoryListAcademics, categoryListClubs, categoryListCareer } from "../types";
-// selectable dropdown
-import { Button } from "./Button";
 
 import "react-dropdown/style.css";
 import "./Search.css";
+import { Button } from "./Button";
+
 import { SavedSearchBtn } from "./SavedSearches";
 import SearchContent from "./SearchContent";
 import CategoryDropdown from "./CategoryDropdown";
+
 
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
 
@@ -36,15 +33,14 @@ interface SearchComponentProps {
 const Search: React.FC<SearchComponentProps> = ({ page }) => {
   // Chang name to search bar
   const [searchInput, setSearchInput] = useState("");
+
   const [categoryName, setCategoryName] = useState<string[]>([]);
   const [savedItems, setSavedItems] = useState<string[]>([]);
-  // search results
-  // const [data, setData] = useState(null)
+
   // date picker
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
   const [endDate, setEndDate] = useState<Dayjs | null>(dayjs().add(7, 'day'));
   const showDatePicker = true;
-
   
   useEffect(() => {
     // Load the array from local storage when the component mounts
@@ -53,6 +49,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
     // clearSavedItems();
     console.log(savedItems);
   }, [searchInput]);
+ 
 
   const clearSavedItems = () => {
     setSavedItems([]);
@@ -67,6 +64,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
     // localStorage.removeItem('savedSearches');
   };
 
+
   const enterSearchInput = (value:string) => {
     setSearchInput(value);
   }
@@ -76,14 +74,33 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   }
   
   const addSavedItem = () => {
-    if (!savedItems.includes(searchInput)) {
-      const newItems = [...savedItems, searchInput];
-      setSavedItems(newItems);
-      saveArrayToLocalStorage('savedSearches', newItems);
-    } 
+//     if (!savedItems.includes(searchInput)) {
+//       const newItems = [...savedItems, searchInput];
+//       setSavedItems(newItems);
+//       saveArrayToLocalStorage('savedSearches', newItems);
+//     } 
+    
+    // If searchInput is already in savedSearches, delete the elem in the array 
+      if (savedItems.includes(searchInput)) {
+        const index = savedItems.indexOf(searchInput);
+        if (index > -1) { 
+          savedItems.splice(index, 1); 
+        }
+      }
+      // Then, add the element at the beginning of the array
+      setSavedItems([searchInput, ...savedItems]);
+      saveArrayToLocalStorage('savedSearches', savedItems);
     console.log(savedItems);
   };
-
+  
+    
+  // Function to handle when search bar is enterred 
+  const handleSaveSearch = () => {
+    if (searchInput) {
+      
+      setSearchInput('');
+    }
+  };
   
   
   // search
@@ -91,6 +108,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
     e.preventDefault();
     setSearchInput(e.target.value);
   };
+
 
   // passed into CategoryDropdown component
   const handleChangeCategory = (event: SelectChangeEvent<typeof categoryName>) => {
@@ -121,7 +139,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   let dateContent;
   if (showDatePicker) {
     dateContent = (
-      <>      
+      <>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
         <div className="w-36">
           <DatePicker
@@ -148,8 +166,10 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   }
 
   return (
-    <div className="bg-[#F5F5F5] relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans">
-      <div className="flex flex-col w-11/12 gap-y-2.5">
+    <div className="bg-[#F5F5F5] relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans resize-x">
+      <div className="flex flex-col w-11/12 gap-y-2">
+
+        {/* Scroll bar of saved searches */}
         <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll">
           {savedItems && savedItems.map((item, index) => {
             return (
@@ -187,8 +207,8 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
             <></>
           )}
         </div>
+        
 
-        {/* <div className="w-full mt-2">{actionsMenuComp}</div> */}
         <div className="w-full mt-2 flex justify-between">
           {/* <Dropdown/> */}
           <Button content="Add All" clickStay={false} textSize="text-base"/>
@@ -204,4 +224,4 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   );
 }
 
-export {Search};
+export { Search };

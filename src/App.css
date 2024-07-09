@@ -9,26 +9,8 @@
 	font-family: "Open Sans", sans-serif;
 }
 
-:root {
-	--tan: #bcb49e;
-	--beige: #e4dac4;
-	--teal: #1f4c4c;
-	--green: #719f94;
-	--blue: #182c4b;
-	--red: #C41230;
-}
-
-
-
-.sign-up {
-	color: #fff;
-	font-size: 100px;
-}
-
-.searchCol {
-	width: 40%;
-}
 .Calendar {
+	margin-top: 40px;
 	width: 55%;
 	margin-right: 3%;
 }

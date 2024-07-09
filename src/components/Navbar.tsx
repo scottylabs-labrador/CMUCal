@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
           to="/home/academics"
           className="text-white flex items-start h-80"
         >
-          <img src = {Logo} className="absolute left-10 top-4 object-contain h-3/5"/>
+          <img src = {Logo} className="absolute left-8 top-4 object-contain h-3/5"/>
         </Link>
 
         {/* the rest of the nav bar won't show up on the welcome page */}

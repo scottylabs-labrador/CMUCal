@@ -11,7 +11,6 @@ interface ButtonComponentProps {
     clearSingleSavedItems: ButtonClickHandler;
     enterSearchInput: ButtonClickHandler;
     clearSearchInput: clearType;
-    // buttonClicked?: boolean;
 }
 
 const SavedSearchBtn: React.FC<ButtonComponentProps> = ({ content, clickStay, textSize, clearSingleSavedItems, enterSearchInput, clearSearchInput }) => {
@@ -37,7 +36,6 @@ const SavedSearchBtn: React.FC<ButtonComponentProps> = ({ content, clickStay, te
             (clickStay && greenBg) ? "bg-teal text-white" : ""} `}>
             <span onClick={handleMainClick}>{content}</span>
             {displayx && <RxCross1 onClick={handleXClick} className={`h-4 w-3 ${greenBg? "text-gray-200" : ""} ml-3 mr-0.5`} />}
-            
         </button>
     )
 
