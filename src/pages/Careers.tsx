@@ -14,7 +14,7 @@ const Careers: React.FC = () => {
             <Search page={"career"} />
           </div>
 
-          <div className="Calendar pt-8">
+          <div className="Calendar">
             {/* <MyCalendar /> */}
             <Calendar />
           </div>
