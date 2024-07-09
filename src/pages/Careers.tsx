@@ -1,5 +1,6 @@
 import React from "react";
 import { SecondNav, MyCalendar, Search, Footer } from "../components";
+import Calendar from "../components/calendar/Calendar";
 
 const Careers: React.FC = () => {
   return (
@@ -13,8 +14,9 @@ const Careers: React.FC = () => {
             <Search page={"career"} />
           </div>
 
-          <div className="Calendar">
-            <MyCalendar />
+          <div className="Calendar pt-8">
+            {/* <MyCalendar /> */}
+            <Calendar />
           </div>
         </div>
       </div>

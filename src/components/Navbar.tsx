@@ -30,7 +30,10 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
       onClick={onClick}
       className="text-white no-underline h-full flex items-center p-1 flex flex-col justify-center items-center gap-1 group"
     >
+
       <div className="group-hover:text-teal transition-colors">{image}</div>
+
+      
       {!isProfileLink && (
         <p className="text-white font-open-sans text-base font-normal group-hover:text-teal">
           {title}
@@ -121,7 +124,9 @@ const Navbar: React.FC = () => {
               locationTo="/profile"
               onClick={closeMobileMenu}
               title=""
-              image={<FaRegUserCircle />}
+              image={
+                <FaRegUserCircle size={30}/>
+              }
             />
           </li>
         </ul>
