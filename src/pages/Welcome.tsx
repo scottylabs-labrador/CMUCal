@@ -14,6 +14,7 @@ function GoogleSigninButton() {
       <GoogleLogin
         onSuccess={(credentialResponse) => {
           console.log(credentialResponse);
+          console.log("Log in successful");
           routeChange();
         }}
         onError={() => {

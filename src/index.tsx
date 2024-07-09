@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {App} from './App';
+import { App } from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
+const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+
+if (!googleClientId) {
+  throw new Error('VITE_GOOGLE_CLIENT_ID is not defined');
+}
+
 root.render(
-  <GoogleOAuthProvider clientId="1066229695792-3nui1uf9nrlc1ukjrjqup716trqovq1m.apps.googleusercontent.com">
+  <GoogleOAuthProvider clientId={googleClientId}>
     <React.StrictMode>
       <BrowserRouter>
         <App />
