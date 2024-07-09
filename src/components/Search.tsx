@@ -56,7 +56,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
 
   const clearSingleSavedItems = (value:string) => {
     const index:number = savedItems.indexOf(value);
-    const newArray = savedItems.slice(0,index).concat(savedItems.slice(index+1,-1));
+    const newArray = savedItems.slice(0,index).concat(savedItems.slice(index+1,));
     setSavedItems(newArray);
     saveArrayToLocalStorage('savedSearches', newArray);
     // localStorage.removeItem('savedSearches');
@@ -73,7 +73,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   
   const addSavedItem = () => {
     // if (!savedItems.includes(searchInput)) {
-    //   const newItems = [...savedItems, searchInput];
+    //   const newItems = [searchInput, ...savedItems];
     //   setSavedItems(newItems);
     //   saveArrayToLocalStorage('savedSearches', newItems);
     // } 
@@ -85,11 +85,12 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
           savedItems.splice(index, 1); 
         }
       }
-      if (!savedItems.includes(searchInput)) {
-        // Then, add the element at the beginning of the array
-        setSavedItems([searchInput, ...savedItems]);
-        saveArrayToLocalStorage('savedSearches', savedItems);
-      }
+    if (!savedItems.includes(searchInput)) {
+      const newItems = [searchInput, ...savedItems];
+      setSavedItems(newItems);
+      saveArrayToLocalStorage('savedSearches', newItems);
+    } 
+
     console.log(savedItems);
   };
   
