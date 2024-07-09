@@ -17,8 +17,6 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import "react-dropdown/style.css";
 import "./Search.css";
 import { Button } from "./Button";
-
-import { SavedSearchBtn } from "./SavedSearches";
 import SearchContent from "./SearchContent";
 import CategoryDropdown from "./CategoryDropdown";
 
@@ -74,22 +72,24 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   }
   
   const addSavedItem = () => {
-//     if (!savedItems.includes(searchInput)) {
-//       const newItems = [...savedItems, searchInput];
-//       setSavedItems(newItems);
-//       saveArrayToLocalStorage('savedSearches', newItems);
-//     } 
+    // if (!savedItems.includes(searchInput)) {
+    //   const newItems = [...savedItems, searchInput];
+    //   setSavedItems(newItems);
+    //   saveArrayToLocalStorage('savedSearches', newItems);
+    // } 
     
     // If searchInput is already in savedSearches, delete the elem in the array 
-      if (savedItems.includes(searchInput)) {
+      if (savedItems.includes(searchInput) && (savedItems.length > 1)) {
         const index = savedItems.indexOf(searchInput);
         if (index > -1) { 
           savedItems.splice(index, 1); 
         }
       }
-      // Then, add the element at the beginning of the array
-      setSavedItems([searchInput, ...savedItems]);
-      saveArrayToLocalStorage('savedSearches', savedItems);
+      if (!savedItems.includes(searchInput)) {
+        // Then, add the element at the beginning of the array
+        setSavedItems([searchInput, ...savedItems]);
+        saveArrayToLocalStorage('savedSearches', savedItems);
+      }
     console.log(savedItems);
   };
   
