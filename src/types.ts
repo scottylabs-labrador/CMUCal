@@ -12,6 +12,13 @@ export const categoryListAcademics = [
     "Drop-in Tutoring",
     "Peer Tutoring"
   ];
+
+export const categoryShorthandAcademics = [
+    "OH",
+    "SI",
+    "DIT",
+    "PT"
+]
   
 export const categoryListClubs = [ //called Event Types on TartanConnect
     "Academic", "Admissions", "Alumni", "Career Recruiting",

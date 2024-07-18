@@ -17,6 +17,7 @@ interface CategoryDropdownProps {
     handleChangeCategory: ButtonClickHandler;
   }
 
+// will apply the filters in SearchContent.tsx
 const CategoryDropdown:React.FC<CategoryDropdownProps> = ({page, categoryName, handleChangeCategory}) => {
     // style for dropdown filter
 	const ITEM_HEIGHT = 48;

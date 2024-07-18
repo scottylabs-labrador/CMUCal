@@ -8,7 +8,7 @@ import PTData from "../../backend/scraper/peer_tutoring.json";
 import SIData from "../../backend/scraper/si.json";
 import ClubsData from "../../backend/scraper/tartanconnect.json";
 import CareerData from "../../backend/scraper/handshake.json";
-import { getArrayFromLocalStorage, saveArrayToLocalStorage } from "../utils/localStorageUtil";
+import { categoryListAcademics, categoryShorthandAcademics, categoryListClubs, categoryListCareer, Clubs_type, Career_type } from "../types";
 
 
 type ButtonClickHandler = () => void;
@@ -27,43 +27,69 @@ const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, catego
     const props  = { searchInput, page, categoryName, startDate, endDate, addToSavedItems };
 
     const getCategoryData = (currPage:string) => {
-        // console.log("running category data");
+        // this is where we apply the category filters
         switch(currPage) {
           case "academics":
             const optionsAcademics = { keys: ['resource_type', 'course_id', 'course_name'] }
             let combinedData = [...DITData, ...SIData, ...PTData];
             const fuseAcademics = new Fuse(combinedData, optionsAcademics);
             // const fuse = new Fuse(SIData, options);
-            if (categoryName.length == 0 || categoryName.length==4) {
+            if (categoryName.length == 0) {
               return fuseAcademics.search(searchInput);
             } else {
-              if (!categoryName.includes("Supplemental Instructions")) {
-                fuseAcademics.remove((doc) => {
-                  return doc.resource_type === 'SI';
-                })
-              }
-              if (!categoryName.includes("Drop-in Tutoring")) {
-                fuseAcademics.remove((doc) => {
-                  return doc.resource_type === 'DIT';
-                })
-              }
-              if (!categoryName.includes("Peer Tutoring")) {
-                fuseAcademics.remove((doc) => {
-                  return doc.resource_type === 'PT'
-                })
+              // need to add OH later --> change to let i = 0
+              for (let i = 1; i<categoryListAcademics.length; i++) {
+                if (!categoryName.includes(categoryListAcademics[i])) {
+                  fuseAcademics.remove((doc) => {
+                    return doc.resource_type === categoryShorthandAcademics[i];
+                  })
+                }
               }
               return fuseAcademics.search(searchInput);
             }
             break;
           case "clubs":
             const optionsClubs = { keys: ['resource_type', 'event_name', 'event_host', 'categories'] }
-            const fuseClubs = new Fuse(ClubsData, optionsClubs);
-            return fuseClubs.search(searchInput);
+            
+            if (categoryName.length == 0) {
+              const fuseClubs = new Fuse(ClubsData, optionsClubs);
+              return fuseClubs.search(searchInput);
+            } else {
+              const len = categoryName.length;
+              const checkMembershipClubs = (item: Clubs_type) => {
+                let values = [];
+                for (let i = 0; i<len; i++) {
+                  values.push(item.categories.includes(categoryName[i]))
+                };
+                return values.includes(true);
+              }
+
+              let filteredData = ClubsData.filter(checkMembershipClubs);
+              const fuseClubs = new Fuse(filteredData, optionsClubs)
+              return fuseClubs.search(searchInput);
+            }
             break;
           case "career":
             const optionsCareer = { keys: ['resource_type', 'event_name', 'event_host', 'categories'] }
-            const fuseCareer = new Fuse(CareerData, optionsCareer);
-            return fuseCareer.search(searchInput);
+            
+            if (categoryName.length == 0) {
+              const fuseCareer = new Fuse(CareerData, optionsCareer);
+              return fuseCareer.search(searchInput);
+            } else {
+              const len = categoryName.length;
+              const checkMembershipCareer = (item: Career_type) => {
+                let values = [];
+                for (let i = 0; i<len; i++) {
+                  values.push(item.categories.includes(categoryName[i]))
+                };
+                return values.includes(true);
+              }
+
+              let filteredData = CareerData.filter(checkMembershipCareer);
+              const fuseCareer = new Fuse(filteredData, optionsCareer)
+              return fuseCareer.search(searchInput);
+            }
+
             break;
         }
     }

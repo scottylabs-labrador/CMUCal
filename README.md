@@ -5,3 +5,4 @@ The repository is written using `React` + `React-Router` + `Tailwind-CSS`
 npm install
 npm start build
 ```
+npm run dev
