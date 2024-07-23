@@ -11,6 +11,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { INITIAL_EVENTS, createEventId } from './event-utils';
+// import googleCalendarPlugin from '@fullcalendar/google-calendar';
 
 // https://github.com/fullcalendar/fullcalendar-examples/blob/main/react-typescript/src/DemoApp.tsx
 
@@ -38,7 +39,7 @@ export default class Calendar extends React.Component<{}, CalendarState> {
               center: 'title',
               right: 'dayGridMonth,timeGridWeek,timeGridDay'
             }}
-            initialView='dayGridMonth'
+            initialView='dayGridWeek'
             editable={true}
             selectable={true}
             selectMirror={true}
