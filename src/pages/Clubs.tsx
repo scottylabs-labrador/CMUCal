@@ -1,6 +1,6 @@
 import React from 'react'
 import { SecondNav, MyCalendar, Search, Footer } from "../components";
-import Calendar from '../components/calendar/Calendar';
+import Calendar from "../components/calendar/Calendar";
 
 const Clubs: React.FC = () => {
   return (

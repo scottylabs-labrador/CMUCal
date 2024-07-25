@@ -122,8 +122,8 @@ const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, catego
                         return ( 
                             <SearchCard
                                 key={index}
-                                eventName={`${result.item.resource_type} for ${result.item.course_name}`}
-                                orgName={`${result.item.course_id} Staff`}
+                                eventName={`${result.item.resource_type} for ${result.item.course_id} ${result.item.course_name}`}
+                                orgName={`Staff`}
                                 startDate={getWeekday(result.item.events[i].weekday) || `null`}
                                 startTime={result.item.events[i].start_time}
                                 endDate={getWeekday(result.item.events[i].weekday) || `null`}
