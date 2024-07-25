@@ -3,11 +3,11 @@ import { SearchCard } from "./SearchCard";
 import Fuse from 'fuse.js';
 import dayjs, { Dayjs } from 'dayjs';
 
-import DITData from "../../backend/scraper/drop_in.json";
-import PTData from "../../backend/scraper/peer_tutoring.json";
-import SIData from "../../backend/scraper/si.json";
-import ClubsData from "../../backend/scraper/tartanconnect.json";
-import CareerData from "../../backend/scraper/handshake.json";
+import DITData from "../../backend_scraper/scraper/drop_in.json";
+import PTData from "../../backend_scraper/scraper/peer_tutoring.json";
+import SIData from "../../backend_scraper/scraper/si.json";
+import ClubsData from "../../backend_scraper/scraper/tartanconnect.json";
+import CareerData from "../../backend_scraper/scraper/handshake.json";
 import { categoryListAcademics, categoryShorthandAcademics, categoryListClubs, categoryListCareer, Clubs_type, Career_type } from "../types";
 
 
