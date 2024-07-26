@@ -214,6 +214,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
           {/* <Dropdown/> */}
           <Button content="Add All" clickStay={false} textSize="text-base"/>
           <Button content="Reset CMUCal Events" clickStay={false} textSize="text-base"/>
+          {/* <Button content="Upload to GCal" bgColor={true} clickStay={false} textSize="text-base"/> */}
         </div>
         
         <div className="overflow-scroll" style={{height: '70vh'}}>
