@@ -1,21 +1,32 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function GoogleSigninButton() {
   let navigate = useNavigate();
+
   const routeChange = () => {
     let path = `/home/academics`;
     navigate(path);
-  }
+  };
+
+  const handleLoginSuccess = async (credentialResponse: any) => {
+
+    // Send the credential to your Flask backend
+    try {
+      const response = await axios.get('/login'); 
+      console.log("Backend response:", response.data);
+      routeChange();
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
+  };
 
   return (
     <>
       <GoogleLogin
-        onSuccess={(credentialResponse) => {
-          console.log(credentialResponse);
-          routeChange();
-        }}
+        onSuccess={handleLoginSuccess}
         onError={() => {
           console.log("Login Failed");
         }}
@@ -23,6 +34,7 @@ function GoogleSigninButton() {
     </>
   );
 }
+
 
 const About: React.FC = () => {
   return (
@@ -49,10 +61,7 @@ const Video: React.FC = () => {
   );
 };
 
-function Welcome() {
-  // Code to do after logging in
-  const handleClick = () => { };
-
+const Welcome: React.FC = () => {
   return (
     <>
       <div className="h-4/5 bg-lightgrey text-center">
@@ -73,6 +82,6 @@ function Welcome() {
       </div>
     </>
   );
-}
+};
 
 export { Welcome };
