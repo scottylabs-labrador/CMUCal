@@ -30,7 +30,8 @@ export default function Calendar() {
     const [events, setEvents] = useState<any[]>([]);
     const [weekendsVisible, setWeekendsVisible] = useState<boolean>(true);
     const [currentEvents, setCurrentEvents] = useState<EventApi[]>();
-    const [currView, setCurrView] = useState<string>('month');
+    const [currView, setCurrView] = useState<string>('dayGridMonth');
+    const [showGCal, setShowGCal] = useState<boolean>(false);
 
     const calendarRef = useRef<FullCalendar>(null);
 
@@ -39,12 +40,12 @@ export default function Calendar() {
         setCurrView(value);
         if (calendarRef.current) {
             const calendarApi = calendarRef.current.getApi();
-        if (value === 'today') {
-            calendarApi.today();
-        } else {
-            calendarApi.changeView(value!);
+            if (value === 'today') {
+                calendarApi.today();
+            } else {
+                calendarApi.changeView(value!);
+            }
         }
-    }
       };
 
     const handleDateSelect = (selectInfo: DateSelectArg) => {
@@ -76,20 +77,42 @@ export default function Calendar() {
     
     
     return (
-        <div>
+        <div className="relative">
+            <div className="absolute top-0 z-10 left-44 bg-blue rounded-md">
+                {/* className="absolute top-0 z-10 left-28" */}
+              <FormControl fullWidth>
+                <Select
+                id="simple-select"
+                value={currView}
+                onChange={handleDropdown}
+                style={{color: 'white', height: 42, width: 100, textAlign: 'center'}}
+                >
+                    <MenuItem value={"dayGridMonth"}>month</MenuItem>
+                    <MenuItem value={"timeGridWeek"}>week</MenuItem>
+                    <MenuItem value={"timeGridDay"}>day</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
             <FullCalendar
+            ref={calendarRef}
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             headerToolbar={{
-                left: "prev,next today myCustomButton",
+                left: "prev,next today customDropdown",
                 center: "title",
-                right: "dayGridMonth,timeGridWeek,timeGridDay"
+                right: "GCalBtn"
             }}
+            // dayGridMonth,timeGridWeek,timeGridDay
+            // today 
             // events={events}
             customButtons={{
-                customDropdown: {
-                    text: 'View',
-                    click: () => {}
-                }
+              customDropdown: {
+                  text: 'month',
+                  click: () => {}
+              },
+              GCalBtn: {
+                text: `${showGCal? 'Hide GCal events': 'Show GCal events'}`,
+                click: () => {setShowGCal((prev)=> !prev)}
+              }
             }}
             editable={true}
             selectable={true}
@@ -107,18 +130,8 @@ export default function Calendar() {
             eventRemove={function(){}}
             */
             />
-            <FormControl fullWidth title="View">
-                <Select
-                id="simple-select"
-                value={currView}
-                onChange={handleDropdown}
-                >
-                    <MenuItem value={"dayGridMonth"}>month</MenuItem>
-                    <MenuItem value={"timeGridWeek"}>week</MenuItem>
-                    <MenuItem value={"timeGridDay"}>day</MenuItem>
-                    <MenuItem value={"today"}>today</MenuItem>
-                </Select>
-            </FormControl>
+            
+            
         </div>
     );
     }
