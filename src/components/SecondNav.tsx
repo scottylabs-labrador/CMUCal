@@ -2,38 +2,49 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 interface SecondNavItemProps {
-  locationTo: string;
+  page: string;
+  setPage: React.Dispatch<React.SetStateAction<string>>;
+  currPage: string;
   title: string;
 }
 
-const SecondNavItem: React.FC<SecondNavItemProps> = ({ locationTo, title }) => {
+const SecondNavItem = ({ page, setPage, currPage, title }: SecondNavItemProps) => {
+  const isActive = page === currPage;
+  const handleClick = () => {
+    setPage(_=> currPage);
+  }
   return (
-    <NavLink
-      to={locationTo}
-      className={({ isActive }) =>
+    <p
+      className={
         isActive
           ? "text-teal border-b-[3px] border-teal text-2xl font-serif font-source-serif-pro pb-1"
           : "text-[#757575] text-2xl font-serif font-source-serif-pro"
       }
+      onClick={()=>handleClick()}
     >
       {title}
-    </NavLink>
+    </p>
   );
 };
 
-const SecondNav: React.FC = () => {
+interface SecondNavProps {
+  page: string;
+  setPage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const SecondNav = ({page, setPage}: SecondNavProps) => {
   return (
     <nav>
       <div className="shadow-md py-0">
         <ul className="p-2 mx-auto list-none flex items-center justify-around w-3/5 h-full">
           <li>
-            <SecondNavItem locationTo="/home/academics" title="Academics" />
+            <SecondNavItem page={page} setPage={setPage} currPage="academics" title="Academics" />
           </li>
           <li>
-            <SecondNavItem locationTo="/home/clubs" title="Clubs" />
+            <SecondNavItem page={page} setPage={setPage} currPage="clubs" title="Clubs" />
           </li>
           <li>
-            <SecondNavItem locationTo="/home/career" title="Career" />
+            <SecondNavItem page={page} setPage={setPage} currPage="career" title="Career" />
           </li>
         </ul>
       </div>

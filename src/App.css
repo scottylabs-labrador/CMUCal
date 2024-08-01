@@ -10,16 +10,29 @@
 }
 
 .Calendar {
-	margin-top: 40px;
+	margin-top: 20px;
 	width: 55%;
 	margin-right: 3%;
 }
 
-.Calendar .calendar-body {
+.CalendarFull {
+	width: 80%;
+	margin-top: 20px;
+	margin-right: 3%;
+}
+
+/* .Calendar .calendar-body {
 	grid-template-columns: repeat(7, minmax(40px, 1fr));
 	grid-template-rows: 40px;
 	grid-auto-rows: minmax(100px, auto);
 }
+
+.CalendarFull .calendar-body {
+	grid-template-columns: repeat(7, minmax(30px, 1fr));
+	grid-template-rows: 30px;
+	grid-auto-rows: minmax(100px, auto);
+} */
+
 
 .Calendar .day {
 	margin-top: 0;

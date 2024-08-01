@@ -1,6 +1,3 @@
-export * from "./Academics";
-export * from "./Careers";
-export * from "./Clubs";
 export * from "./Support";
 export * from "./Upload";
 export * from "./UploadFile";
@@ -9,3 +6,4 @@ export * from "./UploadNavBar";
 export * from "./UploadManual";
 export * from "./UploadRevise";
 export * from "./Welcome";
+export * from "./Home";
