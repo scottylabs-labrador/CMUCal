@@ -7,7 +7,7 @@ function GoogleSigninButton() {
   let navigate = useNavigate();
 
   const routeChange = () => {
-    let path = `/home/academics`;
+    let path = `/home`;
     navigate(path);
   };
 
