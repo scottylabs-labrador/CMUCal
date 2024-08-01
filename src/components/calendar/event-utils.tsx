@@ -1,4 +1,5 @@
 import { EventInput } from '@fullcalendar/core'
+import FullCalendar from '@fullcalendar/react'
 
 let eventGuid = 0
 let todayStr = new Date().toISOString().replace(/T.*$/, '') // YYYY-MM-DD of today
@@ -19,4 +20,14 @@ export const INITIAL_EVENTS: EventInput[] = [
 
 export function createEventId() {
   return String(eventGuid++)
+}
+
+export const handleEventRemoveFC = (calendarRef: React.RefObject<FullCalendar>, eventId: string) => {
+  if (calendarRef.current) {
+    const calendarApi = calendarRef.current.getApi();
+    const event = calendarApi.getEventById(eventId);
+    if (event) {
+      event.remove();
+    }
+  }
 }

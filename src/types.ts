@@ -113,3 +113,13 @@ export type Career_type = {
 }   
 
 export type Merged_Data_type = DIT_type & PT_type & SI_type & Clubs_type & Career_type;
+
+export interface AddFCEventProps {
+    id: string,
+    title: string, 
+    start: string,
+    end?: string,
+    allDay?: boolean,
+}
+
+export type AddFCEventType = ({id, title, start, end, allDay}: AddFCEventProps) => void;
