@@ -37,3 +37,8 @@
 .Calendar .day {
 	margin-top: 0;
 }
+
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+	height: 40px;
+    background-color: white;
+}

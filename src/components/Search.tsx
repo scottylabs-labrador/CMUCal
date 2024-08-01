@@ -129,7 +129,7 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar, handleSea
   return (
     <div className="bg-[#F5F5F5] relative -top-1 w-full min-h-screen pl-8 pt-7 text-sans resize-x">
       {/* hide and show search bar */}
-      <div className="flex mb-2 absolute right-2" onClick={()=>handleSearchBarClick()}>
+      <div className="flex mb-2 mt-1.5 absolute right-2 -top-1" onClick={()=>handleSearchBarClick()}>
           <div className="flex flex-row text-right items-center hover:bg-gray-200 p-0.5 rounded-md">
             {showSearchBar ? (
               <>
