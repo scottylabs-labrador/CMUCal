@@ -2,16 +2,13 @@ import React, { useEffect, useState } from "react";
 // search input
 import { SearchCard, SavedSearchBtn, SearchBar } from "./index";
 import Fuse from 'fuse.js'
-import { IoSearch } from "react-icons/io5";
+import { IoSearch, IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 // saved searches
 import { saveArrayToLocalStorage, getArrayFromLocalStorage } from "../utils/localStorageUtil";
 
 // for date picker
 import dayjs, { Dayjs } from 'dayjs';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { SelectChangeEvent } from '@mui/material/Select';
 
 import "react-dropdown/style.css";
@@ -19,6 +16,7 @@ import "./Search.css";
 import { Button } from "./Button";
 import SearchContent from "./SearchContent";
 import CategoryDropdown from "./CategoryDropdown";
+import DatePickerSearch from "./DatePickerSearch";
 
 
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
@@ -26,9 +24,11 @@ import CategoryDropdown from "./CategoryDropdown";
 
 interface SearchComponentProps {
   page: string;
+  showSearchBar: boolean;
+  handleSearchBarClick: () => void;
 }
 
-const Search: React.FC<SearchComponentProps> = ({ page }) => {
+const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar, handleSearchBarClick }) => {
   // Chang name to search bar
   const [searchInput, setSearchInput] = useState("");
 
@@ -72,12 +72,6 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
   }
   
   const addSavedItem = () => {
-    // if (!savedItems.includes(searchInput)) {
-    //   const newItems = [searchInput, ...savedItems];
-    //   setSavedItems(newItems);
-    //   saveArrayToLocalStorage('savedSearches', newItems);
-    // } 
-    
     // If searchInput is already in savedSearches, delete the elem in the array 
       if (savedItems.includes(searchInput) && (savedItems.length > 1)) {
         const index = savedItems.indexOf(searchInput);
@@ -90,19 +84,16 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
       setSavedItems(newItems);
       saveArrayToLocalStorage('savedSearches', newItems);
     } 
-
-    console.log(savedItems);
+    // console.log(savedItems);
   };
   
     
   // Function to handle when search bar is enterred 
   const handleSaveSearch = () => {
     if (searchInput) {
-      
       setSearchInput('');
     }
   };
-  
   
   // search
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -124,54 +115,40 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
     );
   };
 
-
-
   const startDateFn = (date: Dayjs|null) => {
     setStartDate(date);
-    console.log(`start: ${date}`);
+    // console.log(`start: ${date}`);
   };
 
   const endDateFn = (date: Dayjs|null) => {
     setEndDate(date);
-    console.log(`end: ${date}`);
+    // console.log(`end: ${date}`);
   };
 
-  // for date range: start to end
-  let dateContent;
-  if (showDatePicker) {
-    dateContent = (
-      <>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <div className="w-36">
-          <DatePicker
-            value={startDate}
-            onChange={(date: Dayjs | null) => {
-              startDateFn(date);
-            }}
-            format="MM/DD"
-          />
-        </div>
-        <span className="w-4">to</span>
-        <div className="w-36">
-          <DatePicker 
-            value={endDate}
-            onChange={(date) => {
-              endDateFn(date);
-            }}
-            format="MM/DD"
-          />
-        </div>
-        </LocalizationProvider>
-      </>
-    );
-  }
 
   return (
-    <div className="bg-[#F5F5F5] relative -top-2 w-full min-h-screen pl-8 pt-7 text-sans resize-x">
-      <div className="flex flex-col w-11/12 gap-y-2">
-
+    <div className="bg-[#F5F5F5] relative -top-1 w-full min-h-screen pl-8 pt-7 text-sans resize-x">
+      {/* hide and show search bar */}
+      <div className="flex mb-2 absolute right-2" onClick={()=>handleSearchBarClick()}>
+          <div className="flex flex-row text-right items-center hover:bg-gray-200 p-0.5 rounded-md">
+            {showSearchBar ? (
+              <>
+              <p className="text-gray-500 mr-1 text-sm">Hide</p>
+              <IoChevronBack className="h-4 w-4 text-gray-500 mr-1" />
+              </>
+            ):(
+              <>
+              <p className="text-gray-500 mr-1 text-sm">Show</p>
+              <IoChevronForward className="h-4 w-4 text-gray-500 mr-6" />
+              </>
+            )}
+            
+          </div>
+      </div>
+      {showSearchBar && (
+        <div className="flex flex-col w-11/12 gap-y-2">
         {/* Scroll bar of saved searches */}
-        <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll">
+        <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll w-11/12">
           {savedItems && savedItems.map((item, index) => {
             return (
               <SavedSearchBtn key={index} content={item} clickStay={true} clearSingleSavedItems={clearSingleSavedItems} 
@@ -179,6 +156,7 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
             )
           })}
         </div>
+        
         <div className="bg-gray-200 relative h-12 w-full rounded-md border border-black border-[1.5] flex items-center justify-center">
           {/* search bar */}
           <input
@@ -198,7 +176,11 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
 
         {/* drop down filter */}
         <div className="mt-3 flex w-full items-baseline justify-between">
-          <div className="w-3/5 items-center flex flex-row justify-between space-x-2">{dateContent}</div>
+          <div className="w-3/5 items-center flex flex-row justify-between space-x-2">
+            {showDatePicker && (
+              <DatePickerSearch startDate={startDate} endDate={endDate} startDateFn={startDateFn} endDateFn={endDateFn}/>
+            )}
+          </div>
           {(page === "academics" || page === "clubs" || page==="career") ? (
             // <div className="w-2/6">{categoryContent}</div>
             <div className="w-2/6">
@@ -221,7 +203,9 @@ const Search: React.FC<SearchComponentProps> = ({ page }) => {
           { searchInput && <SearchContent searchInput={searchInput} page={page} categoryName={categoryName} startDate={startDate} endDate={endDate} addToSavedItems={addSavedItem}/>}
         </div>
         
-      </div>
+        </div>
+      )}
+
     </div>
   );
 }

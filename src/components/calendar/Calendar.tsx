@@ -25,8 +25,11 @@ function renderEventContent(eventContent: EventContentArg) {
 
 
 
+interface CalendarProps {
+  showSearchBar: boolean;
+}
 
-export default function Calendar() {
+export default function Calendar({showSearchBar}:CalendarProps) {
     const [events, setEvents] = useState<any[]>([]);
     const [weekendsVisible, setWeekendsVisible] = useState<boolean>(true);
     const [currentEvents, setCurrentEvents] = useState<EventApi[]>();
@@ -101,6 +104,7 @@ export default function Calendar() {
                 center: "title",
                 right: "GCalBtn"
             }}
+            height={showSearchBar? 600: 580}
             // dayGridMonth,timeGridWeek,timeGridDay
             // today 
             // events={events}
