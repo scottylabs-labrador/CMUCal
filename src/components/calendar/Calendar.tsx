@@ -3,7 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from '@fullcalendar/interaction';
-import { INITIAL_EVENTS, createEventId } from './event-utils';
+import { INITIAL_EVENTS, createEventId, handleEventRemoveFC } from './event-utils';
 import { DateSelectArg, EventApi, EventClickArg, EventContentArg } from "fullcalendar";
 
 // for dropdown
@@ -15,10 +15,9 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 function renderEventContent(eventContent: EventContentArg) {
     return (
-      <div className={`${eventContent.event.allDay ? 'bg-green': 'bg-green'}`}>
+      <div className={`w-full ${eventContent.event.allDay ? 'bg-green': 'bg-green'}`}>
         
-        <b>{eventContent.timeText}</b>
-        <i>{eventContent.event.title}</i>
+        <p className="w-full truncate ..."><b>{eventContent.timeText}</b> {eventContent.event.title}</p>
       </div>
     )
   }
@@ -73,6 +72,7 @@ export default function Calendar({showSearchBar, events, calendarRef}:CalendarPr
       
       const handleEventClick = (clickInfo: EventClickArg) => {
           if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+            handleEventRemoveFC(calendarRef, clickInfo.event.id);
             clickInfo.event.remove();
           }
         }
