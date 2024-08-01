@@ -17,6 +17,8 @@ import { Button } from "./Button";
 import SearchContent from "./SearchContent";
 import CategoryDropdown from "./CategoryDropdown";
 import DatePickerSearch from "./DatePickerSearch";
+import { AddFCEventProps, AddFCEventType } from "../types";
+import FullCalendar from "@fullcalendar/react";
 
 
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
@@ -26,9 +28,15 @@ interface SearchComponentProps {
   page: string;
   showSearchBar: boolean;
   handleSearchBarClick: () => void;
+  handleAddFCEvent: AddFCEventType;
+  eventId: number;
+  setEventId: React.Dispatch<React.SetStateAction<number>>;
+  calendarRef: React.RefObject<FullCalendar>;
+  setEvents: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
-const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar, handleSearchBarClick }) => {
+const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar, 
+  handleSearchBarClick, handleAddFCEvent, eventId, setEventId, calendarRef, setEvents }) => {
   // Chang name to search bar
   const [searchInput, setSearchInput] = useState("");
 
@@ -45,7 +53,7 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar, handleSea
     const storedItems = getArrayFromLocalStorage<string>('savedSearches');
     setSavedItems(storedItems);
     // clearSavedItems();
-    console.log(savedItems);
+    // console.log(savedItems);
   }, [searchInput]);
  
 
@@ -200,7 +208,9 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar, handleSea
         </div>
         
         <div className="overflow-scroll" style={{height: '70vh'}}>
-          { searchInput && <SearchContent searchInput={searchInput} page={page} categoryName={categoryName} startDate={startDate} endDate={endDate} addToSavedItems={addSavedItem}/>}
+          { searchInput && <SearchContent searchInput={searchInput} page={page} categoryName={categoryName} startDate={startDate} 
+          endDate={endDate} addToSavedItems={addSavedItem} handleAddFCEvent={handleAddFCEvent} eventId={eventId} 
+          setEventId={setEventId} calendarRef={calendarRef} setEvents={setEvents}/>}
         </div>
         
         </div>

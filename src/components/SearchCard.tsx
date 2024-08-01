@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { IoLocationSharp, IoAdd } from "react-icons/io5";
 import { FaRegClock, FaCheck } from "react-icons/fa";
-import { saveArrayToLocalStorage, getArrayFromLocalStorage } from "../utils/localStorageUtil";
+import { AddFCEventType } from "../types";
+import { getFormattedDateStr } from "../utils/DateManipulations";
+import { handleEventRemoveFC } from "./calendar/event-utils";
+import FullCalendar from "@fullcalendar/react";
+
 
 type ButtonClickHandler = () => void;
 
@@ -14,6 +18,12 @@ interface SearchCardProps {
   endTime: string;
   location: string;
   addToSavedItems: ButtonClickHandler;
+  handleAddFCEvent: AddFCEventType;
+  eventId: number;
+  setEventId: React.Dispatch<React.SetStateAction<number>>;
+  calendarRef: React.RefObject<FullCalendar>;
+  // events: any[];
+  setEvents: React.Dispatch<React.SetStateAction<any[]>>;
   // eventCategory: string;
   // eventSubcategory: string;
 }
@@ -27,19 +37,51 @@ const SearchCard: React.FC<SearchCardProps> = ({
   endTime,
   location,
   addToSavedItems,
+  handleAddFCEvent,
+  eventId,
+  setEventId,
+  calendarRef,
+  // events,
+  setEvents
   // eventCategory,
   // eventSubcategory,
 }) => {
   const [buttonClicked, setButtonClicked] = useState(false);
   const [cardClicked, setCardClicked] = useState(false);
+  const [currEventId, setCurrEventId] = useState<number>(-1);
 
   // const [savedItems, setSavedItems] = useState<string[]>([]);
 
 
   const handleAddToCalendar = () => {
-    setButtonClicked((prevClicked) => !prevClicked);
-    // Logic for calling GCal
-    addToSavedItems();
+    if (buttonClicked) {
+      setButtonClicked((prevClicked) => !prevClicked);
+      setEvents((prevItems) => prevItems.filter((item) => item.id !== `${currEventId}`));
+      handleEventRemoveFC(calendarRef, `${currEventId}`);
+      console.log('delete',currEventId);
+      
+    } else {
+      setButtonClicked((prevClicked) => !prevClicked);
+      addToSavedItems();
+      const startDateTime = getFormattedDateStr(startDate, startTime);
+      // console.log(currEventId);
+
+      if (endDate) {
+        const endDateTime = getFormattedDateStr(endDate, endTime);
+        handleAddFCEvent({id:`${eventId}`, title:eventName, start:startDateTime, end: endDateTime, allDay: !endTime });
+      } else {
+        const endDateTime = getFormattedDateStr(startDate, endTime);
+        // console.log(endDateTime);
+        handleAddFCEvent({id:`${eventId}`, title:eventName, start:startDateTime, end: endDateTime, allDay: !endTime });
+      }
+
+      setCurrEventId(_=>eventId);
+      setEventId(prev => prev+1);
+      // console.log(eventId);
+      
+      
+    }
+    
   };
 
   const handleCardClicked = () => {

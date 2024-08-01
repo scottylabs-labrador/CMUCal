@@ -8,7 +8,8 @@ import PTData from "../../backend_scraper/scraper/peer_tutoring.json";
 import SIData from "../../backend_scraper/scraper/si.json";
 import ClubsData from "../../backend_scraper/scraper/tartanconnect.json";
 import CareerData from "../../backend_scraper/scraper/handshake.json";
-import { categoryListAcademics, categoryShorthandAcademics, categoryListClubs, categoryListCareer, Clubs_type, Career_type } from "../types";
+import { categoryListAcademics, categoryShorthandAcademics, categoryListClubs, categoryListCareer, Clubs_type, Career_type, AddFCEventProps, AddFCEventType } from "../types";
+import FullCalendar from "@fullcalendar/react";
 
 
 type ButtonClickHandler = () => void;
@@ -20,11 +21,16 @@ interface SearchContentProps {
     startDate: Dayjs | null;
     endDate: Dayjs | null;
     addToSavedItems: ButtonClickHandler;
+    handleAddFCEvent: AddFCEventType;
+    eventId: number;
+    setEventId: React.Dispatch<React.SetStateAction<number>>;
+    calendarRef: React.RefObject<FullCalendar>;
+    setEvents: React.Dispatch<React.SetStateAction<any[]>>;
 
 }
 
-const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, categoryName, startDate, endDate, addToSavedItems }) => {
-    const props  = { searchInput, page, categoryName, startDate, endDate, addToSavedItems };
+const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, categoryName, startDate, endDate, addToSavedItems, handleAddFCEvent, eventId, setEventId, calendarRef, setEvents }) => {
+    const props  = { searchInput, page, categoryName, startDate, endDate, addToSavedItems, handleAddFCEvent, eventId, setEventId, calendarRef, setEvents };
 
     const getCategoryData = (currPage:string) => {
         // this is where we apply the category filters
@@ -130,6 +136,11 @@ const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, catego
                                 endTime={result.item.events[i].end_time}
                                 location={result.item.events[i].location}
                                 addToSavedItems={addToSavedItems}
+                                handleAddFCEvent={handleAddFCEvent}
+                                eventId={eventId}
+                                setEventId={setEventId}
+                                calendarRef={calendarRef}
+                                setEvents={setEvents}
                             />
                         )
                     }
@@ -152,6 +163,11 @@ const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, catego
                                 endTime={result.item.events[i].end_time}
                                 location={result.item.events[i].location}
                                 addToSavedItems={addToSavedItems}
+                                handleAddFCEvent={handleAddFCEvent}
+                                eventId={eventId}
+                                setEventId={setEventId}
+                                calendarRef={calendarRef}
+                                setEvents={setEvents}
                             />
                         )
                     }  

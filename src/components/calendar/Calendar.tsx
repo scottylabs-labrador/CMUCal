@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { RefObject, useRef, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from '@fullcalendar/interaction';
-import { INITIAL_EVENTS, createEventId } from './event-utils';
+import { INITIAL_EVENTS, createEventId, handleEventRemoveFC } from './event-utils';
 import { DateSelectArg, EventApi, EventClickArg, EventContentArg } from "fullcalendar";
 
 // for dropdown
@@ -15,10 +15,9 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 function renderEventContent(eventContent: EventContentArg) {
     return (
-      <div className={`${eventContent.event.allDay ? 'bg-green': ''}`}>
+      <div className={`w-full ${eventContent.event.allDay ? 'bg-green': 'bg-green'}`}>
         
-        <b>{eventContent.timeText}</b>
-        <i>{eventContent.event.title}</i>
+        <p className="w-full truncate ..."><b>{eventContent.timeText}</b> {eventContent.event.title}</p>
       </div>
     )
   }
@@ -27,16 +26,18 @@ function renderEventContent(eventContent: EventContentArg) {
 
 interface CalendarProps {
   showSearchBar: boolean;
+  events: any[];
+  calendarRef: RefObject<FullCalendar>;
 }
 
-export default function Calendar({showSearchBar}:CalendarProps) {
-    const [events, setEvents] = useState<any[]>([]);
+export default function Calendar({showSearchBar, events, calendarRef}:CalendarProps) {
+    
     const [weekendsVisible, setWeekendsVisible] = useState<boolean>(true);
     const [currentEvents, setCurrentEvents] = useState<EventApi[]>();
     const [currView, setCurrView] = useState<string>('dayGridMonth');
     const [showGCal, setShowGCal] = useState<boolean>(false);
 
-    const calendarRef = useRef<FullCalendar>(null);
+    // console.log(events);
 
     const handleDropdown = (event: SelectChangeEvent<string>) => {
         const {target: { value }} = event;
@@ -50,6 +51,7 @@ export default function Calendar({showSearchBar}:CalendarProps) {
             }
         }
       };
+
 
     const handleDateSelect = (selectInfo: DateSelectArg) => {
         let title = prompt('Please enter a new title for your event')
@@ -70,6 +72,7 @@ export default function Calendar({showSearchBar}:CalendarProps) {
       
       const handleEventClick = (clickInfo: EventClickArg) => {
           if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+            handleEventRemoveFC(calendarRef, clickInfo.event.id);
             clickInfo.event.remove();
           }
         }
@@ -77,6 +80,8 @@ export default function Calendar({showSearchBar}:CalendarProps) {
       const handleEvents = (events: EventApi[]) => {
           setCurrentEvents(events);
       }
+
+      // console.log(events);
     
     
     return (
@@ -107,7 +112,7 @@ export default function Calendar({showSearchBar}:CalendarProps) {
             height={showSearchBar? 600: 580}
             // dayGridMonth,timeGridWeek,timeGridDay
             // today 
-            // events={events}
+            events={events}
             customButtons={{
               customDropdown: {
                   text: 'month',
@@ -123,7 +128,7 @@ export default function Calendar({showSearchBar}:CalendarProps) {
             selectMirror={true}
             dayMaxEvents={true}
             weekends={weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+            //initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
             select={handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={handleEventClick}
