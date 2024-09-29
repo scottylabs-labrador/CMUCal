@@ -1,7 +1,3 @@
-The repository is written using `React` + `React-Router` + `Tailwind-CSS`
+# CMUCal
 
-## To run the frontend in developer mode
-```
-npm install
-npm start build (or `npm run dev`)
-```
+**CMUCal ** is a comprehensive web application designed to streamline and enhance the process of managing academic resources at Carnegie Mellon University. It features an intuitive frontend built with React, TypeScript, and Tailwind CSS, a robust backend powered by Flask, and an efficient scraping system developed in Python.
