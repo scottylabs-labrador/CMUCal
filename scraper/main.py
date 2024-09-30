@@ -14,13 +14,17 @@ from monitors.career_club import HandshakeScraper
 from monitors.career_club import TartanConnectScraper
 
 try:
-    # Try reading Mongo URL from Environmental Variables
-    mongo_url = os.environ["MONGO_URI"]
-except KeyError:
-    # Otherwise, read from config.ini
+    # Read Mongo DB config from config.ini
     config = configparser.ConfigParser()
     config.read(os.path.abspath(os.path.join("config.ini")))
     mongo_url = config['PROD']['DB_URI_SHORT']
+except:
+    try:
+        # Try reading Mongo URL from Environmental Variables
+        mongo_url = os.environ["MONGO_URI"]
+    except KeyError:
+        print("Error: no database info -- put in config.ini or MONGO_URI env variable.")
+        exit()
 
 class ScraperBot:
     def __init__(self):
