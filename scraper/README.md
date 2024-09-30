@@ -9,7 +9,7 @@ Then install needed packages: `pip3 install -r requirements.txt`
 
 Then create a file `config.ini` that contains the link to the MONGO database in the format seen in `config.ini.example`.
 
-Then launch the scraper: `python3 scraper.py`
+Then launch the scraper: `python3 main.py`
 
 --------
 
