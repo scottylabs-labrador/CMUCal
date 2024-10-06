@@ -29,7 +29,7 @@ except:
 class ScraperBot:
     def __init__(self):
         self.client = MongoClient(mongo_url)
-        self.db = self.client.CMUCalNew
+        self.db = self.client.CMUCal
     
     def create_indexes(self):
         print("Creating indexes...")
@@ -57,7 +57,7 @@ class ScraperBot:
         ]
 
         career_club_scrapers = [
-            HandshakeScraper(self.db),
+            #HandshakeScraper(self.db),
             TartanConnectScraper(self.db)
         ]
         scrapers = academic_scrapers + career_club_scrapers

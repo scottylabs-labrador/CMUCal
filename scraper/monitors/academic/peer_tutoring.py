@@ -14,6 +14,7 @@ class PeerTutoringScraper(BaseScraper):
     
     def scrape(self):
         # This doesn't work anymore after they switched to SSO login. Have to find workaround.
+        # If I pass in wconline_session Cookie, seems to work (no need for X-CRSF-TOKEN). We might have to hardcode -- how long do session cookies last though?
         email = "dkathein@andrew.cmu.edu"
         password = "CMUCalToTheMoon"
 

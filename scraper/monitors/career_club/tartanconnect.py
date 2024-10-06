@@ -12,10 +12,14 @@ class TartanConnectScraper(BaseScraper):
         link = "https://tartanconnect.cmu.edu/mobile_ws/v17/mobile_events_list?range=0&limit=300&filter4_contains=OR&filter4_notcontains=OR&order=undefined&search_word=&&1705612303189"
         s = requests.Session()
 
-        headers2 = self.headers.copy()
-        # Note: the methodology behind this needs to be fixed as currently I just copied my cookies from the TC website... should be automated in the future as it will expire sometime
-        headers2["Cookie"] = "CG.SessionID=4ebijwouosbyxydp2mafcj1c-mbLv4L2pjvEUpQIicMtw4Xd6yQ8%3d; cg_uid=4591962-vo5GAM/z8ygVxQGgQbnmEgpWA9VwxA4415xtDqjUwGE="
-        r = s.get(link, headers=headers2)
+        tc_headers = self.headers.copy()
+
+        tc_headers.update({
+            "X-Requested-With": "XMLHttpRequest",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "Referer": "https://tartanconnect.cmu.edu/events"})
+        
+        r = s.get(link, headers=tc_headers)
 
         events = r.text.split('"listingSeparator":null')[1:]
 
