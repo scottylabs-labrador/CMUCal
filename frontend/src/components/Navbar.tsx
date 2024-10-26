@@ -8,6 +8,7 @@ import {
 import { CiCircleQuestion } from "react-icons/ci";
 import { FaRegUserCircle } from "react-icons/fa";
 import Logo from "./icons/Logo.png";
+import { SPSecondNav } from "./support_page/SPSecondNav";
 
 interface NavbarItemProps {
   locationTo: string;
@@ -23,7 +24,6 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
   image,
 }) => {
   const isProfileLink = locationTo === "/profile";
-
   return (
     <Link
       to={locationTo}
@@ -46,6 +46,13 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
 const Navbar: React.FC = () => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  // the useLocation hook detects path changes
+  const location = useLocation();
+  const [path, setPath] = useState(location.pathname);
+  // isSupport is set to true if the current path includes 'support'
+  const [isSupport, setIsSupport] = useState(false);
+  // set the default value for the SecondNav for support pages
+  const [supportPageLabel, setSupportPageLabel] = useState('new user guide');
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -56,9 +63,16 @@ const Navbar: React.FC = () => {
       setButton(false);
     } else {
       setButton(true);
-      // console.log(button);
     }
   };
+
+  // useEffect for everytime that the path changes
+  useEffect(() => {
+    // Update the path whenever the location changes
+    setPath(location.pathname);
+    setIsSupport(location.pathname.includes('support'));
+    
+  }, [location.pathname]); // Dependency array with location.pathname
 
   useEffect(() => {
     window.addEventListener("resize", showButton);
@@ -66,24 +80,28 @@ const Navbar: React.FC = () => {
     return () => {
       window.removeEventListener("resize", showButton);
     };
+
+    
   }, []);
 
-  const location = useLocation();
-  const pathName = location.pathname;
-  // console.log(pathName);
+  
 
   return (
-    <nav className="bg-red h-[70px] text-white text-base sticky top-0 z-50 px-4 relative">
+    <div>
+    <nav className={`${isSupport? 'bg-green': 'bg-red'} ${isSupport? 'h-[70px]': 'h-[70px]'} text-white text-base sticky top-0 z-50 px-4 relative`}>
       <div className="text-white flex justify-between items-center pr-4 h-20 w-full">
         <Link
           to="/home"
-          className="text-white flex items-start h-80"
+          className="text-white"
         >
-          <img src = {Logo} className="absolute left-8 top-4 object-contain h-3/5"/>
+          <div className="flex items-center justify-between absolute left-8 top-5">
+            <img src = {Logo} className={`object-contain ${isSupport? 'h-8': 'h-9'} mr-3`}/>
+            {isSupport && ( <p className={`text-black text-xl pr-3`}> | </p> )}
+            {isSupport && ( <p className={`text-black text-xl`}> Support </p> )}
+          </div>
         </Link>
-
-        {/* the rest of the nav bar won't show up on the welcome page */}
-        {pathName==="/" || pathName === "/welcome"? "" : (
+        {/* the rest of the nav bar won't show up on the welcome page or support pages */}
+        {path==="/" || path === "/welcome" || isSupport ? "" : (
         <ul className="p-0 m-0 list-none flex">
           <div className="flex justify-center align-center gap-8 mr-10">
             <li>
@@ -133,6 +151,10 @@ const Navbar: React.FC = () => {
         )}
       </div>
     </nav>
+    {isSupport && (
+      <SPSecondNav page={supportPageLabel} setPage={setSupportPageLabel}/>
+    )}
+    </div>
   );
 };
 

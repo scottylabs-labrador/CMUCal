@@ -19,8 +19,8 @@ function App() {
           <Route path="/upload/manual" element={<UploadManual />} />
           <Route path="/upload/revise" element={<UploadRevise />} />
           <Route path="/support" element={<SupportUserGuide />} />
-          <Route path="/support/supportfeatureideas" element={<SupportFeatureIdeas />} />
-          <Route path="/support/supporttips" element={<SupportTips />} />
+          <Route path="/support/featureideas" element={<SupportFeatureIdeas />} />
+          <Route path="/support/tips" element={<SupportTips />} />
           <Route path="/welcome" element={<Welcome />} />
           
         </Routes>
