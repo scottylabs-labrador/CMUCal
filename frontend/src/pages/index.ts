@@ -1,4 +1,6 @@
-export * from "./Support";
+export * from "./SupportUserGuide";
+export * from "./SupportFeatureIdeas";
+export * from "./SupportTips";
 export * from "./Upload";
 export * from "./UploadFile";
 export * from "./UploadLink";
