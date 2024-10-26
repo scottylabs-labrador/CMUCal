@@ -17,8 +17,8 @@ const SecondNavItem = ({ page, setPage, currPage, title }: SecondNavItemProps) =
     <p
       className={
         isActive
-          ? "text-teal border-b-[3px] border-teal text-2xl font-serif font-source-serif-pro pb-1"
-          : "text-[#757575] text-2xl font-serif font-source-serif-pro"
+          ? "text-teal border-b-[3px] border-teal text-2xl font-serif font-source-serif-pro pb-1 cursor-pointer"
+          : "text-[#757575] text-2xl font-serif font-source-serif-pro cursor-pointer"
       }
       onClick={()=>handleClick()}
     >
