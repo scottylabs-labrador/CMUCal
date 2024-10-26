@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, useParams } from "react-router-dom";
 import { Navbar, Footer } from "./components";
-import { Upload, UploadFile, UploadLink, UploadManual, UploadRevise, Support, Welcome, Home, SupportFeatureIdeas, SupportNewUserGuide, SupportTips } from "./pages";
+import { Upload, UploadFile, UploadLink, UploadManual, UploadRevise, SupportUserGuide, Welcome, Home, SupportFeatureIdeas, SupportTips } from "./pages";
 import "./App.css";
 
 
@@ -18,9 +18,8 @@ function App() {
           <Route path="/upload/link" element={<UploadLink />} />
           <Route path="/upload/manual" element={<UploadManual />} />
           <Route path="/upload/revise" element={<UploadRevise />} />
-          <Route path="/support" element={<Support />} />
+          <Route path="/support" element={<SupportUserGuide />} />
           <Route path="/support/supportfeatureideas" element={<SupportFeatureIdeas />} />
-          <Route path="/support/newuserguide" element={<SupportNewUserGuide />} />
           <Route path="/support/supporttips" element={<SupportTips />} />
           <Route path="/welcome" element={<Welcome />} />
           
