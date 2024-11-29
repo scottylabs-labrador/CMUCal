@@ -6,6 +6,8 @@
 "resource_type": "Career" —> handshake.json
 */
 
+import FullCalendar from "@fullcalendar/react";
+
 export const categoryListAcademics = [
     "Office Hours",
     "Supplemental Instructions",
@@ -116,10 +118,18 @@ export type Merged_Data_type = DIT_type & PT_type & SI_type & Clubs_type & Caree
 
 export interface AddFCEventProps {
     id: string,
+    searchCardId: number;
     title: string, 
     start: string,
     end?: string,
     allDay?: boolean,
+
 }
 
-export type AddFCEventType = ({id, title, start, end, allDay}: AddFCEventProps) => void;
+export type AddFCEventType = ({id, searchCardId, title, start, end, allDay}: AddFCEventProps) => void;
+
+export interface RemoveFCEventProps {
+    calendarRef: React.RefObject<FullCalendar>,
+    eventId: string
+}
+export type RemoveFCEventType = ({calendarRef, eventId}: RemoveFCEventProps) => void;

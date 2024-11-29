@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // search input
-import { SearchCard, SavedSearchBtn, SearchBar } from "./index";
+import { SearchCard, SearchBar } from "./index";
+
 import Fuse from 'fuse.js'
 import { IoSearch, IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
@@ -17,8 +18,9 @@ import { Button } from "./Button";
 import SearchContent from "./SearchContent";
 import CategoryDropdown from "./CategoryDropdown";
 import DatePickerSearch from "./DatePickerSearch";
-import { AddFCEventProps, AddFCEventType } from "../types";
+import { AddFCEventProps, AddFCEventType, RemoveFCEventType } from "../types";
 import FullCalendar from "@fullcalendar/react";
+import SavedSearchBtn from "./SavedSearches";
 
 
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
@@ -32,16 +34,20 @@ interface SearchComponentProps {
   eventId: number;
   setEventId: React.Dispatch<React.SetStateAction<number>>;
   calendarRef: React.RefObject<FullCalendar>;
+  events:any[];
   setEvents: React.Dispatch<React.SetStateAction<any[]>>;
+  handleRemoveFCEvent: RemoveFCEventType;
 }
 
 const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar, 
-  handleSearchBarClick, handleAddFCEvent, eventId, setEventId, calendarRef, setEvents }) => {
+  handleSearchBarClick, handleAddFCEvent, eventId, setEventId, calendarRef, events, setEvents,
+  handleRemoveFCEvent }) => {
   // Chang name to search bar
   const [searchInput, setSearchInput] = useState("");
 
   const [categoryName, setCategoryName] = useState<string[]>([]);
   const [savedItems, setSavedItems] = useState<string[]>([]);
+  const [addedSearchCards, setAddedSearchCards] = useState([]);
 
   // date picker
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
@@ -51,6 +57,7 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
   useEffect(() => {
     // Load the array from local storage when the component mounts
     const storedItems = getArrayFromLocalStorage<string>('savedSearches');
+    // const storedEvents = getArrayFromLocalStorage<string>('savedEvents');
     setSavedItems(storedItems);
     // clearSavedItems();
     // console.log(savedItems);
@@ -95,13 +102,7 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
     // console.log(savedItems);
   };
   
-    
-  // Function to handle when search bar is enterred 
-  const handleSaveSearch = () => {
-    if (searchInput) {
-      setSearchInput('');
-    }
-  };
+  
   
   // search
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -156,14 +157,14 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
       {showSearchBar && (
         <div className="flex flex-col w-11/12 gap-y-2">
         {/* Scroll bar of saved searches */}
-        <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll w-11/12">
+        {/* <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll w-11/12">
           {savedItems && savedItems.map((item, index) => {
             return (
               <SavedSearchBtn key={index} content={item} clickStay={true} clearSingleSavedItems={clearSingleSavedItems} 
               textSize="text-xs" enterSearchInput={enterSearchInput} clearSearchInput={clearSearchInput}/>
             )
           })}
-        </div>
+        </div> */}
         
         <div className="bg-gray-200 relative h-12 w-full rounded-md border border-black border-[1.5] flex items-center justify-center">
           {/* search bar */}
@@ -210,7 +211,7 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
         <div className="overflow-scroll" style={{height: '70vh'}}>
           { searchInput && <SearchContent searchInput={searchInput} page={page} categoryName={categoryName} startDate={startDate} 
           endDate={endDate} addToSavedItems={addSavedItem} handleAddFCEvent={handleAddFCEvent} eventId={eventId} 
-          setEventId={setEventId} calendarRef={calendarRef} setEvents={setEvents}/>}
+          setEventId={setEventId} calendarRef={calendarRef} events={events} setEvents={setEvents} handleRemoveFCEvent={handleRemoveFCEvent}/>}
         </div>
         
         </div>

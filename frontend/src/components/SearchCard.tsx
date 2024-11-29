@@ -1,15 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
 import { IoLocationSharp, IoAdd } from "react-icons/io5";
 import { FaRegClock, FaCheck } from "react-icons/fa";
-import { AddFCEventType } from "../types";
+import { AddFCEventType, RemoveFCEventType } from "../types";
 import { getFormattedDateStr } from "../utils/DateManipulations";
-import { handleEventRemoveFC } from "./calendar/event-utils";
 import FullCalendar from "@fullcalendar/react";
+import { getArrayFromLocalStorage } from "../utils/localStorageUtil";
 
 
 type ButtonClickHandler = () => void;
 
 interface SearchCardProps {
+  cardId: number;
   eventName: string;
   orgName: string;
   startDate: string;
@@ -19,16 +20,15 @@ interface SearchCardProps {
   location: string;
   addToSavedItems: ButtonClickHandler;
   handleAddFCEvent: AddFCEventType;
-  eventId: number;
-  setEventId: React.Dispatch<React.SetStateAction<number>>;
+  handleRemoveFCEvent: RemoveFCEventType;
   calendarRef: React.RefObject<FullCalendar>;
-  // events: any[];
+  events: any[];
   setEvents: React.Dispatch<React.SetStateAction<any[]>>;
-  // eventCategory: string;
-  // eventSubcategory: string;
+  isSelected: boolean;
 }
 
 const SearchCard: React.FC<SearchCardProps> = ({
+  cardId,
   eventName,
   orgName,
   startDate,
@@ -38,56 +38,42 @@ const SearchCard: React.FC<SearchCardProps> = ({
   location,
   addToSavedItems,
   handleAddFCEvent,
-  eventId,
-  setEventId,
+  handleRemoveFCEvent,
   calendarRef,
-  // events,
-  setEvents
-  // eventCategory,
-  // eventSubcategory,
+  events,
+  setEvents,
+  isSelected
 }) => {
-  const [buttonClicked, setButtonClicked] = useState(false);
   const [cardClicked, setCardClicked] = useState(false);
-  const [currEventId, setCurrEventId] = useState<number>(-1);
-
-  // const [savedItems, setSavedItems] = useState<string[]>([]);
 
 
-  const handleAddToCalendar = () => {
-    if (buttonClicked) {
-      setButtonClicked((prevClicked) => !prevClicked);
-      setEvents((prevItems) => prevItems.filter((item) => item.id !== `${currEventId}`));
-      handleEventRemoveFC(calendarRef, `${currEventId}`);
-      console.log('delete',currEventId);
-      
+  const handleBtnClick = () => {
+
+    let index:number = events.findIndex(obj => (obj.id == `${cardId}`));
+    if (index != -1) {
+      // included in the events list, so need to remove
+      handleRemoveFCEvent({calendarRef: calendarRef, eventId: `${cardId}`});
     } else {
-      setButtonClicked((prevClicked) => !prevClicked);
+      // add event
       addToSavedItems();
       const startDateTime = getFormattedDateStr(startDate, startTime);
-      // console.log(currEventId);
-
       if (endDate) {
         const endDateTime = getFormattedDateStr(endDate, endTime);
-        handleAddFCEvent({id:`${eventId}`, title:eventName, start:startDateTime, end: endDateTime, allDay: !endTime });
+        handleAddFCEvent({id:`${cardId}`, searchCardId: cardId, title:eventName, start:startDateTime, end: endDateTime, allDay: !endTime });
       } else {
         const endDateTime = getFormattedDateStr(startDate, endTime);
-        // console.log(endDateTime);
-        handleAddFCEvent({id:`${eventId}`, title:eventName, start:startDateTime, end: endDateTime, allDay: !endTime });
+        handleAddFCEvent({id:`${cardId}`, searchCardId: cardId, title:eventName, start:startDateTime, end: endDateTime, allDay: !endTime });
       }
-
-      setCurrEventId(_=>eventId);
-      setEventId(prev => prev+1);
-      // console.log(eventId);
-      
-      
     }
     
   };
 
+  
+
   const handleCardClicked = () => {
     setCardClicked(!cardClicked);
   }
-  // {eventName}
+
   return (
     <div className="bg-white w-full my-3.5 px-6 py-4 rounded-lg flex items-center align-stretch relative">
       <div className="flex-1" onClick={handleCardClicked}>
@@ -113,17 +99,17 @@ const SearchCard: React.FC<SearchCardProps> = ({
       <div className="flex-shrink-0 absolute right-3">
         <button
           className={`rounded-full border border-teal px-4 py-2 flex items-center gap-1 ${
-            buttonClicked ? "bg-teal text-white" : ""
+            isSelected ? "bg-teal text-white" : ""
           }`}
           style={{ minWidth: "7rem" }}
-          onClick={handleAddToCalendar}
+          onClick={handleBtnClick}
         >
-          {buttonClicked ? (
+          {isSelected ? (
             <FaCheck className="h-4 w-4 text-white mr-2" />
           ) : (
             <IoAdd className="h-6 w-6 text-white mr-2 stroke-teal" />
           )}
-          {buttonClicked ? "Added" : "Add"}
+          {isSelected ? "Added" : "Add"}
         </button>
       </div>
     </div>

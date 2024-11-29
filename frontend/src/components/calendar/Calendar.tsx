@@ -3,13 +3,14 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from '@fullcalendar/interaction';
-import { INITIAL_EVENTS, createEventId, handleEventRemoveFC } from './event-utils';
+import { INITIAL_EVENTS, createEventId } from './event-utils';
 import { DateSelectArg, EventApi, EventClickArg, EventContentArg } from "fullcalendar";
 
 // for dropdown
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { RemoveFCEventType } from "../../types";
 
 // https://codesandbox.io/s/react-fullcalendar-custom-buttons-and-header-toolbar-rmvtl?file=/src/App.js
 
@@ -28,9 +29,10 @@ interface CalendarProps {
   showSearchBar: boolean;
   events: any[];
   calendarRef: RefObject<FullCalendar>;
+  handleRemoveFCEvent: RemoveFCEventType;
 }
 
-export default function Calendar({showSearchBar, events, calendarRef}:CalendarProps) {
+export default function Calendar({showSearchBar, events, calendarRef, handleRemoveFCEvent}:CalendarProps) {
     
     const [weekendsVisible, setWeekendsVisible] = useState<boolean>(true);
     const [currentEvents, setCurrentEvents] = useState<EventApi[]>();
@@ -72,7 +74,8 @@ export default function Calendar({showSearchBar, events, calendarRef}:CalendarPr
       
       const handleEventClick = (clickInfo: EventClickArg) => {
           if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-            handleEventRemoveFC(calendarRef, clickInfo.event.id);
+            handleRemoveFCEvent({calendarRef: calendarRef, eventId: clickInfo.event.id});
+
             clickInfo.event.remove();
           }
         }
