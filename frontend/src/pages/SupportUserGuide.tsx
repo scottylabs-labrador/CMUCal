@@ -1,4 +1,10 @@
 import React from 'react'
+import { ExternalLink } from 'lucide-react';
+import {
+  IoHomeOutline,
+  IoGlobeOutline,
+  IoCloudUploadOutline,
+} from "react-icons/io5";
 
 const Introduction: React.FC = () => {
   return (
@@ -30,21 +36,24 @@ const SubSection : React.FC = () => {
 }
 const Content: React.FC = () => {
   return (
-    <div className='pr-8'>
-      <h2 className='text-xl pb-5 font-semibold text-teal'>How to use CMUCal</h2>
+    <div className='pr-12'>
+      <h2 className='text-3xl pb-5 font-semibold text-teal'>How to use CMUCal</h2>
       <ol className="list-decimal pl-5 pb-20">
         <li className="text-2xl py-2">Get Started</li>
           <ul className='list-disc pl-5'>
-            <li className='mt-2'>Open CMUCal</li>
+            <li className="mt-2">
+              <a href="https://cmu-cal.vercel.app/">
+                Open CMUCal <ExternalLink className="inline align-baseline h-4 w-5" />
+              </a>
+            </li>
             <li className='mt-2'>Click <strong>Log in with Google</strong></li>
             <li className='mt-2'>This will sync your Google Calendar with CMUCal, allowing you to export events directly.</li>
           </ul>
-          <p className='mt-10'>After logging into CMUCal, you will be taken to the Home page.</p>
+          <p className='mt-10'>After logging into CMUCal, you will be taken to the <IoHomeOutline className='inline align-baseline h-4 w-5 text-teal'/> <span className='text-teal'>Home</span> page.</p>
           <ul className='list-disc pl-5 gap-2'>
             <li className='mt-2'>The left panel features search to help you find specific events.</li>
             <li className='mt-2'>The right calendar view displays your events, allowing you to easily see your schedule at a glance.</li>
           </ul>
-
         <li className="text-2xl pt-8 pb-2">Search for Events</li>
           <ul className='list-disc pl-5'>
             <li className='mt-2'>Navigate to the appropriate tab: <strong>Academic, Career</strong> or <strong>Organizations</strong></li>
@@ -58,7 +67,7 @@ const Content: React.FC = () => {
             <li className='mt-2'>Added events will appear on the right calendar view.</li>
             <li className='mt-2'>Check for any warnings about overlapping events or potential conflicts with your Google Calendar events.</li>
           </ul>
-        <p className='mt-10'>Tip: Toggle the visibility of your Google Calendar events with Show my GCal events/Hide my GCal events to customize your calendar view ccording to your needs</p>
+        <p className='mt-10'><span className="font-bold text-teal">Tip</span>: Toggle the visibility of your Google Calendar events with <strong>Show my GCal events/Hide my GCal events</strong> to customize your calendar view according to your needs</p>
 
         <li className="text-2xl pt-8 pb-2">Export to Google Calendar</li>
           <ul className='list-disc pl-5'>
@@ -66,22 +75,26 @@ const Content: React.FC = () => {
           </ul>
       </ol>  
 
-      <h2 className='text-xl pb-5 font-semibold text-teal'>How to upload Events</h2>
+      <h2 className='text-3xl pb-5 font-semibold text-teal'>How to upload Events</h2>
       <ol className="list-decimal pl-5 pb-20">
         <li className="text-2xl pt-8 pb-2">Navigate to the Upload Section</li>
           <ul className='list-disc pl-5'>
-            <li className='mt-2'>Open CMUCal.</li>
-            <li className='mt-2'>On the upper right, click Upload.</li>
+          <li className="mt-2">
+              <a href="https://cmu-cal.vercel.app/">
+                Open CMUCal <ExternalLink className="inline align-baseline h-4 w-5" />
+              </a>
+            </li>
+            <li className='mt-2'>On the upper right, click <IoCloudUploadOutline className='inline align-baseline h-4 w-5 text-teal'/> <span className='text-teal'>Upload</span> .</li>
           </ul>
         <li className="text-2xl pt-8 pb-2">Enter Event Details</li>
           <ul className='list-disc pl-5'>
             <li className='mt-2'>Choose an event type: <strong>Academics</strong> or <strong>Career</strong>.</li>
             <li className='mt-2'>Choose an upload method.</li>
-            <li className='mt-2'>Click Upload.</li>
+            <li className='mt-2'>Click <strong>Upload</strong>.</li>
             <li className='mt-2'>Review the information, click <strong>Confirm</strong>.</li>
           </ul>
 
-        <p className='mt-10'><strong>Note:</strong> Events uploaded from the website will be marked with a green check. Events uploaded by professors or TAs will be marked with a yellow check. In all other cases, events will not be verified with a check on CMUCal.</p>
+        <p className='mt-10'><span className="font-bold text-teal">Note:</span> Events uploaded from the website will be marked with a green check. Events uploaded by professors or TAs will be marked with a yellow check. In all other cases, events will not be verified with a check on CMUCal.</p>
 
       </ol>
     </div>
