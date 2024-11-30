@@ -61,7 +61,7 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
     // const storedEvents = getArrayFromLocalStorage<string>('savedEvents');
     setSavedItems(storedItems);
     // clearSavedItems();
-    // console.log(savedItems);
+    console.log(storedItems);
   }, [searchInput]);
  
 
@@ -160,14 +160,14 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
       {showSearchBar && (
         <div className="flex flex-col w-11/12 gap-y-2">
         {/* Scroll bar of saved searches */}
-        {/* <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll w-11/12">
+        <div className="no-scroll-bar flex flex-nowrap flex-row gap-x-1.5 overflow-scroll w-11/12">
           {savedItems && savedItems.map((item, index) => {
             return (
               <SavedSearchBtn key={index} content={item} clickStay={true} clearSingleSavedItems={clearSingleSavedItems} 
               textSize="text-xs" enterSearchInput={enterSearchInput} clearSearchInput={clearSearchInput}/>
             )
           })}
-        </div> */}
+        </div>
         
         <div className="bg-gray-200 relative h-12 w-full rounded-md border border-black border-[1.5] flex items-center justify-center">
           {/* search bar */}
