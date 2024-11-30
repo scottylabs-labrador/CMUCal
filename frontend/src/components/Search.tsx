@@ -37,11 +37,12 @@ interface SearchComponentProps {
   events:any[];
   setEvents: React.Dispatch<React.SetStateAction<any[]>>;
   handleRemoveFCEvent: RemoveFCEventType;
+  removeAllEvents: () => void;
 }
 
 const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar, 
   handleSearchBarClick, handleAddFCEvent, eventId, setEventId, calendarRef, events, setEvents,
-  handleRemoveFCEvent }) => {
+  handleRemoveFCEvent, removeAllEvents }) => {
   // Chang name to search bar
   const [searchInput, setSearchInput] = useState("");
 
@@ -134,6 +135,8 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
     // console.log(`end: ${date}`);
   };
 
+  
+
 
   return (
     <div className="bg-[#F5F5F5] relative -top-1 w-full min-h-screen pl-8 pt-7 text-sans resize-x">
@@ -204,7 +207,7 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
         <div className="w-full mt-2 flex justify-between">
           {/* <Dropdown/> */}
           <Button content="Add All" clickStay={false} textSize="text-base"/>
-          <Button content="Reset CMUCal Events" clickStay={false} textSize="text-base"/>
+          <Button onClick={removeAllEvents} content="Reset CMUCal Events" clickStay={false} textSize="text-base"/>
           {/* <Button content="Upload to GCal" bgColor={true} clickStay={false} textSize="text-base"/> */}
         </div>
         

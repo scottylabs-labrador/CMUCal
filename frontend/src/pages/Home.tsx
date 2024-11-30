@@ -50,6 +50,10 @@ const Home: React.FC = () => {
         }
     }
 
+    const removeAllEvents = () => {
+        setEvents([]);        
+    }
+
     return (
         <div>
         <div className="relative">
@@ -61,7 +65,7 @@ const Home: React.FC = () => {
                 <Search page={page} showSearchBar={showSearchBar} handleAddFCEvent={handleAddFCEvent} 
                 handleSearchBarClick={handleSearchBarClick} eventId={eventIdCount} 
                 setEventId={setEventIdCount} calendarRef={calendarRef} events={events} setEvents={setEvents}
-                handleRemoveFCEvent={handleRemoveFCEvent}/>
+                handleRemoveFCEvent={handleRemoveFCEvent} removeAllEvents={removeAllEvents}/>
             </div>
 
             <div className={`${showSearchBar? 'Calendar': 'CalendarFull'}`}>
