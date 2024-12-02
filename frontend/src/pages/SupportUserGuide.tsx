@@ -20,8 +20,8 @@ const ScrollBar: React.FC = () => {
   return (
     // Add condition when active, bold later 
     <div className='px-20 flex flex-col gap-4'>
-      <p>How to use CMUCal</p>
-      <p>How to upload events</p>
+      <p><a href="#section1">How to use CMUCal</a></p>
+      <p><a href="#section2">How to upload events</a></p>
     </div>
   )
 }
@@ -37,7 +37,7 @@ const SubSection : React.FC = () => {
 const Content: React.FC = () => {
   return (
     <div className='pr-12'>
-      <h2 className='text-3xl pb-5 font-semibold text-teal'>How to use CMUCal</h2>
+      <h2 id="section1" className='text-3xl pb-5 font-semibold text-teal'>How to use CMUCal</h2>
       <ol className="list-decimal pl-5 pb-20">
         <li className="text-2xl py-2">Get Started</li>
           <ul className='list-disc pl-5'>
@@ -75,7 +75,7 @@ const Content: React.FC = () => {
           </ul>
       </ol>  
 
-      <h2 className='text-3xl pb-5 font-semibold text-teal'>How to upload Events</h2>
+      <h2 id="section2" className='text-3xl pb-5 font-semibold text-teal'>How to upload Events</h2>
       <ol className="list-decimal pl-5 pb-20">
         <li className="text-2xl pt-8 pb-2">Navigate to the Upload Section</li>
           <ul className='list-disc pl-5'>
