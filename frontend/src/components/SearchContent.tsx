@@ -8,7 +8,7 @@ import PTData from "../mock_data/peer_tutoring.json";
 import SIData from "../mock_data/si.json";
 import ClubsData from "../mock_data/tartanconnect.json";
 import CareerData from "../mock_data/handshake.json";
-import { categoryListAcademics, categoryShorthandAcademics, categoryListClubs, categoryListCareer, Clubs_type, Career_type, AddFCEventProps, AddFCEventType } from "../types";
+import { categoryListAcademics, categoryShorthandAcademics, categoryListClubs, categoryListCareer, Clubs_type, Career_type, AddFCEventProps, AddFCEventType, RemoveFCEventType } from "../types";
 import FullCalendar from "@fullcalendar/react";
 
 
@@ -25,12 +25,23 @@ interface SearchContentProps {
     eventId: number;
     setEventId: React.Dispatch<React.SetStateAction<number>>;
     calendarRef: React.RefObject<FullCalendar>;
+    events:any[];
     setEvents: React.Dispatch<React.SetStateAction<any[]>>;
+    handleRemoveFCEvent: RemoveFCEventType;
 
 }
 
-const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, categoryName, startDate, endDate, addToSavedItems, handleAddFCEvent, eventId, setEventId, calendarRef, setEvents }) => {
-    const props  = { searchInput, page, categoryName, startDate, endDate, addToSavedItems, handleAddFCEvent, eventId, setEventId, calendarRef, setEvents };
+const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, categoryName, startDate, endDate, addToSavedItems, handleAddFCEvent, eventId, setEventId, calendarRef, events, setEvents, handleRemoveFCEvent }) => {
+    const props  = { searchInput, page, categoryName, startDate, endDate, addToSavedItems, handleAddFCEvent, eventId, setEventId, calendarRef, events, setEvents, handleRemoveFCEvent };
+    // const [selectedSearchCards, setSelectedSearchCards] = useState<number[]>([]);
+
+    // useEffect(()=> {
+    //   let cardNums = [];
+    //   for (let i = 0; i<events.length; i++) {
+    //     cardNums.push(events[i].searchCardId);
+    //   }
+    //   setSelectedSearchCards(cardNums);
+    // },[events])
 
     const getCategoryData = (currPage:string) => {
         // this is where we apply the category filters
@@ -128,6 +139,7 @@ const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, catego
                         return ( 
                             <SearchCard
                                 key={index}
+                                cardId={index}
                                 eventName={`${result.item.resource_type} for ${result.item.course_id} ${result.item.course_name}`}
                                 orgName={`Staff`}
                                 startDate={getWeekday(result.item.events[i].weekday) || `null`}
@@ -137,10 +149,12 @@ const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, catego
                                 location={result.item.events[i].location}
                                 addToSavedItems={addToSavedItems}
                                 handleAddFCEvent={handleAddFCEvent}
-                                eventId={eventId}
-                                setEventId={setEventId}
                                 calendarRef={calendarRef}
+                                events={events}
                                 setEvents={setEvents}
+                                handleRemoveFCEvent={handleRemoveFCEvent}
+                                isSelected = {events.findIndex(obj => (obj.id == `${index}`)) != -1}
+                                
                             />
                         )
                     }
@@ -155,6 +169,7 @@ const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, catego
                         return ( 
                             <SearchCard
                                 key={index}
+                                cardId={index}
                                 eventName={`${result.item.event_name}`}
                                 orgName={`${result.item.event_host}`}
                                 startDate={getWeekday(result.item.events[i].weekday) || `null`}
@@ -164,10 +179,11 @@ const SearchContent: React.FC<SearchContentProps> = ({ searchInput, page, catego
                                 location={result.item.events[i].location}
                                 addToSavedItems={addToSavedItems}
                                 handleAddFCEvent={handleAddFCEvent}
-                                eventId={eventId}
-                                setEventId={setEventId}
+                                handleRemoveFCEvent={handleRemoveFCEvent}
                                 calendarRef={calendarRef}
+                                events={events}
                                 setEvents={setEvents}
+                                isSelected = {events.findIndex(obj => (obj.id == eventId)) != -1}
                             />
                         )
                     }  

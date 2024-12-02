@@ -22,12 +22,4 @@ export function createEventId() {
   return String(eventGuid++)
 }
 
-export const handleEventRemoveFC = (calendarRef: React.RefObject<FullCalendar>, eventId: string) => {
-  if (calendarRef.current) {
-    const calendarApi = calendarRef.current.getApi();
-    const event = calendarApi.getEventById(eventId);
-    if (event) {
-      event.remove();
-    }
-  }
-}
+

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // search input
-import { SearchCard, SavedSearchBtn, SearchBar } from "./index";
+import { SearchCard, SearchBar } from "./index";
+
 import Fuse from 'fuse.js'
 import { IoSearch, IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
@@ -17,8 +18,9 @@ import { Button } from "./Button";
 import SearchContent from "./SearchContent";
 import CategoryDropdown from "./CategoryDropdown";
 import DatePickerSearch from "./DatePickerSearch";
-import { AddFCEventProps, AddFCEventType } from "../types";
+import { AddFCEventProps, AddFCEventType, RemoveFCEventType } from "../types";
 import FullCalendar from "@fullcalendar/react";
+import SavedSearchBtn from "./SavedSearches";
 
 
 // https://plainenglish.io/blog/how-to-implement-a-search-bar-in-react-js
@@ -32,16 +34,21 @@ interface SearchComponentProps {
   eventId: number;
   setEventId: React.Dispatch<React.SetStateAction<number>>;
   calendarRef: React.RefObject<FullCalendar>;
+  events:any[];
   setEvents: React.Dispatch<React.SetStateAction<any[]>>;
+  handleRemoveFCEvent: RemoveFCEventType;
+  removeAllEvents: () => void;
 }
 
 const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar, 
-  handleSearchBarClick, handleAddFCEvent, eventId, setEventId, calendarRef, setEvents }) => {
+  handleSearchBarClick, handleAddFCEvent, eventId, setEventId, calendarRef, events, setEvents,
+  handleRemoveFCEvent, removeAllEvents }) => {
   // Chang name to search bar
   const [searchInput, setSearchInput] = useState("");
 
   const [categoryName, setCategoryName] = useState<string[]>([]);
   const [savedItems, setSavedItems] = useState<string[]>([]);
+  const [addedSearchCards, setAddedSearchCards] = useState([]);
 
   // date picker
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
@@ -51,9 +58,10 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
   useEffect(() => {
     // Load the array from local storage when the component mounts
     const storedItems = getArrayFromLocalStorage<string>('savedSearches');
+    // const storedEvents = getArrayFromLocalStorage<string>('savedEvents');
     setSavedItems(storedItems);
     // clearSavedItems();
-    // console.log(savedItems);
+    console.log(storedItems);
   }, [searchInput]);
  
 
@@ -95,13 +103,7 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
     // console.log(savedItems);
   };
   
-    
-  // Function to handle when search bar is enterred 
-  const handleSaveSearch = () => {
-    if (searchInput) {
-      setSearchInput('');
-    }
-  };
+  
   
   // search
   const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -132,6 +134,8 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
     setEndDate(date);
     // console.log(`end: ${date}`);
   };
+
+  
 
 
   return (
@@ -203,14 +207,14 @@ const Search: React.FC<SearchComponentProps> = ({ page, showSearchBar,
         <div className="w-full mt-2 flex justify-between">
           {/* <Dropdown/> */}
           <Button content="Add All" clickStay={false} textSize="text-base"/>
-          <Button content="Reset CMUCal Events" clickStay={false} textSize="text-base"/>
+          <Button onClick={removeAllEvents} content="Reset CMUCal Events" clickStay={false} textSize="text-base"/>
           {/* <Button content="Upload to GCal" bgColor={true} clickStay={false} textSize="text-base"/> */}
         </div>
         
         <div className="overflow-scroll" style={{height: '70vh'}}>
           { searchInput && <SearchContent searchInput={searchInput} page={page} categoryName={categoryName} startDate={startDate} 
           endDate={endDate} addToSavedItems={addSavedItem} handleAddFCEvent={handleAddFCEvent} eventId={eventId} 
-          setEventId={setEventId} calendarRef={calendarRef} setEvents={setEvents}/>}
+          setEventId={setEventId} calendarRef={calendarRef} events={events} setEvents={setEvents} handleRemoveFCEvent={handleRemoveFCEvent}/>}
         </div>
         
         </div>

@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import { SecondNav, Search, Footer } from "../components";
 import Calendar from "../components/calendar/Calendar";
-import { AddFCEventProps } from "../types";
+import { AddFCEventProps, RemoveFCEventProps } from "../types";
 import FullCalendar from "@fullcalendar/react";
+import { saveArrayToLocalStorage } from "../utils/localStorageUtil";
 
 
 
@@ -19,15 +20,38 @@ const Home: React.FC = () => {
         setShowSearchBar(prev => !prev);
     }
 
-    
-    const handleAddFCEvent = ({id, title, start, end, allDay}: AddFCEventProps) => {
-        setEvents([...events, {
+    const handleAddFCEvent = ({id, searchCardId, title, start, end, allDay}: AddFCEventProps) => {
+        const newEvents = [...events, {
             id: id,
             title: title,
             start: start,
             end: end,
-            allDay: allDay
-        }])
+            allDay: allDay,
+            searchCardId: searchCardId
+        }];
+        setEvents(newEvents);
+    }
+
+    // removes a single event from the events list and updates local storage
+    const removeFromEvents = (eventId:string) => {
+        const index:number = events.findIndex(obj => obj.id == eventId);
+        const newEvents = events.slice(0,index).concat(events.slice(index+1,));
+        setEvents(newEvents);
+    };
+      
+    const handleRemoveFCEvent = ({calendarRef,eventId}: RemoveFCEventProps) => {
+        if (calendarRef.current) {
+          const calendarApi = calendarRef.current.getApi();
+          const event = calendarApi.getEventById(eventId);
+          if (event) {
+            removeFromEvents(eventId);
+            event.remove(); // removes event from FC
+          }
+        }
+    }
+
+    const removeAllEvents = () => {
+        setEvents([]);        
     }
 
     return (
@@ -40,11 +64,12 @@ const Home: React.FC = () => {
             <div className={`${showSearchBar? 'w-2/5': 'w-1/12'}`}>
                 <Search page={page} showSearchBar={showSearchBar} handleAddFCEvent={handleAddFCEvent} 
                 handleSearchBarClick={handleSearchBarClick} eventId={eventIdCount} 
-                setEventId={setEventIdCount} calendarRef={calendarRef} setEvents={setEvents}/>
+                setEventId={setEventIdCount} calendarRef={calendarRef} events={events} setEvents={setEvents}
+                handleRemoveFCEvent={handleRemoveFCEvent} removeAllEvents={removeAllEvents}/>
             </div>
 
             <div className={`${showSearchBar? 'Calendar': 'CalendarFull'}`}>
-                <Calendar showSearchBar={showSearchBar} events={events} calendarRef={calendarRef}/>
+                <Calendar showSearchBar={showSearchBar} events={events} calendarRef={calendarRef} handleRemoveFCEvent={handleRemoveFCEvent}/>
             </div>
             </div>
         </div>

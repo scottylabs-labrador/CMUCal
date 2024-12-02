@@ -41,4 +41,4 @@ const SavedSearchBtn: React.FC<ButtonComponentProps> = ({ content, clickStay, te
 
 }
 
-export {SavedSearchBtn};
+export default SavedSearchBtn;
