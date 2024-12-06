@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm install && vite build",
     "lint": "eslint src ",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "preview": "vite preview",
