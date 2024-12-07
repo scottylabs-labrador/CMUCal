@@ -19,8 +19,6 @@ function GoogleSigninButton() {
       console.log("Backend response:", response.data);
       routeChange();
     } catch (error) {
-      // hard coded the route change login, need to fix later
-      routeChange();
       console.error("Error logging in:", error);
     }
   };
